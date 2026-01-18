@@ -1,8 +1,8 @@
 {
   "schema": "rh_debt_ledger.exhibit_pointer.v1",
-  "name": "2026-01-17_dragon_boop_v1_x1000_step100_T50",
-  "manifest_digest": "8b53653351f1625d3d2a59fae00b9c9b41a37ab9df3e9ad7a27de974945ef729",
-  "source_path": "experiments/rh_debt_ledger/paper_runs/2026-01-17_dragon_boop_v1_x1000_step100_T50/run",
+  "name": "2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded",
+  "manifest_digest": "sha256:564663aa25fc3c8f3463a850fb97f5ea80afe2dc0a641db5dd52fdef3ca1dd73",
+  "source_path": "experiments/rh_debt_ledger/paper_runs/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded/run",
   "promotion_tier": "PROMOTED_FINITE",
   "dragon_status": "UNPAID",
   "metrics": {
@@ -15,5 +15,10 @@
   "assumptions": {
     "paid_checkable": 7,
     "unpaid_theorem": 2
+  },
+  "governance": {
+    "theorem_registry_digest": "sha256:a75b757e57d7e3423a6a469864184617c2a5f8ac753e0c05a100cee0a408c755",
+    "trusted_allowlist_digest": "sha256:f9136164f930551623cb07ed48b86df2356d06930e7de83687a3b8782c83e4bb",
+    "trusted_global_enabled": false
   }
 }

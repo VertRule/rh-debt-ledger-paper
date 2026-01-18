@@ -4,8 +4,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Name** | `2026-01-17_dragon_boop_v1_x1000_step100_T50` |
-| **Manifest Digest** | `8b53653351f1625d3d2a59fae00b9c9b41a37ab9df3e9ad7a27de974945ef729` |
+| **Name** | `2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded` |
+| **Manifest Digest** | `564663aa25fc3c8f3463a850fb97f5ea80afe2dc0a641db5dd52fdef3ca1dd73` |
 | **Promotion Tier** | `PROMOTED_FINITE` |
 | **Dragon Status** | `UNPAID` |
 | **max_r_total** | 0.0296141010568821 |
@@ -15,12 +15,15 @@
 | **a_max_allowed** | 33.76769728985602 |
 | **paid_checkable** | 7 |
 | **unpaid_theorem** | 2 |
+| **theorem_registry_digest** | `sha256:a75b757e57d7e3423a6a469864184617c2a5f8ac753e0c05a100cee0a408c755` |
+| **trusted_allowlist_digest** | `sha256:f9136164f930551623cb07ed48b86df2356d06930e7de83687a3b8782c83e4bb` |
+| **trusted_global_enabled** | false |
 
 ## Artifact Locations
 
 | Artifact | Path |
 |----------|------|
-| Canonical run | `experiments/rh_debt_ledger/paper_runs/2026-01-17_dragon_boop_v1_x1000_step100_T50/run/` |
+| Canonical run | `experiments/rh_debt_ledger/paper_runs/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded/run/` |
 | Paper runs index | `experiments/rh_debt_ledger/paper_runs/paper_runs_index.json` |
 | Pointer file | `exhibits/canonical_run.json` |
 
@@ -29,7 +32,7 @@
 To verify the canonical run manifest:
 
 ```bash
-cd experiments/rh_debt_ledger/paper_runs/2026-01-17_dragon_boop_v1_x1000_step100_T50/run
+cd experiments/rh_debt_ledger/paper_runs/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded/run
 sha256sum sha256_manifest.txt
-# Expected: 8b53653351f1625d3d2a59fae00b9c9b41a37ab9df3e9ad7a27de974945ef729
+# Expected: 564663aa25fc3c8f3463a850fb97f5ea80afe2dc0a641db5dd52fdef3ca1dd73
 ```
