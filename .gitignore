@@ -1,7 +1,15 @@
 # Large/generated artifacts
 *.csv
-*.pdf
 *.bin
+
+# Specific large artifact directories
+paper_runs/
+runs/
+analysis/
+proofs/
+
+# Temp directories
+/tmp/
 
 # Build artifacts
 target/

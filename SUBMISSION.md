@@ -1,9 +1,3 @@
-# RH Debt Ledger Paper
-
-**Start here: [SUBMISSION.md](SUBMISSION.md)**
-
----
-
 # Front Door: Submission & Verification
 
 This repository contains the manuscript and **receipted exhibits** for the RH NA0 debt-ledger work.
@@ -60,6 +54,11 @@ If you have access to the source experiment repo, verification is:
 ## Where to start reading
 
 1) `README.md` (short orientation)
-2) `na0_rh_debt_ledger_draft.md` (the manuscript)
-3) `EXHIBITS.md` (the evidence table)
-4) `exhibits/canonical_run.json` (machine-readable exhibit pointer)
+2) `SUBMISSION.md` (this document - full front door)
+3) `na0_rh_debt_ledger_draft.md` (the manuscript)
+4) `EXHIBITS.md` (the evidence table)
+5) `exhibits/canonical_run.json` (machine-readable exhibit pointer)
+
+## Verification script
+
+Run `./VERIFY.sh` to check repo integrity, remote alignment, and absence of forbidden artifacts.
