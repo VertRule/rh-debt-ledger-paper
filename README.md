@@ -1,39 +1,59 @@
-# RH Debt Ledger Paper
+# Front Door: Submission & Verification
 
-Receipted NA0 Debt Ledgers for Riemann-Style Error Bounds.
+This repository contains the manuscript and **receipted exhibits** for the RH NA0 debt-ledger work.
+It **does not** claim a proof of the Riemann Hypothesis.
 
-## Scope
+## What this repo is
 
-This paper describes a computational verification framework for evaluating the explicit formula error term in prime counting. The system produces deterministic, receipted artifacts that track all sources of debt and block false promotion to global claims.
+- A paper draft: `na0_rh_debt_ledger_draft.md`
+- A small "exhibits" layer: `EXHIBITS.md` + `exhibits/canonical_run.json`
+- A reproducibility contract: how to verify the canonical exhibit by digest
 
-**This framework does NOT prove the Riemann Hypothesis.**
+This repo intentionally excludes large run bundles and raw series data unless explicitly published elsewhere.
 
-## Key Claims
+## Claim tiers
 
-| ID | Statement | Support |
-|----|-----------|---------|
-| C1 | Debt is defined as D(x;T) = psi(x) - x - M_T(x) | Definitional |
-| C5 | Repeated runs produce identical SHA-256 manifests | `tests/determinism.rs` |
-| C11 | Canonical run tier is `PROMOTED_FINITE` with status `PAID_CONDITIONAL` | `run_metrics.json` |
-| C12 | Global promotion blocked: dragon obligation `UNPAID` | `PO_TAIL_*.json` |
+- **Definitions**: always allowed.
+- **PROMOTED_FINITE**: certified on a finite domain/grid (mechanical verification).
+- **PROMOTED_GLOBAL**: requires paying THEOREM-class obligations with an external proof artifact under policy.
+  Default posture: **global promotion disabled**.
 
-See the full claim ledger in `na0_rh_debt_ledger_draft.md`.
+## Canonical exhibit
 
-## Exhibits
+See `EXHIBITS.md` for the table, and `exhibits/canonical_run.json` for a compact pointer.
 
-See [EXHIBITS.md](EXHIBITS.md) for the canonical run table with manifest digests.
+**Canonical run name:** (see `EXHIBITS.md`)
+**Manifest digest:** (see `EXHIBITS.md`)
+**Promotion tier:** PROMOTED_FINITE
+**Dragon obligation status:** UNPAID (THEOREM)
 
-The `exhibits/` directory contains pointer files referencing reproducible artifacts in the experiment directory.
+## The Dragon Obligation (what remains unpaid)
 
-## Source Implementation
+No computational verification can pay this obligation.
 
-The implementation lives at `experiments/rh_debt_ledger/` in the main VertRule repository.
+The remaining blocker to global promotion is a THEOREM-class obligation asserting an unconditional tail bound sufficient to certify the RH-style envelope globally. Discharging this obligation requires an **external proof artifact** and is considered **equivalent in difficulty to proving RH itself**.
 
-## Non-Claims
+(For the precise object identity and current status, see `exhibits/canonical_run.json`.)
 
-This paper explicitly does NOT claim:
-- Any progress toward proving RH
-- Any new analytic number theory results
-- That the tail bounds used are unconditionally valid
+## How to verify integrity (digest-based)
 
-All empirical results are conditioned on the assumptions declared in the tail-constants file.
+This repo carries **pointers** rather than full run bundles. Verification is done by comparing the canonical exhibit's recorded digests to the corresponding artifacts in the source experiment repository that produced them.
+
+Minimum expected verification items:
+- A run directory containing `sha256_manifest.txt`
+- A recorded digest of that manifest (as cited in `EXHIBITS.md` / `exhibits/canonical_run.json`)
+- The run's `run_metrics.json` for key metrics (max_r_total, min_slack, a_max_allowed)
+- The proof obligation object for the dragon obligation (PO-tail / ladder PO)
+
+If you have access to the source experiment repo, verification is:
+1) Locate the canonical run directory by name.
+2) Compute `sha256` of `sha256_manifest.txt`.
+3) Confirm it matches the manifest digest recorded in this paper repo.
+4) Confirm `run_metrics.json` values match the exhibit pointer values.
+
+## Where to start reading
+
+1) `README.md` (short orientation)
+2) `na0_rh_debt_ledger_draft.md` (the manuscript)
+3) `EXHIBITS.md` (the evidence table)
+4) `exhibits/canonical_run.json` (machine-readable exhibit pointer)
