@@ -1,0 +1,23 @@
+# Large/generated artifacts
+*.csv
+*.pdf
+*.bin
+
+# Build artifacts
+target/
+*.o
+*.a
+
+# Editor/IDE
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude context (keep .claude/settings.json but ignore logs)
+.claude/*.jsonl
+.claude/todos/

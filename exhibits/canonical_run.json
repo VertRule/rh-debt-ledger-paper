@@ -1,0 +1,19 @@
+{
+  "schema": "rh_debt_ledger.exhibit_pointer.v1",
+  "name": "2026-01-17_dragon_boop_v1_x1000_step100_T50",
+  "manifest_digest": "8b53653351f1625d3d2a59fae00b9c9b41a37ab9df3e9ad7a27de974945ef729",
+  "source_path": "experiments/rh_debt_ledger/paper_runs/2026-01-17_dragon_boop_v1_x1000_step100_T50/run",
+  "promotion_tier": "PROMOTED_FINITE",
+  "dragon_status": "UNPAID",
+  "metrics": {
+    "max_r_total": 0.0296141010568821,
+    "worst_ratio_x": 200,
+    "min_slack": 206.8393759864528,
+    "worst_slack_x": 100,
+    "a_max_allowed": 33.76769728985602
+  },
+  "assumptions": {
+    "paid_checkable": 7,
+    "unpaid_theorem": 2
+  }
+}
