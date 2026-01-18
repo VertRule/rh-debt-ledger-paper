@@ -492,6 +492,12 @@ cargo test --release
 
 ---
 
+## Acknowledgments
+
+Drafting and repository scaffolding were assisted by large language model tools; all technical claims and final wording were reviewed and approved by the author.
+
+---
+
 ## References
 
 - Schoenfeld, L. (1976). Sharper bounds for the Chebyshev functions θ(x) and ψ(x). II. *Mathematics of Computation*, 30(134), 337-360.
