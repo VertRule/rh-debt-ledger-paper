@@ -296,3 +296,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish that an effective constant c exists; no specific numeric value is asserted here.
+
+---
+
+### ID 01.2
+
+**Worklist ID:** 01.2
+
+**Task:** Effective value of t₀ not specified
+
+**What is being cited:** The existence and computability of the threshold t₀ above which the Vinogradov–Korobov zero-free region holds, as established in the original papers and standard analytic number theory texts.
+
+**Citation:**
+- Korobov, N. M. (1958). "Estimates of trigonometric sums and their applications." Uspekhi Mat. Nauk 13:4, 185–192.
+- Titchmarsh, E. C. (1986). "The Theory of the Riemann Zeta-Function." 2nd ed., Oxford University Press. Chapter 6.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish that an effective threshold t₀ exists; no specific numeric value is asserted here.
