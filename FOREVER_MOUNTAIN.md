@@ -1,0 +1,48 @@
+# Forever Mountain
+
+**Concept-Tag:** RH-FOREVER-MOUNTAIN
+
+## Dragon (the hard obligation)
+
+Unconditional tail bound equivalent in difficulty to RH.
+
+This repo cannot pay this debt computationally. It requires an external proof artifact.
+
+## What the repo currently proves (mechanically)
+
+- Verification passes (`VR_STRICT=1 ./VERIFY.sh`)
+- Exhibits are indexed and digest-verified (`EXHIBITS.md`)
+- Honesty ledger enforced (`CONTRIBUTION_LEDGER.md`)
+- Governance drill recorded (block-on-fail, unblock-on-revert)
+
+## Ladder (R0 → R4)
+
+| Rung | Definition | Status |
+|------|------------|--------|
+| R0 | Mechanical verification only | Done |
+| R1 | Reproducible debt measurements + envelope checks | Done |
+| R2 | Conditional tail bound under explicit assumptions | Done (see exhibits) |
+| R3 | Unconditional analytic bound weaker than RH | Target |
+| R4 | RH-level bound | Dragon |
+
+### R3 target: classical zero-free region bound
+
+Goal: prove an unconditional error term bound via classical zero-free region methods (PNT-style).
+
+**Deliverable structure:**
+- Theorem contract (statement + assumptions)
+- Proof sketch outline
+- Dependencies (cited, not linked)
+- No constants claimed without derivation
+
+**Citations placeholder:**
+- de la Vallée Poussin (1896)
+- Korobov-Vinogradov zero-free region
+- Standard analytic number theory references
+
+## We do not claim
+
+- Unknowns remain debt
+- Absence has meaning
+- Review is governance, not omniscience
+- Computational verification cannot substitute for analytic proof
