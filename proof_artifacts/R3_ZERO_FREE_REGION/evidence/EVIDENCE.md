@@ -131,3 +131,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts quantify the error introduced by truncating the explicit formula at height T.
+
+---
+
+### ID 03.4
+
+**Worklist ID:** 03.4
+
+**Task:** Dependence on zero-free region constants not made explicit
+
+**What is being cited:** The explicit dependence of the PNT error term on the constants c and t₀ from the zero-free region σ > 1 − c/(log t)^α, and how these constants propagate through the explicit formula to determine the final error bound.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18, §2–3.
+- Ford, K. (2002). "Vinogradov's integral and bounds for the Riemann zeta function." Proc. London Math. Soc. 85, 565–633.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts trace how zero-free region constants determine the error term in the prime number theorem.
