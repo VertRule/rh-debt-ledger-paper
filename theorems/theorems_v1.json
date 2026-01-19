@@ -1,0 +1,46 @@
+{
+  "schema": "rh_debt_ledger.theorem_registry.v1",
+  "version": "v1",
+  "theorems": [
+    {
+      "theorem_id": "THM-PNT-ERROR-ENVELOPE-V1",
+      "name": "PNT Error Envelope (Unconditional)",
+      "statement": "For all x >= 2, the prime counting remainder satisfies |psi(x) - x| <= C * x * exp(-c * sqrt(log x)) for effective constants C, c > 0.",
+      "envelope_family": "envelope-pnt-exp-sqrtlog",
+      "assumption_class": "THEOREM",
+      "status": "UNCONDITIONAL",
+      "source": "de la Vallee Poussin (1899), with effective constants from Dusart, Schoenfeld, and others.",
+      "notes": "This is the classical PNT error bound. It is unconditional and does not require RH."
+    },
+    {
+      "theorem_id": "THM-RH-ENVELOPE-V1",
+      "name": "RH-Style Error Envelope (Conditional)",
+      "statement": "Assuming RH, for all x >= 2, the prime counting remainder satisfies |psi(x) - x| <= C * sqrt(x) * (log x)^2 for some effective constant C > 0.",
+      "envelope_family": "envelope-rh-style",
+      "assumption_class": "THEOREM",
+      "status": "CONDITIONAL_ON_RH",
+      "source": "Schoenfeld (1976), conditional on RH.",
+      "notes": "This envelope requires the Riemann Hypothesis. Global promotion via this theorem is blocked by default policy."
+    },
+    {
+      "theorem_id": "THM-WEAK1-ENVELOPE-V1",
+      "name": "Weak Envelope 1 (Conditional)",
+      "statement": "Assuming RH, for all x >= 2, the prime counting remainder satisfies |psi(x) - x| <= C * sqrt(x) * (log x)^3 for some effective constant C > 0.",
+      "envelope_family": "envelope-weak-1",
+      "assumption_class": "THEOREM",
+      "status": "CONDITIONAL_ON_RH",
+      "source": "Derived from RH-style with weaker log power.",
+      "notes": "Weaker than RH-style. Still conditional on RH."
+    },
+    {
+      "theorem_id": "THM-WEAK2-ENVELOPE-V1",
+      "name": "Weak Envelope 2 (Conditional)",
+      "statement": "Assuming RH, for all x >= 2, the prime counting remainder satisfies |psi(x) - x| <= C * sqrt(x) * (log x)^4 for some effective constant C > 0.",
+      "envelope_family": "envelope-weak-2",
+      "assumption_class": "THEOREM",
+      "status": "CONDITIONAL_ON_RH",
+      "source": "Derived from RH-style with weaker log power.",
+      "notes": "Weaker than Weak1. Still conditional on RH."
+    }
+  ]
+}
