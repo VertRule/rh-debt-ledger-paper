@@ -18,7 +18,7 @@ This is an execution list for paying R3 lemma debts. It does not claim completio
 | 02.3 | 02_EXPLICIT_FORMULA_PSI | Contour specification not given | CITED | [evidence/EVIDENCE.md#id-023](evidence/EVIDENCE.md#id-023) |
 | 03.1 | 03_ZERO_SUM_BOUND | Bound not yet stated | CITED | [evidence/EVIDENCE.md#id-031](evidence/EVIDENCE.md#id-031) |
 | 03.2 | 03_ZERO_SUM_BOUND | Truncation height T(x) not chosen | CITED | [evidence/EVIDENCE.md#id-032](evidence/EVIDENCE.md#id-032) |
-| 03.3 | 03_ZERO_SUM_BOUND | Error from truncation not quantified | TODO | |
+| 03.3 | 03_ZERO_SUM_BOUND | Error from truncation not quantified | CITED | [evidence/EVIDENCE.md#id-033](evidence/EVIDENCE.md#id-033) |
 | 03.4 | 03_ZERO_SUM_BOUND | Dependence on zero-free region constants not made explicit | TODO | |
 | 04.1 | 04_PSI_BOUND | Exponent α not derived | TODO | |
 | 04.2 | 04_PSI_BOUND | Constant c not derived | TODO | |

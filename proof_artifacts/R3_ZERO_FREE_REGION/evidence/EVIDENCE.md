@@ -113,3 +113,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts justify the truncation parameter choice T(x) used in deriving the prime number theorem error term.
+
+---
+
+### ID 03.3
+
+**Worklist ID:** 03.3
+
+**Task:** Error from truncation not quantified
+
+**What is being cited:** The quantification of the remainder term arising from truncating the sum over zeros at height T, typically expressed as O(x(log x)²/T) or similar forms depending on the truncation method.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 17, Theorem 17.1 and surrounding discussion.
+- Montgomery, H. L. & Vaughan, R. C. (2007). "Multiplicative Number Theory I: Classical Theory." Cambridge University Press. Chapter 12, §12.1.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts quantify the error introduced by truncating the explicit formula at height T.
