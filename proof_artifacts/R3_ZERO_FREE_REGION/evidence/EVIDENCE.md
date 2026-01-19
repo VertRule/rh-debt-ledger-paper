@@ -260,3 +260,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference for the Li(x) function and its approximations. No explicit numeric bounds asserted here.
+
+---
+
+### ID 04.4
+
+**Worklist ID:** 04.4
+
+**Task:** Full assembly of steps not written out
+
+**What is being cited:** The complete assembly of the PNT error term derivation, combining the zero-free region, explicit formula, zero sum bounds, and error estimates into the final ψ(x) = x + O(x exp(−c(log x)^α)) statement.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapters 17–18.
+- Ivić, A. (1985). "The Riemann Zeta-Function." Wiley. Chapter 12.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference for the full assembly of the PNT error term derivation. The cited texts provide the complete argument.
