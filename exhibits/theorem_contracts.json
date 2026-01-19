@@ -1,5 +1,6 @@
 {
   "schema": "paper_exhibit_pointer.v1",
+  "kind": "contracts",
   "name": "theorem_contracts",
   "description": "Theorem contract hash-locked statements for obligation ladder",
   "experiment_repo": "experiments/rh_debt_ledger",

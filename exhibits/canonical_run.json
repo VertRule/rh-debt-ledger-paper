@@ -1,9 +1,11 @@
 {
   "schema": "rh_debt_ledger.exhibit_pointer.v1",
+  "kind": "run",
   "name": "2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded",
   "manifest_digest": "sha256:564663aa25fc3c8f3463a850fb97f5ea80afe2dc0a641db5dd52fdef3ca1dd73",
   "manifest_snapshot": "exhibits/manifests/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded.sha256_manifest.txt",
   "source_path": "experiments/rh_debt_ledger/paper_runs/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded/run",
+  "receipt_required": false,
   "promotion_tier": "PROMOTED_FINITE",
   "dragon_status": "UNPAID",
   "metrics": {

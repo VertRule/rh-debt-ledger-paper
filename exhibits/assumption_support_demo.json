@@ -1,9 +1,11 @@
 {
   "schema": "rh_debt_ledger.exhibit_pointer.v1",
+  "kind": "run",
   "name": "2026-01-19_assumption_support_v1_demo",
   "manifest_digest": "sha256:6818f800cb783741ccbfb4db5cff797c8c62d87d66e297ad5c31cf44b2fa1183",
   "manifest_snapshot": "exhibits/manifests/2026-01-19_assumption_support_v1_demo.sha256_manifest.txt",
   "source_path": "experiments/rh_debt_ledger/paper_runs/2026-01-19_assumption_support_v1_demo/run",
+  "receipt_required": false,
   "purpose": "Assumption support receipts (minimum support set) demo",
   "method": "deterministic_greedy_prune_v1",
   "features": {

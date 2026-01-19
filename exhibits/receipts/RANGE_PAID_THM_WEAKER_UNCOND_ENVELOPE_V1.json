@@ -1,0 +1,13 @@
+{
+  "schema": "rh_debt_ledger.range_paid_receipt.v1",
+  "theorem_id": "THM_WEAKER_UNCOND_ENVELOPE_V1",
+  "contract_digest": "sha256:119eba2c499189dfd9bc4c9d52ba97c1df1733b6bba0e89b611beb214c34e88d",
+  "range": {
+    "X_max": 1000000
+  },
+  "run": {
+    "manifest_digest": "sha256:17810581deca57d7c215282e519425fbec34856b486d1ef7f37daf9fb7fe3d75",
+    "run_dir_rel": "paper_runs/2026-01-19_rc0_range_paid_v2_x1e6/run"
+  },
+  "disclaimer": "PAID_COMPUTATIONAL_RANGE_ONLY"
+}
