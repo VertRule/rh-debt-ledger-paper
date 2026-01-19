@@ -10,7 +10,7 @@
 
 **Canonical instructions:** [VERIFY_QUICKSTART.md](VERIFY_QUICKSTART.md)
 
-Download the [R3 CITED Complete release](https://github.com/VertRule/rh-debt-ledger-paper/releases/tag/r3-cited-complete), extract, and run:
+Download release `r3-cited-complete` (view with `gh release view r3-cited-complete`), extract, and run:
 
 ```
 cd repo
