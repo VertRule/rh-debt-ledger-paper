@@ -1,10 +1,14 @@
 #!/bin/sh
 # VERIFY.sh - Deterministic verification script for rh-debt-ledger-paper
 # Checks: clean state, remote alignment, required files, forbidden artifacts, redaction, exhibit digest
+#
+# Environment variables:
+#   VR_STRICT=1  - Treat dirty working tree as error (default: warning only)
 set -e
 
 EXPECTED_REMOTE="git@github.com:VertRule/rh-debt-ledger-paper.git"
 ERRORS=0
+DIRTY_TREE=0
 
 error() {
     echo "ERROR: $1" >&2
@@ -22,11 +26,17 @@ echo ""
 echo "[1/9] Checking git status..."
 if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
     warn "Working tree is dirty (uncommitted changes present)"
+    DIRTY_TREE=1
 fi
 if [ -n "$(git status --porcelain 2>/dev/null)" ]; then
     warn "Untracked or modified files present"
+    DIRTY_TREE=1
 fi
-echo "  OK (or warnings above)"
+if [ "$DIRTY_TREE" -eq 0 ]; then
+    echo "  OK: Working tree is clean"
+else
+    echo "  OK (warnings above)"
+fi
 
 # 2) Reject Co-Authored-By trailers in commits after cutoff
 echo "[2/9] Checking for Co-Authored-By trailers..."
@@ -143,7 +153,13 @@ echo ""
 if [ "$ERRORS" -gt 0 ]; then
     echo "=== VERIFICATION FAILED: $ERRORS error(s) ==="
     exit 1
-else
-    echo "=== VERIFICATION PASSED ==="
-    exit 0
 fi
+
+# In strict mode, dirty tree is an error
+if [ "${VR_STRICT:-0}" = "1" ] && [ "$DIRTY_TREE" -eq 1 ]; then
+    echo "=== VERIFICATION FAILED: Dirty tree in strict mode ==="
+    exit 1
+fi
+
+echo "=== VERIFICATION PASSED ==="
+exit 0
