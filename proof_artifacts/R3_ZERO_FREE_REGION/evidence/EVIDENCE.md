@@ -23,3 +23,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited papers establish the zero-free region used in lemma 01.
+
+---
+
+### ID 02.1
+
+**Worklist ID:** 02.1
+
+**Task:** Convergence conditions not detailed
+
+**What is being cited:** Convergence conditions for the explicit formula relating ψ(x) to zeros of ζ(s), including the conditional convergence of the sum over zeros.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 17.
+- Titchmarsh, E. C. (1986). "The Theory of the Riemann Zeta-Function." 2nd ed., Oxford University Press. Chapter 3.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish convergence conditions for the explicit formula.
