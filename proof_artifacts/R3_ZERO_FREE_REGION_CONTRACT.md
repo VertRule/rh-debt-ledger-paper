@@ -25,13 +25,13 @@ Operationally we bound |ψ(x) − x| using the explicit formula under a zero-fre
 
 ## Proof Plan
 
-| Step | Input | Output | Source |
-|------|-------|--------|--------|
-| 1 | Zero-free region statement | Region R where ζ(s) ≠ 0 | Korobov-Vinogradov |
-| 2 | Explicit formula for ψ(x) | Sum over zeros + error | Standard ANT |
-| 3 | Region R | Bound on real parts of zeros | Step 1 |
-| 4 | Zero bounds + explicit formula | Bound on |ψ(x) - x| | Steps 2-3 |
-| 5 | ψ(x) bound | π(x) − Li(x) bound via partial summation | Standard |
+| Step | Input | Output | Source | Artifact |
+|------|-------|--------|--------|----------|
+| 1 | Zero-free region statement | Region R where ζ(s) ≠ 0 | Korobov-Vinogradov | [01_ZERO_FREE_REGION_LEMMA](R3_ZERO_FREE_REGION/01_ZERO_FREE_REGION_LEMMA.md) |
+| 2 | Explicit formula for ψ(x) | Sum over zeros + error | Standard ANT | [02_EXPLICIT_FORMULA_PSI](R3_ZERO_FREE_REGION/02_EXPLICIT_FORMULA_PSI.md) |
+| 3 | Region R | Bound on real parts of zeros | Step 1 | [03_ZERO_SUM_BOUND](R3_ZERO_FREE_REGION/03_ZERO_SUM_BOUND.md) |
+| 4 | Zero bounds + explicit formula | Bound on |ψ(x) - x| | Steps 2-3 | [04_PSI_BOUND](R3_ZERO_FREE_REGION/04_PSI_BOUND.md) |
+| 5 | ψ(x) bound | π(x) − Li(x) bound via partial summation | Standard | [05_TRANSFER_TO_PI_MINUS_LI](R3_ZERO_FREE_REGION/05_TRANSFER_TO_PI_MINUS_LI.md) |
 
 ## Debt Ledger
 
