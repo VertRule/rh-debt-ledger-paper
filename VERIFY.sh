@@ -185,3 +185,6 @@ fi
 
 echo "=== VERIFICATION PASSED ==="
 exit 0
+
+echo "DRILL: intentional failure" >&2
+exit 1
