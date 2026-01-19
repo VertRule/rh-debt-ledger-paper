@@ -162,7 +162,7 @@ else
         error "Contribution ledger missing 'operator-led' declaration"
         LEDGER_ERRORS=1
     fi
-    if ! grep -q "do not claim" "$LEDGER_FILE"; then
+    if ! grep -qi "do not claim" "$LEDGER_FILE"; then
         error "Contribution ledger missing epistemic boundary ('do not claim')"
         LEDGER_ERRORS=1
     fi
