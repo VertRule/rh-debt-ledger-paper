@@ -41,3 +41,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish convergence conditions for the explicit formula.
+
+---
+
+### ID 02.2
+
+**Worklist ID:** 02.2
+
+**Task:** Truncation error not bounded
+
+**What is being cited:** Bounds on the error introduced when truncating the sum over zeros at height T in the explicit formula for ψ(x).
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 17, §3–4.
+- Montgomery, H. L. & Vaughan, R. C. (2007). "Multiplicative Number Theory I: Classical Theory." Cambridge University Press. Chapter 12.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish bounds on the truncation error when summing over zeros up to height T.
