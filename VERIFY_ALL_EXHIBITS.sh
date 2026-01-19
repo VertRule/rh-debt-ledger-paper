@@ -28,6 +28,7 @@ skipped=0
 
 for exhibit in "${EXHIBITS_DIR}"/*.json; do
     name=$(basename "$exhibit" .json)
+    echo "[DEBUG] Processing: $name" >&2
 
     # Extract fields from JSON using jq
     if ! command -v jq &> /dev/null; then
@@ -77,7 +78,9 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             # Verify manifest digest
             expected_hash="${manifest_digest#sha256:}"
+            echo "[DEBUG] Computing hash for: $snapshot_path" >&2
             actual_hash=$(sha256_hash "$snapshot_path")
+            echo "[DEBUG] Got hash: $actual_hash" >&2
 
             if [[ "$expected_hash" != "$actual_hash" ]]; then
                 echo "[$name] FAIL: manifest_digest mismatch"
