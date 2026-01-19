@@ -59,3 +59,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish bounds on the truncation error when summing over zeros up to height T.
+
+---
+
+### ID 02.3
+
+**Worklist ID:** 02.3
+
+**Task:** Contour specification not given
+
+**What is being cited:** The rectangular contour used in deriving the explicit formula for ψ(x) via Perron's formula and residue calculus.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 17, §1–2.
+- Titchmarsh, E. C. (1986). "The Theory of the Riemann Zeta-Function." 2nd ed., Oxford University Press. Chapter 3, §3.12.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts specify the rectangular contour with vertices at c ± iT and −U ± iT used to derive the explicit formula.
