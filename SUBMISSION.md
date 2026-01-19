@@ -1,5 +1,7 @@
 # Front Door: Submission & Verification
 
+**Verification entrypoint:** [VERIFY_QUICKSTART.md](VERIFY_QUICKSTART.md)
+
 This repository contains the manuscript and **receipted exhibits** for the RH NA0 debt-ledger work.
 It **does not** claim a proof of the Riemann Hypothesis.
 
