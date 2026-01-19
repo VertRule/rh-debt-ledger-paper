@@ -1,5 +1,14 @@
 # Exhibits
 
+## Assumption Support Demo
+
+| Field | Value |
+|-------|-------|
+| **Name** | `2026-01-19_assumption_support_v1_demo` |
+| **Manifest Digest** | `sha256:6818f800cb783741ccbfb4db5cff797c8c62d87d66e297ad5c31cf44b2fa1183` |
+| **Purpose** | Assumption support receipts (minimum support set) demo |
+| **Method** | `deterministic_greedy_prune_v1` |
+
 ## Canonical Run
 
 | Field | Value |
@@ -23,9 +32,11 @@
 
 | Artifact | Path |
 |----------|------|
+| Assumption support demo | `experiments/rh_debt_ledger/paper_runs/2026-01-19_assumption_support_v1_demo/run/` |
 | Canonical run | `experiments/rh_debt_ledger/paper_runs/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded/run/` |
 | Paper runs index | `experiments/rh_debt_ledger/paper_runs/paper_runs_index.json` |
-| Pointer file | `exhibits/canonical_run.json` |
+| Pointer file (assumption support) | `exhibits/assumption_support_demo.json` |
+| Pointer file (canonical) | `exhibits/canonical_run.json` |
 
 ## Verification
 
