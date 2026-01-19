@@ -16,6 +16,10 @@ target/
 *.o
 *.a
 
+# Release bundles (build outside repo to avoid VR_STRICT failures)
+dist/
+*.zip
+
 # Editor/IDE
 .idea/
 .vscode/
