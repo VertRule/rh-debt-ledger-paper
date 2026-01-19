@@ -24,7 +24,7 @@ echo "=== RH Debt Ledger Paper Verification ==="
 echo ""
 
 # 1) Check git clean status
-echo "[1/10] Checking git status..."
+echo "[1/11] Checking git status..."
 if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
     warn "Working tree is dirty (uncommitted changes present)"
     DIRTY_TREE=1
@@ -40,7 +40,7 @@ else
 fi
 
 # 2) Reject Co-Authored-By trailers in commits after cutoff
-echo "[2/10] Checking for Co-Authored-By trailers..."
+echo "[2/11] Checking for Co-Authored-By trailers..."
 COAUTHOR_CUTOFF="92cfc2d"
 COAUTHOR_MATCHES=$(git log "${COAUTHOR_CUTOFF}..HEAD" --format=%B 2>/dev/null | grep -n "^Co-Authored-By:" || true)
 if [ -n "$COAUTHOR_MATCHES" ]; then
@@ -51,7 +51,7 @@ else
 fi
 
 # 3) Verify remote URL (accept SSH or HTTPS)
-echo "[3/10] Checking remote URL..."
+echo "[3/11] Checking remote URL..."
 ACTUAL_REMOTE=$(git remote get-url origin 2>/dev/null || echo "")
 if [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_SSH" ] || [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_HTTPS" ]; then
     echo "  OK: $ACTUAL_REMOTE"
@@ -60,7 +60,7 @@ else
 fi
 
 # 4) Verify local HEAD equals origin/main
-echo "[4/10] Fetching and comparing with origin/main..."
+echo "[4/11] Fetching and comparing with origin/main..."
 git fetch origin main --quiet 2>/dev/null || warn "Could not fetch origin/main"
 LOCAL_HEAD=$(git rev-parse HEAD 2>/dev/null || echo "")
 REMOTE_HEAD=$(git rev-parse origin/main 2>/dev/null || echo "")
@@ -73,7 +73,7 @@ else
 fi
 
 # 5) Verify required tracked files exist
-echo "[5/10] Checking required files..."
+echo "[5/11] Checking required files..."
 REQUIRED_FILES="README.md SUBMISSION.md EXHIBITS.md exhibits/canonical_run.json na0_rh_debt_ledger_draft.md .gitignore"
 for f in $REQUIRED_FILES; do
     if [ ! -f "$f" ]; then
@@ -83,7 +83,7 @@ done
 echo "  OK: All required files present"
 
 # 6) Verify forbidden artifacts are NOT tracked
-echo "[6/10] Checking forbidden artifacts are not tracked..."
+echo "[6/11] Checking forbidden artifacts are not tracked..."
 FORBIDDEN_PATTERNS="paper_runs/ runs/ analysis/ proofs/ series.csv zeros_used.csv"
 TRACKED_FILES=$(git ls-files 2>/dev/null)
 for pattern in $FORBIDDEN_PATTERNS; do
@@ -95,7 +95,7 @@ echo "  OK: No forbidden artifacts tracked"
 
 # 7) Paranoia grep for machine-specific paths
 # Note: patterns are split to avoid self-matching
-echo "[7/10] Running redaction scan..."
+echo "[7/11] Running redaction scan..."
 USERS_PATTERN="/Us""ers/"
 MACBOOK_PATTERN="Davids""-MacBook"
 MATCHES=$(git ls-files | xargs grep -l -i "$USERS_PATTERN" 2>/dev/null | grep -v 'VERIFY' || true)
@@ -111,7 +111,7 @@ fi
 echo "  OK: No machine-specific paths found"
 
 # 8) Run exhibit digest verification (soft dependency)
-echo "[8/10] Running exhibit digest verification..."
+echo "[8/11] Running exhibit digest verification..."
 if [ -x "./VERIFY_EXHIBIT.sh" ]; then
     set +e
     EXHIBIT_OUTPUT=$(./VERIFY_EXHIBIT.sh 2>&1)
@@ -130,7 +130,7 @@ else
 fi
 
 # 9) Run verify-all-exhibits (soft dependency)
-echo "[9/10] Running verify-all-exhibits..."
+echo "[9/11] Running verify-all-exhibits..."
 if [ -x "./VERIFY_ALL_EXHIBITS.sh" ]; then
     set +e
     ALL_EXHIBITS_OUTPUT=$(./VERIFY_ALL_EXHIBITS.sh 2>&1)
@@ -150,8 +150,25 @@ else
     echo "  SKIP: VERIFY_ALL_EXHIBITS.sh not found or not executable"
 fi
 
-# 10) Verify contribution ledger integrity
-echo "[10/10] Checking contribution ledger..."
+# 10) Verify proof artifact integrity (soft dependency)
+echo "[10/11] Verifying proof artifacts..."
+if [ -x "./VERIFY_ALL_PROOF_ARTIFACTS.sh" ]; then
+    set +e
+    PROOF_ARTIFACTS_OUTPUT=$(./VERIFY_ALL_PROOF_ARTIFACTS.sh 2>&1)
+    PROOF_ARTIFACTS_EXIT=$?
+    set -e
+    if [ "$PROOF_ARTIFACTS_EXIT" -eq 0 ]; then
+        echo "  OK: Proof artifact integrity verified"
+    else
+        echo "$PROOF_ARTIFACTS_OUTPUT"
+        error "Proof artifact verification failed"
+    fi
+else
+    echo "  SKIP: VERIFY_ALL_PROOF_ARTIFACTS.sh not found or not executable"
+fi
+
+# 11) Verify contribution ledger integrity
+echo "[11/11] Checking contribution ledger..."
 LEDGER_FILE=".github/CONTRIBUTION_LEDGER.md"
 LEDGER_ERRORS=0
 if [ ! -f "$LEDGER_FILE" ]; then
