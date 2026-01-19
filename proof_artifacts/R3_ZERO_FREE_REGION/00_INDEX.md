@@ -6,6 +6,11 @@
 
 Decomposes the R3 rung into payable lemma obligations with explicit debt ledgers.
 
+## Governance
+
+- [README.md](README.md) — Payment protocol (how tasks move to DONE)
+- [R3_WORKLIST.md](R3_WORKLIST.md) — Task tracking
+
 ## Step Mapping
 
 | Step | Description | Artifact |

@@ -22,10 +22,11 @@ proof_artifacts/R3_ZERO_FREE_REGION/03_ZERO_SUM_BOUND.md
 proof_artifacts/R3_ZERO_FREE_REGION/04_PSI_BOUND.md
 proof_artifacts/R3_ZERO_FREE_REGION/05_TRANSFER_TO_PI_MINUS_LI.md
 proof_artifacts/R3_ZERO_FREE_REGION/R3_WORKLIST.md
+proof_artifacts/R3_ZERO_FREE_REGION/README.md
 proof_artifacts/R3_ZERO_FREE_REGION_CONTRACT.md
 "
 
-echo "[1/5] Checking required packet files..."
+echo "[1/6] Checking required packet files..."
 for f in $REQUIRED_FILES; do
     if [ ! -f "$f" ]; then
         fail "Required file missing: $f"
@@ -36,7 +37,7 @@ if [ "$ERRORS" -eq 0 ]; then
 fi
 
 # B) Check links in 00_INDEX.md
-echo "[2/5] Checking links in 00_INDEX.md..."
+echo "[2/6] Checking links in 00_INDEX.md..."
 INDEX_FILE="proof_artifacts/R3_ZERO_FREE_REGION/00_INDEX.md"
 if [ -f "$INDEX_FILE" ]; then
     INDEX_LINKS=$(grep -oE '\([0-9A-Za-z_]+\.md\)' "$INDEX_FILE" | tr -d '()' || true)
@@ -52,7 +53,7 @@ if [ -f "$INDEX_FILE" ]; then
 fi
 
 # C) Check links in R3_ZERO_FREE_REGION_CONTRACT.md
-echo "[3/5] Checking links in contract..."
+echo "[3/6] Checking links in contract..."
 CONTRACT_FILE="proof_artifacts/R3_ZERO_FREE_REGION_CONTRACT.md"
 if [ -f "$CONTRACT_FILE" ]; then
     CONTRACT_LINKS=$(grep -oE '\(R3_ZERO_FREE_REGION/[0-9A-Za-z_]+\.md\)' "$CONTRACT_FILE" | tr -d '()' || true)
@@ -68,7 +69,7 @@ if [ -f "$CONTRACT_FILE" ]; then
 fi
 
 # D) Check required headings in lemma files 01..05
-echo "[4/5] Checking lemma file structure..."
+echo "[4/6] Checking lemma file structure..."
 LEMMA_FILES="
 proof_artifacts/R3_ZERO_FREE_REGION/01_ZERO_FREE_REGION_LEMMA.md
 proof_artifacts/R3_ZERO_FREE_REGION/02_EXPLICIT_FORMULA_PSI.md
@@ -95,7 +96,7 @@ if [ "$ERRORS" -eq 0 ]; then
 fi
 
 # E) Check worklist structure
-echo "[5/5] Checking worklist structure..."
+echo "[5/6] Checking worklist structure..."
 WORKLIST_FILE="proof_artifacts/R3_ZERO_FREE_REGION/R3_WORKLIST.md"
 WORKLIST_ERRORS=0
 if [ -f "$WORKLIST_FILE" ]; then
@@ -110,6 +111,20 @@ if [ -f "$WORKLIST_FILE" ]; then
 fi
 if [ "$WORKLIST_ERRORS" -eq 0 ]; then
     echo "  OK: Worklist structure valid"
+fi
+
+# F) Check README structure
+echo "[6/6] Checking README structure..."
+README_FILE="proof_artifacts/R3_ZERO_FREE_REGION/README.md"
+README_ERRORS=0
+if [ -f "$README_FILE" ]; then
+    if ! grep -q "Concept-Tag:" "$README_FILE"; then
+        fail "README missing 'Concept-Tag:'"
+        README_ERRORS=1
+    fi
+fi
+if [ "$README_ERRORS" -eq 0 ]; then
+    echo "  OK: README structure valid"
 fi
 
 echo ""
