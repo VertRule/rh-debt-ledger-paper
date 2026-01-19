@@ -1,0 +1,25 @@
+# R3 Evidence Ledger
+
+**Concept-Tag:** RH-R3-EVIDENCE-LEDGER
+
+## Purpose
+
+Records evidence for R3 worklist task payments. Each entry anchors a citation or derivation to a specific task ID.
+
+---
+
+### ID 01.3
+
+**Worklist ID:** 01.3
+
+**Task:** Full proof not reproduced here (citation only)
+
+**What is being cited:** The zero-free region theorem establishing σ > 1 − c/(log |t|)^(2/3)(log log |t|)^(1/3) for ζ(s).
+
+**Citation:**
+- Korobov, N. M. (1958). "Estimates of trigonometric sums and their applications." Uspekhi Mat. Nauk 13:4, 185–192.
+- Vinogradov, I. M. (1958). "A new estimate of the function ζ(1 + it)." Izv. Akad. Nauk SSSR Ser. Mat. 22, 161–164.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited papers establish the zero-free region used in lemma 01.

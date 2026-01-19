@@ -10,6 +10,7 @@ Decomposes the R3 rung into payable lemma obligations with explicit debt ledgers
 
 - [README.md](README.md) — Payment protocol (how tasks move to DONE)
 - [R3_WORKLIST.md](R3_WORKLIST.md) — Task tracking
+- [evidence/EVIDENCE.md](evidence/EVIDENCE.md) — Evidence ledger (citation-only receipts)
 
 ## Step Mapping
 

@@ -14,6 +14,18 @@ This packet decomposes the R3 rung (unconditional PNT error bound via zero-free 
 - A proof of RH
 - A claim of completion
 
+## Task status progression
+
+| Status | Meaning |
+|--------|---------|
+| TODO | Not started |
+| CITED | Citation-only evidence provided (anchors reference, does not reproduce) |
+| IN_PROGRESS | Work underway on derivation or reproduction |
+| DONE | Fully resolved with explicit evidence |
+| BLOCKED | Cannot proceed (dependency or external requirement) |
+
+**CITED vs DONE:** CITED means a standard reference is anchored but the proof is not reproduced here. DONE means the debt is fully paid with derivation or reproduced proof.
+
 ## What counts as paying a task (DONE criteria)
 
 A task moves from TODO to DONE when:
