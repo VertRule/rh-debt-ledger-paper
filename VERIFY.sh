@@ -183,5 +183,9 @@ if [ "${VR_STRICT:-0}" = "1" ] && [ "$DIRTY_TREE" -eq 1 ]; then
     exit 1
 fi
 
+# DRILL: intentional failure
+echo "DRILL: intentional failure" >&2
+exit 1
+
 echo "=== VERIFICATION PASSED ==="
 exit 0
