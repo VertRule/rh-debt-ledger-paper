@@ -186,3 +186,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts explain how the constant c in the error term arises from the zero-free region and contour integration without asserting specific numeric values.
+
+---
+
+### ID 04.3
+
+**Worklist ID:** 04.3
+
+**Task:** "Sufficiently large" threshold not quantified
+
+**What is being cited:** The treatment of the "sufficiently large x" threshold in PNT error term statements, including how this threshold depends on the zero-free region constants and can in principle be made explicit.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18.
+- Schoenfeld, L. (1976). "Sharper bounds for the Chebyshev functions θ(x) and ψ(x). II." Math. Comp. 30, 337–360.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts discuss how "sufficiently large" thresholds arise and can be made effective without asserting specific numeric values here.
