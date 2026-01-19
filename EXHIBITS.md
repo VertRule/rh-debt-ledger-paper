@@ -1,5 +1,14 @@
 # Exhibits
 
+## Theorem Contracts
+
+| Contract ID | Type | Digest | Unpaid Reason |
+|-------------|------|--------|---------------|
+| `THM_DRAGON_RH_ENVELOPE_V1` | `NON_COMPUTATIONAL_OBLIGATION` | `sha256:d6f555b453dbf6437ae09544534da67c009d3fb76682240d9a5d4a19b4110f9e` | requires external proof |
+| `THM_WEAKER_UNCOND_ENVELOPE_V1` | `PAYABLE_OBLIGATION` | `sha256:947ea76f722d438f971a59e08022641da92d8abe21121d7dcce7364dc297ea0e` | (can be paid computationally) |
+
+The Dragon RH Envelope (`THM_DRAGON_RH_ENVELOPE_V1`) cannot be paid computationally - it requires an external proof artifact establishing RH. The Weaker Unconditional Envelope (`THM_WEAKER_UNCOND_ENVELOPE_V1`) is the classical PNT error bound and can be paid via computational range verification.
+
 ## Assumption Support Demo
 
 | Field | Value |
@@ -32,9 +41,11 @@
 
 | Artifact | Path |
 |----------|------|
+| Theorem contracts | `experiments/rh_debt_ledger/theorems/contracts/` |
 | Assumption support demo | `experiments/rh_debt_ledger/paper_runs/2026-01-19_assumption_support_v1_demo/run/` |
 | Canonical run | `experiments/rh_debt_ledger/paper_runs/2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded/run/` |
 | Paper runs index | `experiments/rh_debt_ledger/paper_runs/paper_runs_index.json` |
+| Pointer file (theorem contracts) | `exhibits/theorem_contracts.json` |
 | Pointer file (assumption support) | `exhibits/assumption_support_demo.json` |
 | Pointer file (canonical) | `exhibits/canonical_run.json` |
 

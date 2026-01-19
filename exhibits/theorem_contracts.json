@@ -1,0 +1,25 @@
+{
+  "schema": "paper_exhibit_pointer.v1",
+  "name": "theorem_contracts",
+  "description": "Theorem contract hash-locked statements for obligation ladder",
+  "experiment_repo": "experiments/rh_debt_ledger",
+  "contracts_path": "theorems/contracts/",
+  "contracts": [
+    {
+      "theorem_id": "THM_DRAGON_RH_ENVELOPE_V1",
+      "contract_type": "NON_COMPUTATIONAL_OBLIGATION",
+      "contract_path": "theorems/contracts/THM_DRAGON_RH_ENVELOPE_v1.md",
+      "contract_digest": "sha256:d6f555b453dbf6437ae09544534da67c009d3fb76682240d9a5d4a19b4110f9e",
+      "can_pay_computationally": false,
+      "unpaid_reason": "requires_external_proof"
+    },
+    {
+      "theorem_id": "THM_WEAKER_UNCOND_ENVELOPE_V1",
+      "contract_type": "PAYABLE_OBLIGATION",
+      "contract_path": "theorems/contracts/THM_WEAKER_UNCOND_ENVELOPE_v1.md",
+      "contract_digest": "sha256:947ea76f722d438f971a59e08022641da92d8abe21121d7dcce7364dc297ea0e",
+      "can_pay_computationally": true,
+      "unpaid_reason": null
+    }
+  ]
+}
