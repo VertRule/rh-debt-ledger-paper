@@ -34,6 +34,7 @@ Goal: prove an unconditional error term bound via classical zero-free region met
 - Proof sketch outline
 - Dependencies (cited, not linked)
 - No constants claimed without derivation
+- R3 worklist: [proof_artifacts/R3_ZERO_FREE_REGION/R3_WORKLIST.md](proof_artifacts/R3_ZERO_FREE_REGION/R3_WORKLIST.md)
 
 **Citations placeholder:**
 - de la Vallée Poussin (1896)
