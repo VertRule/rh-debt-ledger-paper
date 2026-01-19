@@ -204,3 +204,22 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts discuss how "sufficiently large" thresholds arise and can be made effective without asserting specific numeric values here.
+
+---
+
+### ID 05.1
+
+**Worklist ID:** 05.1
+
+**Task:** Transfer formula not written explicitly
+
+**What is being cited:** The standard partial summation transfer from ψ(x) to π(x) and the comparison with Li(x) used in PNT error term statements.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18, §4.
+- Titchmarsh, E. C. (1986). "The Theory of the Riemann Zeta-Function." 2nd ed., Oxford University Press. Chapter 3.
+- Montgomery, H. L. & Vaughan, R. C. (2007). "Multiplicative Number Theory I: Classical Theory." Cambridge University Press. Chapter 6.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference for the transfer step. No constants or thresholds asserted here.
