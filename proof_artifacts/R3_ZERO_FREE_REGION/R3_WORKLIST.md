@@ -26,7 +26,7 @@ This is an execution list for paying R3 lemma debts. It does not claim completio
 | 04.4 | 04_PSI_BOUND | Full assembly of steps not written out | TODO | |
 | 05.1 | 05_TRANSFER_TO_PI_MINUS_LI | Transfer formula not written explicitly | CITED | [evidence/EVIDENCE.md#id-051](evidence/EVIDENCE.md#id-051) |
 | 05.2 | 05_TRANSFER_TO_PI_MINUS_LI | Error propagation not quantified | CITED | [evidence/EVIDENCE.md#id-052](evidence/EVIDENCE.md#id-052) |
-| 05.3 | 05_TRANSFER_TO_PI_MINUS_LI | Li(x) approximation details not specified | TODO | |
+| 05.3 | 05_TRANSFER_TO_PI_MINUS_LI | Li(x) approximation details not specified | CITED | [evidence/EVIDENCE.md#id-053](evidence/EVIDENCE.md#id-053) |
 
 ## Status Legend
 

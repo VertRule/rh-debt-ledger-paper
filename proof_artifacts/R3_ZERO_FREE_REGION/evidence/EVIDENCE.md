@@ -241,3 +241,22 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference for error propagation. No constants or explicit bounds asserted here.
+
+---
+
+### ID 05.3
+
+**Worklist ID:** 05.3
+
+**Task:** Li(x) approximation details not specified
+
+**What is being cited:** The definition and asymptotic properties of the logarithmic integral Li(x), including its relationship to x/log x and higher-order asymptotic expansions used in PNT statements.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18.
+- Abramowitz, M. & Stegun, I. A. (1964). "Handbook of Mathematical Functions." Dover. §5.1.
+- Montgomery, H. L. & Vaughan, R. C. (2007). "Multiplicative Number Theory I: Classical Theory." Cambridge University Press. Chapter 1, §1.2.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference for the Li(x) function and its approximations. No explicit numeric bounds asserted here.
