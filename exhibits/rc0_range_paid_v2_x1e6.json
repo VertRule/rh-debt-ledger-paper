@@ -1,0 +1,18 @@
+{
+  "schema": "rh_debt_ledger.exhibit_pointer.v1",
+  "name": "RC0_range_paid_v2_x1e6",
+  "description": "Range-paid receipt for THM_WEAKER_UNCOND_ENVELOPE_V1 at X_max=1,000,000",
+  "manifest_digest": "sha256:17810581deca57d7c215282e519425fbec34856b486d1ef7f37daf9fb7fe3d75",
+  "source_path": "experiments/rh_debt_ledger/paper_runs/2026-01-19_rc0_range_paid_v2_x1e6/run",
+  "receipt_path": "experiments/rh_debt_ledger/proofs/range/RANGE_PAID_THM_WEAKER_UNCOND_ENVELOPE_V1.json",
+  "receipt_digest": "sha256:6a94cee96f1edef03df53f59a0148595e479d71434b901e579c961105857e708",
+  "contract_digest": "sha256:119eba2c499189dfd9bc4c9d52ba97c1df1733b6bba0e89b611beb214c34e88d",
+  "range": {
+    "X_max": 1000000
+  },
+  "theorem_status": {
+    "THM_WEAKER_UNCOND_ENVELOPE_V1": "PAID_COMPUTATIONAL_RANGE",
+    "THM_DRAGON_RH_ENVELOPE_V1": "UNPAID"
+  },
+  "disclaimer": "PAID_COMPUTATIONAL_RANGE_ONLY"
+}

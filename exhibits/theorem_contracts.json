@@ -17,7 +17,7 @@
       "theorem_id": "THM_WEAKER_UNCOND_ENVELOPE_V1",
       "contract_type": "PAYABLE_OBLIGATION",
       "contract_path": "theorems/contracts/THM_WEAKER_UNCOND_ENVELOPE_v1.md",
-      "contract_digest": "sha256:947ea76f722d438f971a59e08022641da92d8abe21121d7dcce7364dc297ea0e",
+      "contract_digest": "sha256:119eba2c499189dfd9bc4c9d52ba97c1df1733b6bba0e89b611beb214c34e88d",
       "can_pay_computationally": true,
       "unpaid_reason": null
     }

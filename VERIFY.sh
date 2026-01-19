@@ -19,7 +19,7 @@ echo "=== RH Debt Ledger Paper Verification ==="
 echo ""
 
 # 1) Check git clean status
-echo "[1/7] Checking git status..."
+echo "[1/8] Checking git status..."
 if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
     warn "Working tree is dirty (uncommitted changes present)"
 fi
@@ -29,7 +29,7 @@ fi
 echo "  OK (or warnings above)"
 
 # 2) Verify remote URL
-echo "[2/7] Checking remote URL..."
+echo "[2/8] Checking remote URL..."
 ACTUAL_REMOTE=$(git remote get-url origin 2>/dev/null || echo "")
 if [ "$ACTUAL_REMOTE" != "$EXPECTED_REMOTE" ]; then
     error "Remote mismatch: expected '$EXPECTED_REMOTE', got '$ACTUAL_REMOTE'"
@@ -38,7 +38,7 @@ else
 fi
 
 # 3) Verify local HEAD equals origin/main
-echo "[3/7] Fetching and comparing with origin/main..."
+echo "[3/8] Fetching and comparing with origin/main..."
 git fetch origin main --quiet 2>/dev/null || warn "Could not fetch origin/main"
 LOCAL_HEAD=$(git rev-parse HEAD 2>/dev/null || echo "")
 REMOTE_HEAD=$(git rev-parse origin/main 2>/dev/null || echo "")
@@ -51,7 +51,7 @@ else
 fi
 
 # 4) Verify required tracked files exist
-echo "[4/7] Checking required files..."
+echo "[4/8] Checking required files..."
 REQUIRED_FILES="README.md SUBMISSION.md EXHIBITS.md exhibits/canonical_run.json na0_rh_debt_ledger_draft.md .gitignore"
 for f in $REQUIRED_FILES; do
     if [ ! -f "$f" ]; then
@@ -61,7 +61,7 @@ done
 echo "  OK: All required files present"
 
 # 5) Verify forbidden artifacts are NOT tracked
-echo "[5/7] Checking forbidden artifacts are not tracked..."
+echo "[5/8] Checking forbidden artifacts are not tracked..."
 FORBIDDEN_PATTERNS="paper_runs/ runs/ analysis/ proofs/ series.csv zeros_used.csv"
 TRACKED_FILES=$(git ls-files 2>/dev/null)
 for pattern in $FORBIDDEN_PATTERNS; do
@@ -73,7 +73,7 @@ echo "  OK: No forbidden artifacts tracked"
 
 # 6) Paranoia grep for machine-specific paths
 # Note: patterns are split to avoid self-matching
-echo "[6/7] Running redaction scan..."
+echo "[6/8] Running redaction scan..."
 USERS_PATTERN="/Us""ers/"
 MACBOOK_PATTERN="Davids""-MacBook"
 MATCHES=$(git ls-files | xargs grep -l -i "$USERS_PATTERN" 2>/dev/null | grep -v 'VERIFY' || true)
@@ -89,7 +89,7 @@ fi
 echo "  OK: No machine-specific paths found"
 
 # 7) Run exhibit digest verification (soft dependency)
-echo "[7/7] Running exhibit digest verification..."
+echo "[7/8] Running exhibit digest verification..."
 if [ -x "./VERIFY_EXHIBIT.sh" ]; then
     set +e
     EXHIBIT_OUTPUT=$(./VERIFY_EXHIBIT.sh 2>&1)
@@ -105,6 +105,27 @@ if [ -x "./VERIFY_EXHIBIT.sh" ]; then
     fi
 else
     echo "  SKIP: VERIFY_EXHIBIT.sh not found or not executable"
+fi
+
+# 8) Run verify-all-exhibits (soft dependency)
+echo "[8/8] Running verify-all-exhibits..."
+if [ -x "./VERIFY_ALL_EXHIBITS.sh" ]; then
+    set +e
+    ALL_EXHIBITS_OUTPUT=$(./VERIFY_ALL_EXHIBITS.sh 2>&1)
+    ALL_EXHIBITS_EXIT=$?
+    set -e
+    if echo "$ALL_EXHIBITS_OUTPUT" | grep -q "VERIFICATION PASSED"; then
+        echo "  OK: All exhibits verified"
+    elif echo "$ALL_EXHIBITS_OUTPUT" | grep -q "Skipped:"; then
+        echo "  OK: All exhibits verified (some skipped)"
+    else
+        echo "$ALL_EXHIBITS_OUTPUT"
+        if [ "$ALL_EXHIBITS_EXIT" -ne 0 ]; then
+            error "Verify-all-exhibits failed"
+        fi
+    fi
+else
+    echo "  SKIP: VERIFY_ALL_EXHIBITS.sh not found or not executable"
 fi
 
 echo ""
