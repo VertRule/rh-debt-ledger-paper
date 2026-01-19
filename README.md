@@ -4,6 +4,19 @@
 
 **Start here: [SUBMISSION.md](SUBMISSION.md)**
 
+## How to Verify
+
+Download the [R3 CITED Complete release](https://github.com/VertRule/rh-debt-ledger-paper/releases/tag/r3-cited-complete), extract, and run:
+
+```
+cd repo
+VR_STRICT=1 ./VERIFY.sh
+```
+
+Expected output: `=== VERIFICATION PASSED ===`
+
+**What this verifies:** R3 packet structure and integrity (17/17 tasks CITED with citation-only evidence). Does not verify mathematical claims — only governance compliance.
+
 ---
 
 # Front Door: Submission & Verification
