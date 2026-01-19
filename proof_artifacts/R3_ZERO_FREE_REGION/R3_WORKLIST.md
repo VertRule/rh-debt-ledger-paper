@@ -14,7 +14,7 @@ This is an execution list for paying R3 lemma debts. It does not claim completio
 | 01.2 | 01_ZERO_FREE_REGION_LEMMA | Effective value of t₀ not specified | TODO | |
 | 01.3 | 01_ZERO_FREE_REGION_LEMMA | Full proof not reproduced here (citation only) | CITED | [evidence/EVIDENCE.md#id-013](evidence/EVIDENCE.md#id-013) |
 | 02.1 | 02_EXPLICIT_FORMULA_PSI | Convergence conditions not detailed | CITED | [evidence/EVIDENCE.md#id-021](evidence/EVIDENCE.md#id-021) |
-| 02.2 | 02_EXPLICIT_FORMULA_PSI | Truncation error not bounded | TODO | |
+| 02.2 | 02_EXPLICIT_FORMULA_PSI | Truncation error not bounded | CITED | [evidence/EVIDENCE.md#id-022](evidence/EVIDENCE.md#id-022) |
 | 02.3 | 02_EXPLICIT_FORMULA_PSI | Contour specification not given | TODO | |
 | 03.1 | 03_ZERO_SUM_BOUND | Bound not yet stated | TODO | |
 | 03.2 | 03_ZERO_SUM_BOUND | Truncation height T(x) not chosen | TODO | |
