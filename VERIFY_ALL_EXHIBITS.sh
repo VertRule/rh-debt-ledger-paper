@@ -28,12 +28,11 @@ skipped=0
 
 for exhibit in "${EXHIBITS_DIR}"/*.json; do
     name=$(basename "$exhibit" .json)
-    echo "[DEBUG] Processing: $name" >&2
 
     # Extract fields from JSON using jq
     if ! command -v jq &> /dev/null; then
         echo "[$name] SKIP (jq not available)"
-        ((skipped++))
+        skipped=$((skipped + 1))
         continue
     fi
 
@@ -43,7 +42,7 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
     # Skip inactive exhibits
     if [[ "$inactive" == "true" ]]; then
         echo "[$name] SKIP (inactive exhibit)"
-        ((skipped++))
+        skipped=$((skipped + 1))
         continue
     fi
 
@@ -59,34 +58,32 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             if [[ -z "$manifest_digest" ]]; then
                 echo "[$name] FAIL: run exhibit missing manifest_digest"
-                ((failed++))
+                failed=$((failed + 1))
                 continue
             fi
 
             if [[ -z "$manifest_snapshot" ]]; then
                 echo "[$name] FAIL: run exhibit missing manifest_snapshot"
-                ((failed++))
+                failed=$((failed + 1))
                 continue
             fi
 
             snapshot_path="${SCRIPT_DIR}/${manifest_snapshot}"
             if [[ ! -f "$snapshot_path" ]]; then
                 echo "[$name] FAIL: manifest_snapshot file not found: $manifest_snapshot"
-                ((failed++))
+                failed=$((failed + 1))
                 continue
             fi
 
             # Verify manifest digest
             expected_hash="${manifest_digest#sha256:}"
-            echo "[DEBUG] Computing hash for: $snapshot_path" >&2
             actual_hash=$(sha256_hash "$snapshot_path")
-            echo "[DEBUG] Got hash: $actual_hash" >&2
 
             if [[ "$expected_hash" != "$actual_hash" ]]; then
                 echo "[$name] FAIL: manifest_digest mismatch"
                 echo "  expected: sha256:$expected_hash"
                 echo "  actual:   sha256:$actual_hash"
-                ((failed++))
+                failed=$((failed + 1))
                 continue
             fi
 
@@ -94,20 +91,20 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
             if [[ "$receipt_required" == "true" ]]; then
                 if [[ -z "$receipt_snapshot" ]]; then
                     echo "[$name] FAIL: receipt_required but no receipt_snapshot"
-                    ((failed++))
+                    failed=$((failed + 1))
                     continue
                 fi
 
                 if [[ -z "$receipt_digest" ]]; then
                     echo "[$name] FAIL: receipt_required but no receipt_digest"
-                    ((failed++))
+                    failed=$((failed + 1))
                     continue
                 fi
 
                 receipt_path="${SCRIPT_DIR}/${receipt_snapshot}"
                 if [[ ! -f "$receipt_path" ]]; then
                     echo "[$name] FAIL: receipt_snapshot file not found: $receipt_snapshot"
-                    ((failed++))
+                    failed=$((failed + 1))
                     continue
                 fi
 
@@ -118,15 +115,15 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
                     echo "[$name] FAIL: receipt_digest mismatch"
                     echo "  expected: sha256:$expected_receipt_hash"
                     echo "  actual:   sha256:$actual_receipt_hash"
-                    ((failed++))
+                    failed=$((failed + 1))
                     continue
                 fi
 
                 echo "[$name] PASS (manifest + receipt verified)"
-                ((passed++))
+                passed=$((passed + 1))
             else
                 echo "[$name] PASS (manifest verified)"
-                ((passed++))
+                passed=$((passed + 1))
             fi
             ;;
 
@@ -136,7 +133,7 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             if [[ "$contracts_count" -eq 0 ]]; then
                 echo "[$name] FAIL: contracts exhibit has no contracts"
-                ((failed++))
+                failed=$((failed + 1))
                 continue
             fi
 
@@ -160,9 +157,9 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             if [[ "$all_valid" == "true" ]]; then
                 echo "[$name] PASS ($contracts_count contracts verified)"
-                ((passed++))
+                passed=$((passed + 1))
             else
-                ((failed++))
+                failed=$((failed + 1))
             fi
             ;;
 
@@ -172,7 +169,7 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             if [[ "$files_count" -eq 0 ]]; then
                 echo "[$name] FAIL: fresh_clone exhibit has no files"
-                ((failed++))
+                failed=$((failed + 1))
                 continue
             fi
 
@@ -206,15 +203,15 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             if [[ "$all_valid" == "true" ]]; then
                 echo "[$name] PASS ($files_count files verified)"
-                ((passed++))
+                passed=$((passed + 1))
             else
-                ((failed++))
+                failed=$((failed + 1))
             fi
             ;;
 
         *)
             echo "[$name] SKIP (unknown kind: $kind)"
-            ((skipped++))
+            skipped=$((skipped + 1))
             ;;
     esac
 done
