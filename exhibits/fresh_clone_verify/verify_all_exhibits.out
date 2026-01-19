@@ -1,0 +1,13 @@
+=== Verify All Exhibits ===
+
+[assumption_support_demo] PASS (manifest verified)
+[canonical_run] PASS (manifest verified)
+[rc0_range_paid_v2_x1e6] PASS (manifest + receipt verified)
+[theorem_contracts] PASS (2 contracts verified)
+
+=== Summary ===
+  Passed:  4
+  Failed:  0
+  Skipped: 0
+
+=== VERIFICATION PASSED ===

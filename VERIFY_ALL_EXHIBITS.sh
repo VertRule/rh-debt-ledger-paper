@@ -5,6 +5,7 @@ set -euo pipefail
 # Kind-aware verification:
 #   - kind="run": verify manifest_snapshot digest, and receipt_snapshot if receipt_required=true
 #   - kind="contracts": verify contract digests are properly formatted
+#   - kind="fresh_clone": verify each file's sha256 matches
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXHIBITS_DIR="${SCRIPT_DIR}/exhibits"
@@ -147,6 +148,52 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             if [[ "$all_valid" == "true" ]]; then
                 echo "[$name] PASS ($contracts_count contracts verified)"
+                ((passed++))
+            else
+                ((failed++))
+            fi
+            ;;
+
+        fresh_clone)
+            # Fresh clone exhibits verify each file's sha256
+            files_count=$(jq '.files | length' "$exhibit" 2>/dev/null || echo "0")
+
+            if [[ "$files_count" -eq 0 ]]; then
+                echo "[$name] FAIL: fresh_clone exhibit has no files"
+                ((failed++))
+                continue
+            fi
+
+            all_valid=true
+            for i in $(seq 0 $((files_count - 1))); do
+                file_path=$(jq -r ".files[$i].path" "$exhibit" 2>/dev/null || echo "")
+                expected_sha=$(jq -r ".files[$i].sha256" "$exhibit" 2>/dev/null || echo "")
+
+                if [[ -z "$file_path" ]]; then
+                    echo "[$name] FAIL: files[$i] missing path"
+                    all_valid=false
+                    break
+                fi
+
+                full_path="${SCRIPT_DIR}/${file_path}"
+                if [[ ! -f "$full_path" ]]; then
+                    echo "[$name] FAIL: file not found: $file_path"
+                    all_valid=false
+                    break
+                fi
+
+                actual_sha=$(shasum -a 256 "$full_path" | cut -d' ' -f1)
+                if [[ "$expected_sha" != "$actual_sha" ]]; then
+                    echo "[$name] FAIL: sha256 mismatch for $file_path"
+                    echo "  expected: $expected_sha"
+                    echo "  actual:   $actual_sha"
+                    all_valid=false
+                    break
+                fi
+            done
+
+            if [[ "$all_valid" == "true" ]]; then
+                echo "[$name] PASS ($files_count files verified)"
                 ((passed++))
             else
                 ((failed++))

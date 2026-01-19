@@ -1,0 +1,8 @@
+=== Exhibit Digest Verification ===
+
+Run name:        2026-01-19_canonical_v2_x1000_step100_T50_governance_threaded
+Expected digest: sha256:564663aa25fc3c8f3463a850fb97f5ea80afe2dc0a641db5dd52fdef3ca1dd73
+
+Actual digest:   564663aa25fc3c8f3463a850fb97f5ea80afe2dc0a641db5dd52fdef3ca1dd73
+
+=== EXHIBIT VERIFICATION: PASS ===
