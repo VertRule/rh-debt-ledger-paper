@@ -8,6 +8,8 @@
 
 ## How to Verify
 
+**Canonical instructions:** [VERIFY_QUICKSTART.md](VERIFY_QUICKSTART.md)
+
 Download the [R3 CITED Complete release](https://github.com/VertRule/rh-debt-ledger-paper/releases/tag/r3-cited-complete), extract, and run:
 
 ```
