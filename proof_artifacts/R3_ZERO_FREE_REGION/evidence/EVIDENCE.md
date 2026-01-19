@@ -278,3 +278,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference for the full assembly of the PNT error term derivation. The cited texts provide the complete argument.
+
+---
+
+### ID 01.1
+
+**Worklist ID:** 01.1
+
+**Task:** Effective value of c not specified
+
+**What is being cited:** The existence and computability of the constant c in the Vinogradov–Korobov zero-free region σ > 1 − c/(log |t|)^(2/3)(log log |t|)^(1/3), as established in the original papers and subsequent refinements.
+
+**Citation:**
+- Korobov, N. M. (1958). "Estimates of trigonometric sums and their applications." Uspekhi Mat. Nauk 13:4, 185–192.
+- Ford, K. (2002). "Vinogradov's integral and bounds for the Riemann zeta function." Proc. London Math. Soc. 85, 565–633.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish that an effective constant c exists; no specific numeric value is asserted here.
