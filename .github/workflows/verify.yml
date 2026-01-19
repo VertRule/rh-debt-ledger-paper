@@ -8,6 +8,9 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: actions/checkout@v4
         with:
@@ -17,15 +20,21 @@ jobs:
         run: sudo apt-get install -y jq
 
       - name: Run strict verifier
-        run: VR_STRICT=1 ./VERIFY.sh | tee verify.out
+        run: |
+          set -o pipefail
+          VR_STRICT=1 ./VERIFY.sh | tee verify.out
 
       - name: Verify all exhibits
-        run: ./VERIFY_ALL_EXHIBITS.sh | tee verify_all_exhibits.out
+        run: |
+          set -o pipefail
+          ./VERIFY_ALL_EXHIBITS.sh | tee verify_all_exhibits.out
 
       - name: Fresh clone verification (no vendoring)
         env:
           VR_FRESH_CLONE_LOCAL: "1"
-        run: ./VERIFY_FRESH_CLONE.sh | tee verify_fresh_clone.out
+        run: |
+          set -o pipefail
+          ./VERIFY_FRESH_CLONE.sh | tee verify_fresh_clone.out
 
       - name: Upload verification logs
         if: always()
