@@ -6,7 +6,8 @@
 #   VR_STRICT=1  - Treat dirty working tree as error (default: warning only)
 set -e
 
-EXPECTED_REMOTE="git@github.com:VertRule/rh-debt-ledger-paper.git"
+EXPECTED_REMOTE_SSH="git@github.com:VertRule/rh-debt-ledger-paper.git"
+EXPECTED_REMOTE_HTTPS="https://github.com/VertRule/rh-debt-ledger-paper"
 ERRORS=0
 DIRTY_TREE=0
 
@@ -49,13 +50,13 @@ else
     echo "  OK: No Co-Authored-By trailers in recent commits"
 fi
 
-# 3) Verify remote URL
+# 3) Verify remote URL (accept SSH or HTTPS)
 echo "[3/9] Checking remote URL..."
 ACTUAL_REMOTE=$(git remote get-url origin 2>/dev/null || echo "")
-if [ "$ACTUAL_REMOTE" != "$EXPECTED_REMOTE" ]; then
-    error "Remote mismatch: expected '$EXPECTED_REMOTE', got '$ACTUAL_REMOTE'"
-else
+if [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_SSH" ] || [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_HTTPS" ]; then
     echo "  OK: $ACTUAL_REMOTE"
+else
+    error "Remote mismatch: got '$ACTUAL_REMOTE'"
 fi
 
 # 4) Verify local HEAD equals origin/main
