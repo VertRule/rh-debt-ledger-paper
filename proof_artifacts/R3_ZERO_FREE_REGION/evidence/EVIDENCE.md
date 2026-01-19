@@ -149,3 +149,22 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts trace how zero-free region constants determine the error term in the prime number theorem.
+
+---
+
+### ID 04.1
+
+**Worklist ID:** 04.1
+
+**Task:** Exponent α not derived
+
+**What is being cited:** The standard derivation of the ψ(x) error-term exponent α obtained from a classical zero-free region and the explicit formula machinery, showing how the zero-free region shape yields an exponential-decay exponent in the PNT error term.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18.
+- Titchmarsh, E. C. (1986). "The Theory of the Riemann Zeta-Function." 2nd ed., Oxford University Press. Chapters 3 and 14.
+- Ivić, A. (1985). "The Riemann Zeta-Function." Wiley. Chapter 12.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts derive the error-term exponent α from the zero-free region using standard analytic number theory machinery.
