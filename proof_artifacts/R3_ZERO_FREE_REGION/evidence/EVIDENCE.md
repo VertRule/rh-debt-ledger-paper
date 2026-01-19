@@ -95,3 +95,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts establish bounds on sums over zeros using zero density estimates and the zero-counting function.
+
+---
+
+### ID 03.2
+
+**Worklist ID:** 03.2
+
+**Task:** Truncation height T(x) not chosen
+
+**What is being cited:** The standard choice of truncation parameter T as a function of x in the explicit formula, typically T = x or T = x^α for suitable α, balancing truncation error against the zero sum contribution.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18, §1.
+- Iwaniec, H. & Kowalski, E. (2004). "Analytic Number Theory." AMS Colloquium Publications, Vol. 53. Chapter 5, §5.4.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts justify the truncation parameter choice T(x) used in deriving the prime number theorem error term.
