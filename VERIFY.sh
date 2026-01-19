@@ -6,10 +6,6 @@
 #   VR_STRICT=1  - Treat dirty working tree as error (default: warning only)
 set -e
 
-# DRILL: intentional failure to test branch protection
-echo "DRILL: intentional failure" >&2
-exit 1
-
 EXPECTED_REMOTE="git@github.com:VertRule/rh-debt-ledger-paper.git"
 ERRORS=0
 DIRTY_TREE=0
