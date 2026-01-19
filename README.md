@@ -2,6 +2,8 @@
 
 ![verify](https://github.com/VertRule/rh-debt-ledger-paper/actions/workflows/verify.yml/badge.svg)
 
+**Latest release:** `r3-cited-complete` — view with `gh release view r3-cited-complete`
+
 **Start here: [SUBMISSION.md](SUBMISSION.md)**
 
 ## How to Verify
