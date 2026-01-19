@@ -21,7 +21,7 @@ Expected output: `=== VERIFICATION PASSED ===`
 ## B) Verify from git checkout
 
 ```
-git clone git@github.com:VertRule/rh-debt-ledger-paper.git
+gh repo clone VertRule/rh-debt-ledger-paper
 cd rh-debt-ledger-paper
 git checkout r3-cited-complete
 VR_STRICT=1 ./VERIFY.sh
