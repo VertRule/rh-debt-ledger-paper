@@ -22,7 +22,7 @@ This is an execution list for paying R3 lemma debts. It does not claim completio
 | 03.4 | 03_ZERO_SUM_BOUND | Dependence on zero-free region constants not made explicit | CITED | [evidence/EVIDENCE.md#id-034](evidence/EVIDENCE.md#id-034) |
 | 04.1 | 04_PSI_BOUND | Exponent α not derived | CITED | [evidence/EVIDENCE.md#id-041](evidence/EVIDENCE.md#id-041) |
 | 04.2 | 04_PSI_BOUND | Constant c not derived | CITED | [evidence/EVIDENCE.md#id-042](evidence/EVIDENCE.md#id-042) |
-| 04.3 | 04_PSI_BOUND | "Sufficiently large" threshold not quantified | TODO | |
+| 04.3 | 04_PSI_BOUND | "Sufficiently large" threshold not quantified | CITED | [evidence/EVIDENCE.md#id-043](evidence/EVIDENCE.md#id-043) |
 | 04.4 | 04_PSI_BOUND | Full assembly of steps not written out | TODO | |
 | 05.1 | 05_TRANSFER_TO_PI_MINUS_LI | Transfer formula not written explicitly | TODO | |
 | 05.2 | 05_TRANSFER_TO_PI_MINUS_LI | Error propagation not quantified | TODO | |
