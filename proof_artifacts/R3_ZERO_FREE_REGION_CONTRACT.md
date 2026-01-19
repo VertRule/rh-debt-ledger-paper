@@ -7,12 +7,14 @@
 For sufficiently large x, the prime counting function satisfies:
 
 ```
-|π(x) - li(x)| ≤ x · exp(-c · (log x)^α)
+|π(x) - Li(x)| ≤ x · exp(-c · (log x)^α)
 ```
 
 where α and c are effective constants derived from the zero-free region, not assumed.
 
 This is an unconditional bound weaker than RH (which would give O(x^(1/2+ε))).
+
+Operationally we bound |ψ(x) − x| using the explicit formula under a zero-free region, then transfer to π(x) − Li(x) by partial summation / standard ψ-to-π relations.
 
 ## Dependencies
 
@@ -29,7 +31,7 @@ This is an unconditional bound weaker than RH (which would give O(x^(1/2+ε))).
 | 2 | Explicit formula for ψ(x) | Sum over zeros + error | Standard ANT |
 | 3 | Region R | Bound on real parts of zeros | Step 1 |
 | 4 | Zero bounds + explicit formula | Bound on |ψ(x) - x| | Steps 2-3 |
-| 5 | ψ(x) bound | π(x) bound via partial summation | Standard |
+| 5 | ψ(x) bound | π(x) − Li(x) bound via partial summation | Standard |
 
 ## Debt Ledger
 
