@@ -9,12 +9,38 @@ set -euo pipefail
 # Usage:
 #   ./VERIFY_FRESH_CLONE.sh           # Verify only, no repo modifications
 #   ./VERIFY_FRESH_CLONE.sh --vendor  # Verify and update exhibits/fresh_clone_verify/
+#
+# Environment variables:
+#   VR_FRESH_CLONE_LOCAL=1  - Clone from current directory instead of remote (for CI)
+
+# Portable sha256 functions (works on macOS and Linux)
+sha256_hash() {
+    if command -v sha256sum &> /dev/null; then
+        sha256sum "$1" | cut -d' ' -f1
+    else
+        shasum -a 256 "$1" | cut -d' ' -f1
+    fi
+}
+
+sha256_files() {
+    if command -v sha256sum &> /dev/null; then
+        sha256sum "$@"
+    else
+        shasum -a 256 "$@"
+    fi
+}
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 BASE_DIR="/tmp/vr_paper_fresh_clone_verify"
 CLONE_DIR="$BASE_DIR/clone"
 OUT_DIR="$BASE_DIR/out"
-REPO_URL="git@github.com:VertRule/rh-debt-ledger-paper.git"
+
+# Use local clone for CI (avoids SSH auth requirements)
+if [[ "${VR_FRESH_CLONE_LOCAL:-0}" == "1" ]]; then
+    REPO_URL="$SCRIPT_DIR"
+else
+    REPO_URL="git@github.com:VertRule/rh-debt-ledger-paper.git"
+fi
 
 VENDOR_MODE=false
 if [[ "${1:-}" == "--vendor" ]]; then
@@ -37,6 +63,12 @@ echo "Cloning $REPO_URL..."
 git clone --quiet "$REPO_URL" "$CLONE_DIR/repo"
 
 REPO_DIR="$CLONE_DIR/repo"
+
+# If cloned locally, set origin to the canonical remote URL for VERIFY.sh checks
+if [[ "${VR_FRESH_CLONE_LOCAL:-0}" == "1" ]]; then
+    (cd "$REPO_DIR" && git remote set-url origin "git@github.com:VertRule/rh-debt-ledger-paper.git")
+fi
+
 echo "HEAD: $(cd "$REPO_DIR" && git rev-parse --short HEAD)"
 echo ""
 
@@ -83,7 +115,7 @@ done
 
 # Compute sha256 bundle
 echo "Computing sha256 checksums..."
-(cd "$OUT_DIR" && shasum -a 256 verify_all_exhibits.out verify_exhibit.out verify.out > verify_outputs.sha256)
+(cd "$OUT_DIR" && sha256_files verify_all_exhibits.out verify_exhibit.out verify.out > verify_outputs.sha256)
 
 echo ""
 echo "=== Verification Outputs ==="
@@ -107,9 +139,9 @@ if [[ "$VENDOR_MODE" == "true" ]]; then
     cp "$OUT_DIR/verify_outputs.sha256" "$EXHIBIT_DIR/"
 
     # Update exhibit pointer JSON with new hashes
-    SHA_ALL=$(shasum -a 256 "$EXHIBIT_DIR/verify_all_exhibits.out" | cut -d' ' -f1)
-    SHA_EXHIBIT=$(shasum -a 256 "$EXHIBIT_DIR/verify_exhibit.out" | cut -d' ' -f1)
-    SHA_VERIFY=$(shasum -a 256 "$EXHIBIT_DIR/verify.out" | cut -d' ' -f1)
+    SHA_ALL=$(sha256_hash "$EXHIBIT_DIR/verify_all_exhibits.out")
+    SHA_EXHIBIT=$(sha256_hash "$EXHIBIT_DIR/verify_exhibit.out")
+    SHA_VERIFY=$(sha256_hash "$EXHIBIT_DIR/verify.out")
 
     cat > "$SCRIPT_DIR/exhibits/fresh_clone_verify.json" << EOF
 {

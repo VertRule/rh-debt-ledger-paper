@@ -1,5 +1,7 @@
 # RH Debt Ledger Paper
 
+![verify](https://github.com/VertRule/rh-debt-ledger-paper/actions/workflows/verify.yml/badge.svg)
+
 **Start here: [SUBMISSION.md](SUBMISSION.md)**
 
 ---

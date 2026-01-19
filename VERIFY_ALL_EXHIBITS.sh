@@ -7,6 +7,15 @@ set -euo pipefail
 #   - kind="contracts": verify contract digests are properly formatted
 #   - kind="fresh_clone": verify each file's sha256 matches
 
+# Portable sha256 hash function (works on macOS and Linux)
+sha256_hash() {
+    if command -v sha256sum &> /dev/null; then
+        sha256sum "$1" | cut -d' ' -f1
+    else
+        shasum -a 256 "$1" | cut -d' ' -f1
+    fi
+}
+
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 EXHIBITS_DIR="${SCRIPT_DIR}/exhibits"
 
@@ -68,7 +77,7 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
 
             # Verify manifest digest
             expected_hash="${manifest_digest#sha256:}"
-            actual_hash=$(shasum -a 256 "$snapshot_path" | cut -d' ' -f1)
+            actual_hash=$(sha256_hash "$snapshot_path")
 
             if [[ "$expected_hash" != "$actual_hash" ]]; then
                 echo "[$name] FAIL: manifest_digest mismatch"
@@ -100,7 +109,7 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
                 fi
 
                 expected_receipt_hash="${receipt_digest#sha256:}"
-                actual_receipt_hash=$(shasum -a 256 "$receipt_path" | cut -d' ' -f1)
+                actual_receipt_hash=$(sha256_hash "$receipt_path")
 
                 if [[ "$expected_receipt_hash" != "$actual_receipt_hash" ]]; then
                     echo "[$name] FAIL: receipt_digest mismatch"
@@ -182,7 +191,7 @@ for exhibit in "${EXHIBITS_DIR}"/*.json; do
                     break
                 fi
 
-                actual_sha=$(shasum -a 256 "$full_path" | cut -d' ' -f1)
+                actual_sha=$(sha256_hash "$full_path")
                 if [[ "$expected_sha" != "$actual_sha" ]]; then
                     echo "[$name] FAIL: sha256 mismatch for $file_path"
                     echo "  expected: $expected_sha"
