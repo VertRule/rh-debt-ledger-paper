@@ -168,3 +168,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts derive the error-term exponent α from the zero-free region using standard analytic number theory machinery.
+
+---
+
+### ID 04.2
+
+**Worklist ID:** 04.2
+
+**Task:** Constant c not derived
+
+**What is being cited:** The emergence and role of the implicit constant c in the ψ(x) error term bound, arising from the zero-free region constant and explicit formula machinery, as treated in standard analytic number theory texts.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18.
+- Montgomery, H. L. & Vaughan, R. C. (2007). "Multiplicative Number Theory I: Classical Theory." Cambridge University Press. Chapter 12.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference. The cited texts explain how the constant c in the error term arises from the zero-free region and contour integration without asserting specific numeric values.
