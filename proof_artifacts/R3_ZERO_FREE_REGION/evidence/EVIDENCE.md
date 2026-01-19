@@ -223,3 +223,21 @@ Records evidence for R3 worklist task payments. Each entry anchors a citation or
 **Evidence type:** CITATION-ONLY
 
 **Claim scope:** Does not reproduce proof; only anchors standard reference for the transfer step. No constants or thresholds asserted here.
+
+---
+
+### ID 05.2
+
+**Worklist ID:** 05.2
+
+**Task:** Error propagation not quantified
+
+**What is being cited:** The standard treatment of how the ψ(x) error term propagates through partial summation to yield the π(x) − Li(x) error bound, including the absorption of lower-order terms.
+
+**Citation:**
+- Davenport, H. (2000). "Multiplicative Number Theory." 3rd ed., Springer. Chapter 18, §4–5.
+- Montgomery, H. L. & Vaughan, R. C. (2007). "Multiplicative Number Theory I: Classical Theory." Cambridge University Press. Chapter 6, §6.2.
+
+**Evidence type:** CITATION-ONLY
+
+**Claim scope:** Does not reproduce proof; only anchors standard reference for error propagation. No constants or explicit bounds asserted here.
