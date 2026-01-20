@@ -1,105 +1,68 @@
-# RH Debt Ledger Paper
+# RH Debt Ledger
 
-![verify](https://github.com/VertRule/rh-debt-ledger-paper/actions/workflows/verify.yml/badge.svg)
+**VERIFY: 24/24 PASS**
 
-**Latest verifiable checkpoint:** `paper-v0.1` — view with `gh release view paper-v0.1`
+## What This Is
 
-**Start here: [SUBMISSION.md](SUBMISSION.md)**
+A deterministic debt-ledger framework and verification ladder for Riemann Hypothesis computations. The paper and all proof artifacts are receipted, reproducible, and mechanically verifiable. This repository makes **no claim** of proving or verifying RH.
 
-## How to Verify
+## Verify
 
-**Canonical instructions:** [VERIFY_QUICKSTART.md](VERIFY_QUICKSTART.md)
+**Quickstart:** See [VERIFY_QUICKSTART.md](VERIFY_QUICKSTART.md)
 
-```
-gh repo clone VertRule/rh-debt-ledger-paper
+**Full verification:**
+```bash
+git clone https://github.com/VertRule/rh-debt-ledger-paper
 cd rh-debt-ledger-paper
-git checkout paper-v0.1
 VR_STRICT=1 ./VERIFY.sh
 ```
 
-Expected output: `=== VERIFICATION PASSED ===`
+Expected output: `=== VERIFICATION PASSED ===` with 24/24 checks.
 
-**What this verifies:** Mechanical integrity only (file structure, digests, governance compliance). Does not reproduce proofs. Makes no claim regarding the Riemann Hypothesis.
+## Read the Paper
 
-R4 packet integrity is checked by `VERIFY_R4_TRANSFER.sh`.
-R5 packet integrity is checked by `VERIFY_R5_ERROR_BOUND.sh`.
+- **PDF:** [`paper/main.pdf`](paper/main.pdf)
+- **SHA256:** `a7286cdf77443c006e833f634c4ccc1e5ec447f280199a7648a8131eccf7e41e`
+- **Digest file:** [`paper/main.pdf.sha256`](paper/main.pdf.sha256)
 
-## Verification checkpoints (ladder rungs)
+The digest is verified by `VERIFY.sh` step 24/24 (R25).
 
-| Tag | Description |
-|-----|-------------|
-| `r4-transfer-complete` | R4 Transfer Packet: ψ→π−Li derivation scaffold with explicit debt |
-| `r5-error-bound-cited` | R5 Error-Bound Source: admissibility contract + source menu (2 CITED, 2 DONE) |
+## Cite
 
-To verify any checkpoint without raw URLs:
-
+**Zenodo Concept DOI** (recommended — always resolves to latest):
 ```
-gh release download r5-error-bound-cited --repo VertRule/rh-debt-ledger-paper -p '*verify-surface.zip'
-unzip r5-error-bound-cited-verify-surface.zip
-cd r5-error-bound-cited/repo
-VR_STRICT=1 ./VERIFY.sh
+https://doi.org/10.5281/zenodo.18318663
 ```
 
-Replace `r5-error-bound-cited` with any tag above to verify that checkpoint.
+**Zenodo Version DOI** (r28-zenodo-doi):
+```
+https://doi.org/10.5281/zenodo.18318664
+```
 
----
+**BibTeX:**
+```bibtex
+@software{ingle_2026_18318663,
+  author       = {Ingle, David},
+  title        = {{A Deterministic Debt-Ledger Framework for RH Verification}},
+  month        = jan,
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18318663},
+  url          = {https://doi.org/10.5281/zenodo.18318663}
+}
+```
 
-# Front Door: Submission & Verification
+**arXiv:** Pending endorsement.
 
-This repository contains the manuscript and **receipted exhibits** for the RH NA0 debt-ledger work.
-It **does not** claim a proof of the Riemann Hypothesis.
+## Non-Claims
 
-## What this repo is
+- **Not a proof of RH** — this paper makes no such claim
+- **Not a new bound** — no extension of known zero-verification bounds
+- **Not RH verification** — no claim beyond known computational checks
+- **Tail-bound obligation remains UNPAID** — the "dragon" is boxed, not slain
 
-- A paper draft: `na0_rh_debt_ledger_draft.md`
-- A small "exhibits" layer: `EXHIBITS.md` + `exhibits/canonical_run.json`
-- A reproducibility contract: how to verify the canonical exhibit by digest
+## Ladder Map
 
-This repo intentionally excludes large run bundles and raw series data unless explicitly published elsewhere.
-
-## Claim tiers
-
-- **Definitions**: always allowed.
-- **PROMOTED_FINITE**: certified on a finite domain/grid (mechanical verification).
-- **PROMOTED_GLOBAL**: requires paying THEOREM-class obligations with an external proof artifact under policy.
-  Default posture: **global promotion disabled**.
-
-## Canonical exhibit
-
-See `EXHIBITS.md` for the table, and `exhibits/canonical_run.json` for a compact pointer.
-
-**Canonical run name:** (see `EXHIBITS.md`)
-**Manifest digest:** (see `EXHIBITS.md`)
-**Promotion tier:** PROMOTED_FINITE
-**Dragon obligation status:** UNPAID (THEOREM)
-
-## The Dragon Obligation (what remains unpaid)
-
-No computational verification can pay this obligation.
-
-The remaining blocker to global promotion is a THEOREM-class obligation asserting an unconditional tail bound sufficient to certify the RH-style envelope globally. Discharging this obligation requires an **external proof artifact** and is considered **equivalent in difficulty to proving RH itself**.
-
-(For the precise object identity and current status, see `exhibits/canonical_run.json`.)
-
-## How to verify integrity (digest-based)
-
-This repo carries **pointers** rather than full run bundles. Verification is done by comparing the canonical exhibit's recorded digests to the corresponding artifacts in the source experiment repository that produced them.
-
-Minimum expected verification items:
-- A run directory containing `sha256_manifest.txt`
-- A recorded digest of that manifest (as cited in `EXHIBITS.md` / `exhibits/canonical_run.json`)
-- The run's `run_metrics.json` for key metrics (max_r_total, min_slack, a_max_allowed)
-- The proof obligation object for the dragon obligation (PO-tail / ladder PO)
-
-If you have access to the source experiment repo, verification is:
-1) Locate the canonical run directory by name.
-2) Compute `sha256` of `sha256_manifest.txt`.
-3) Confirm it matches the manifest digest recorded in this paper repo.
-4) Confirm `run_metrics.json` values match the exhibit pointer values.
-
-## Where to start reading
-
-1) `README.md` (short orientation)
-2) `na0_rh_debt_ledger_draft.md` (the manuscript)
-3) `EXHIBITS.md` (the evidence table)
-4) `exhibits/canonical_run.json` (machine-readable exhibit pointer)
+- **Rung index:** [RUNG_INDEX.md](RUNG_INDEX.md) — R4 through R29
+- **Status ledger:** [STATUS.md](STATUS.md) — paid/unpaid obligations
+- **Citation file:** [CITATION.cff](CITATION.cff) — machine-readable citation
