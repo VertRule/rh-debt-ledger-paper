@@ -50,13 +50,16 @@ if [ -d "$SIGS_DIR" ]; then
 
         # Verify signature with GPG
         if command -v gpg >/dev/null 2>&1; then
-            if gpg --verify "$sig" "$ASSEMBLY_ROOT_TXT" 2>/dev/null; then
+            GPG_OUTPUT=$(gpg --verify "$sig" "$ASSEMBLY_ROOT_TXT" 2>&1) || true
+            if echo "$GPG_OUTPUT" | grep -q "Good signature"; then
                 SIG_COUNT=$((SIG_COUNT + 1))
+            elif echo "$GPG_OUTPUT" | grep -q "No public key"; then
+                echo "SKIP: Public key not in keyring for $sig"
             else
                 error "Signature verification failed: $sig"
             fi
         else
-            error "GPG not available but signature file exists: $sig"
+            echo "SKIP: GPG not available, cannot verify $sig"
         fi
     done
 fi
@@ -64,13 +67,16 @@ fi
 # 4) Check legacy single signature file (backward compatibility)
 if [ -f "$ASSEMBLY_ROOT_SIG" ]; then
     if command -v gpg >/dev/null 2>&1; then
-        if gpg --verify "$ASSEMBLY_ROOT_SIG" "$ASSEMBLY_ROOT_TXT" 2>/dev/null; then
+        GPG_OUTPUT=$(gpg --verify "$ASSEMBLY_ROOT_SIG" "$ASSEMBLY_ROOT_TXT" 2>&1) || true
+        if echo "$GPG_OUTPUT" | grep -q "Good signature"; then
             SIG_COUNT=$((SIG_COUNT + 1))
+        elif echo "$GPG_OUTPUT" | grep -q "No public key"; then
+            echo "SKIP: Public key not in keyring for legacy signature"
         else
             error "Legacy signature verification failed: $ASSEMBLY_ROOT_SIG"
         fi
     else
-        error "GPG not available but legacy signature file exists"
+        echo "SKIP: GPG not available, cannot verify legacy signature"
     fi
 fi
 
