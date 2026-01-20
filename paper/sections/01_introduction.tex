@@ -1,0 +1,46 @@
+\section{Introduction}
+\label{sec:introduction}
+
+The Riemann Hypothesis (RH) remains one of the most important open problems in
+mathematics. Any approach to RH must carefully distinguish between what has been
+established and what remains conjectural. This paper describes a software
+infrastructure---a \emph{debt ledger}---designed to make such distinctions explicit
+and mechanically verifiable.
+
+\begin{nonclaims}
+This paper:
+\begin{itemize}
+  \item Is \textbf{not} a proof of RH.
+  \item Is \textbf{not} a new bound on $\pi(x)$ or $\psi(x)$.
+  \item Is \textbf{not} verification of RH beyond known computational checks.
+  \item Does \textbf{not} provide ``evidence suggesting RH is true.''
+  \item Makes \textbf{no forward projection} about future progress.
+\end{itemize}
+The tail-bound obligation (Section~\ref{sec:limits}) remains unpaid and is
+equivalent in difficulty to RH itself.
+\end{nonclaims}
+
+\subsection{Motivation}
+
+When working on difficult mathematical problems, it is easy to lose track of
+which steps are rigorously established and which contain gaps. The debt ledger
+model addresses this by:
+\begin{enumerate}
+  \item Recording each proof step as a ``rung'' with explicit contracts.
+  \item Distinguishing between \emph{paid} obligations (mechanically verified)
+        and \emph{unpaid} obligations (equivalent to the core conjecture).
+  \item Providing deterministic verification scripts that anyone can run.
+\end{enumerate}
+
+\subsection{Contributions}
+
+We contribute:
+\begin{enumerate}
+  \item A deterministic verification ladder (R4--R22) with reproducible releases.
+  \item Explicit isolation of the tail-bound obligation as the unpaid debt.
+  \item Cryptographic receipt chains (SHA-256, GPG, post-quantum hybrid signatures).
+  \item Fully reproducible release artifacts built from git tags.
+\end{enumerate}
+
+See \texttt{RUNG\_INDEX.md} for the complete rung map and \texttt{STATUS.md} for
+the current ledger state.

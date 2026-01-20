@@ -1,0 +1,43 @@
+\section{Problem Statement}
+\label{sec:problem}
+
+\subsection{The Prime Counting Function}
+
+Let $\pi(x)$ denote the number of primes not exceeding $x$. The Prime Number
+Theorem establishes that
+\[
+  \pi(x) \sim \frac{x}{\log x} \quad \text{as } x \to \infty.
+\]
+A more refined approximation is provided by the logarithmic integral:
+\[
+  \operatorname{li}(x) = \int_0^x \frac{dt}{\log t}.
+\]
+
+\subsection{Connection to the Riemann Hypothesis}
+
+The Riemann zeta function $\zeta(s)$ is defined for $\Re(s) > 1$ by
+\[
+  \zeta(s) = \sum_{n=1}^{\infty} \frac{1}{n^s}
+\]
+and admits analytic continuation to $\mathbb{C} \setminus \{1\}$. The Riemann
+Hypothesis asserts that all non-trivial zeros of $\zeta(s)$ have real part
+$\frac{1}{2}$.
+
+RH is equivalent to the bound
+\[
+  \psi(x) = x + O(\sqrt{x} \log^2 x),
+\]
+where $\psi(x) = \sum_{p^k \le x} \log p$ is the Chebyshev function.
+
+\subsection{The Verification Challenge}
+
+Any claimed bound on $\pi(x) - \operatorname{li}(x)$ must either:
+\begin{enumerate}
+  \item Assume RH (in which case the assumption must be stated explicitly), or
+  \item Prove the required zero-free region (equivalent to proving RH for
+        the purpose of deriving the bound).
+\end{enumerate}
+
+The debt ledger model makes this choice explicit by recording which claims
+are paid (unconditional) and which carry unpaid debt (conditional on RH or
+equivalent).

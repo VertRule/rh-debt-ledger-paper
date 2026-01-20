@@ -4,7 +4,13 @@
 
 ## Current Rung
 
-**R21** — Release Zip Rebuild
+**R23** — Paper Skeleton
+
+## Paper Draft
+
+Location: `paper/` (R23)
+
+The paper skeleton documents the verification ladder and debt framing without claiming RH.
 
 ## Paid Obligations
 

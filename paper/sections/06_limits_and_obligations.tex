@@ -1,0 +1,64 @@
+\section{Limits and Remaining Obligations}
+\label{sec:limits}
+
+This section explicitly states what remains unpaid and why.
+
+\subsection{The Tail Bound Obligation}
+
+The central unpaid obligation is the \textbf{tail bound}: controlling the
+contribution of zeta zeros $\rho = \beta + i\gamma$ with $|\gamma| > T$
+for any fixed $T$.
+
+Any bound of the form
+\[
+  |\psi(x) - x| < C \sqrt{x} \log^2 x
+\]
+requires summing over \emph{all} zeros. The sum converges, but its size depends
+on the location of zeros. Without knowing that all zeros lie on the critical
+line, the tail cannot be bounded effectively.
+
+\textbf{Status:} UNPAID. Equivalent in difficulty to RH.
+
+See \texttt{proof\_artifacts/R7\_BOUND\_STATEMENT/R7\_BOUND\_STATEMENT.md}
+for the explicit statement of where this debt enters.
+
+\subsection{Remaining Obligations}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Item} & \textbf{Status} & \textbf{Notes} \\
+\hline
+Tail bound proof & UNPAID & The dragon is boxed, not slain \\
+RH claim & NOT MADE & This repo makes no claim regarding RH \\
+Proof reproduction & NOT DONE & No proofs are reproduced \\
+External audit & NOT DONE & Third-party review pending \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Why This Matters}
+
+The debt ledger model makes explicit a common source of errors in mathematical
+claims: conflating ``we have organized the pieces'' with ``we have proven the
+result.'' By explicitly recording unpaid obligations, we prevent scope creep
+and premature claims.
+
+The infrastructure is valuable even with unpaid debt because it:
+\begin{enumerate}
+  \item Provides a clear target for future work.
+  \item Ensures that any future claim of progress can be verified against
+        the frozen artifacts.
+  \item Maintains an audit trail for reproducibility.
+\end{enumerate}
+
+\subsection{What Would Pay the Debt}
+
+The tail bound obligation would be paid by either:
+\begin{enumerate}
+  \item A proof of RH (establishing all zeros have $\beta = \frac{1}{2}$).
+  \item An unconditional zero-density estimate sufficient for the required bound.
+  \item A fundamentally different approach that avoids the explicit sum over zeros.
+\end{enumerate}
+
+None of these is claimed or implied by this work.

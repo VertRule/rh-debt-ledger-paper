@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+% Non-claims box style
+\newtcolorbox{nonclaims}{
+  colback=red!5!white,
+  colframe=red!50!black,
+  title={\textbf{Non-Claims}},
+  fonttitle=\bfseries
+}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\title{A Debt Ledger Model for Tracking Proof Obligations\\in the Prime Counting Function}
+\author{RH Debt Ledger Project}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+We present a \emph{debt ledger} model for organizing and verifying proof obligations
+related to bounds on the prime counting function $\pi(x)$. Rather than claiming
+any new mathematical result, we describe a verification infrastructure that
+(1)~makes explicit which claims have been mechanically verified,
+(2)~isolates unpaid obligations equivalent in difficulty to the Riemann Hypothesis,
+and (3)~provides reproducible artifact chains for all paid rungs.
+The tail-bound obligation remains unpaid. This paper makes no claim regarding RH.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\input{sections/01_introduction}
+\input{sections/02_problem_statement}
+\input{sections/03_ledger_model}
+\input{sections/04_verification_ladder}
+\input{sections/05_results_so_far}
+\input{sections/06_limits_and_obligations}
+\input{sections/07_reproducibility}
+\input{sections/08_conclusion}
+
+\bibliographystyle{plain}
+\bibliography{bib}
+
+\end{document}

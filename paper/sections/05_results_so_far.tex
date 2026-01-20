@@ -1,0 +1,64 @@
+\section{Results So Far}
+\label{sec:results}
+
+We summarize what the verification ladder has established.
+
+\subsection{Paid Obligations}
+
+The following obligations have been paid (mechanically verified):
+
+\begin{enumerate}
+  \item \textbf{Classical signature (GPG):} Dave's detached signature over the
+        R10 assembly root.
+        See \texttt{proof\_artifacts/R11\_SIGNATURE/sigs/dave.asc}.
+
+  \item \textbf{Post-quantum hybrid signature:} P-384 + ML-DSA-65 signature
+        over the assembly root.
+        See \texttt{proof\_artifacts/R15\_PQ\_SIGNATURE/sigs\_pq/}.
+
+  \item \textbf{Assembly root rebuild:} Deterministic regeneration of R10
+        from the verify surface.
+        See \texttt{VERIFY\_R20\_REBUILD\_ASSEMBLY\_ROOT.sh}.
+
+  \item \textbf{Release reproducibility:} Deterministic zip rebuild from git tag.
+        See \texttt{scripts/rebuild\_release\_zip.sh}.
+
+  \item \textbf{Key fingerprint capture:} GPG fingerprint recorded for attribution.
+        See \texttt{proof\_artifacts/R14\_KEY\_CAPTURE/captures/}.
+
+  \item \textbf{PQ tooling receipt:} Backend and version captured for PQ signatures.
+        See \texttt{proof\_artifacts/R16\_PQ\_TOOLING/}.
+\end{enumerate}
+
+\subsection{Verification Coverage}
+
+The main verifier runs 23 steps:
+\begin{itemize}
+  \item Steps 1--11: Repository integrity (git status, required files, redaction,
+        exhibits, contribution ledger).
+  \item Steps 12--23: Rung verifiers (R4--R20).
+\end{itemize}
+
+To run verification:
+\begin{verbatim}
+VR_STRICT=1 ./VERIFY.sh
+\end{verbatim}
+
+Expected output:
+\begin{verbatim}
+=== VERIFICATION PASSED ===
+\end{verbatim}
+
+\subsection{What This Means}
+
+The verification ladder establishes that:
+\begin{enumerate}
+  \item The equation inventory, error bounds, and parameter choices are
+        frozen and reproducible.
+  \item The assembly root hash is deterministic.
+  \item Signed attestations are cryptographically bound to the artifacts.
+  \item Release zips can be rebuilt identically from git tags.
+\end{enumerate}
+
+This provides \emph{infrastructure} for tracking proof obligations, but does
+NOT prove any mathematical claim about $\pi(x)$ or RH.

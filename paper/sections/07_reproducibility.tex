@@ -1,0 +1,66 @@
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+A key design goal is that all artifacts can be independently reproduced.
+
+\subsection{Deterministic Builds}
+
+Release zips are built deterministically:
+\begin{itemize}
+  \item Fixed file timestamps (2024-01-01 00:00:00 UTC).
+  \item Stable file ordering (LC\_ALL=C sort).
+  \item No extended attributes (stripped on macOS).
+  \item No zip timestamps (zip -X flag).
+\end{itemize}
+
+To rebuild a release:
+\begin{verbatim}
+./scripts/rebuild_release_zip.sh <tag> /tmp/rebuilt.zip
+\end{verbatim}
+
+The resulting SHA-256 should match the published release.
+
+\subsection{Assembly Root Rebuild}
+
+The R10 assembly root can be regenerated from the verify surface:
+\begin{verbatim}
+./scripts/rebuild_r10_assembly_root.sh
+\end{verbatim}
+
+The output should match \texttt{proof\_artifacts/R10\_ASSEMBLY\_RECEIPT/R10\_RECEIPT.json}.
+
+See \texttt{VERIFY\_R20\_REBUILD\_ASSEMBLY\_ROOT.sh} for the automated check.
+
+\subsection{Verification Commands}
+
+\textbf{Baseline verification (23 steps):}
+\begin{verbatim}
+VR_STRICT=1 ./VERIFY.sh
+\end{verbatim}
+
+\textbf{Full GPG verification (requires pubkey import):}
+\begin{verbatim}
+gpg --import <pubkey>
+gpg --verify proof_artifacts/R11_SIGNATURE/sigs/dave.asc \
+    proof_artifacts/R11_SIGNATURE/R10_ASSEMBLY_ROOT.txt
+\end{verbatim}
+
+\textbf{Full PQ verification (requires oqsprovider):}
+\begin{verbatim}
+OPENSSL_MODULES=/path/to/ossl-modules \
+  ./scripts/verify_pq_sig.sh p384_mldsa65 \
+  proof_artifacts/R15_PQ_SIGNATURE/sigs_pq/dave.p384_mldsa65.sig \
+  proof_artifacts/R11_SIGNATURE/R10_ASSEMBLY_ROOT.txt \
+  proof_artifacts/R15_PQ_SIGNATURE/pubkeys/dave.p384_mldsa65.pub
+\end{verbatim}
+
+\subsection{Checkpoint Releases}
+
+Each rung has an associated git tag and GitHub release:
+\begin{itemize}
+  \item Tag format: \texttt{r<N>-<name>}
+  \item Asset: \texttt{r<N>-<name>-verify-surface.zip}
+  \item Contains: Verifier scripts, proof artifacts, documentation.
+\end{itemize}
+
+See \texttt{RUNG\_INDEX.md} for the complete list of tags.
