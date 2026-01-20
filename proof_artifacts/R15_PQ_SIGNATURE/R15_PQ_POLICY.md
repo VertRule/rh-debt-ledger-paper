@@ -13,13 +13,20 @@ Each PQ signature file follows this naming convention:
 Examples:
 - `dave.mldsa.sig`
 - `dave.slhdsa.sig`
+- `dave.p384_mldsa65.sig`
 
 ## Supported Schemes
 
 | Scheme | Standard | Notes |
 |--------|----------|-------|
-| mldsa | ML-DSA (FIPS 204) | Lattice-based |
-| slhdsa | SLH-DSA (FIPS 205) | Hash-based |
+| mldsa | ML-DSA (FIPS 204) | Lattice-based (pure PQ) |
+| slhdsa | SLH-DSA (FIPS 205) | Hash-based (pure PQ) |
+| p384_mldsa65 | P-384 + ML-DSA-65 | Hybrid (classical + PQ) |
+| p521_mldsa87 | P-521 + ML-DSA-87 | Hybrid (classical + PQ) |
+| p256_mldsa44 | P-256 + ML-DSA-44 | Hybrid (classical + PQ) |
+| rsa3072_mldsa44 | RSA-3072 + ML-DSA-44 | Hybrid (classical + PQ) |
+
+Note: Hybrid schemes combine a classical algorithm with a post-quantum algorithm. The scheme identifier in filenames matches the oqsprovider algorithm name exactly (e.g., `p384_mldsa65`).
 
 ## Payload
 
@@ -60,6 +67,7 @@ pubkeys/<signer_id>.<scheme>.pub
 Examples:
 - `pubkeys/dave.mldsa.pub`
 - `pubkeys/dave.slhdsa.pub`
+- `pubkeys/dave.p384_mldsa65.pub`
 
 Each PQ signature file MUST have a corresponding public key. Missing pubkey = verification failure.
 
