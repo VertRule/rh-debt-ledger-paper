@@ -2,7 +2,7 @@
 
 **Concept-Tag:** RH-RUNG-INDEX
 
-Map of the verification ladder (R4–R28).
+Map of the verification ladder (R4–R32).
 
 | Rung | Name | Establishes | Does NOT Claim | Directory | Verifier | Release Tag |
 |------|------|-------------|----------------|-----------|----------|-------------|
@@ -29,11 +29,16 @@ Map of the verification ladder (R4–R28).
 | R26 | arXiv Kit | Deterministic arXiv source bundle | — | `proof_artifacts/R26_ARXIV_SUBMISSION/` | — | r26-arxiv-submission-kit |
 | R27 | Endorsement Path | arXiv endorsement + alternate preprint docs | — | `proof_artifacts/R27_ENDORSEMENT_PATH/` | — | r27-endorsement-path |
 | R28 | Zenodo DOI | Citable DOI via Zenodo | Peer review | `proof_artifacts/R28_ZENODO_DOI/` | — | r28-zenodo-doi, r28-zenodo-doi-record |
+| R29 | Rung Index Nits | Correct tag strings + count | — | `RUNG_INDEX.md` | — | r29-rung-index-nits |
+| R30 | README Front Door | Canonical landing page | — | `README.md` | — | r30-readme-front-door |
+| R31 | Endorsement Outreach | Token-safe outreach templates + leak verifier | Token safety | `proof_artifacts/R31_ENDORSEMENT_OUTREACH/` | VERIFY.sh step 25 | r31-endorsement-log |
+| R32 | Tighten Token Verifier | Remove verifier exclusions; neutral placeholders | — | (updates R27, R31 docs) | VERIFY.sh step 25 | r32-tighten-token-verifier |
 
-## Verification Steps (24 total)
+## Verification Steps (25 total)
 
 Steps 1–11: Git status, remote, required files, forbidden artifacts, redaction, exhibits, proof artifacts, contribution ledger
 Steps 12–24: R4, R5, R6, R7, R8, R9, R10, R11, R14, R15, R16, R20, R25
+Step 25: R31 no-token-leak
 
 ## Notes
 

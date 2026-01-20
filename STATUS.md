@@ -4,7 +4,7 @@
 
 ## Current Rung
 
-**R28** — Zenodo DOI Record
+**R32** — Tighten no-token-leak verifier
 
 ## Paper Draft
 
