@@ -2,7 +2,7 @@
 
 ![verify](https://github.com/VertRule/rh-debt-ledger-paper/actions/workflows/verify.yml/badge.svg)
 
-**Latest release:** `r3-cited-complete` — view with `gh release view r3-cited-complete`
+**Latest verifiable checkpoint:** `paper-v0.1` — view with `gh release view paper-v0.1`
 
 **Start here: [SUBMISSION.md](SUBMISSION.md)**
 
@@ -10,16 +10,16 @@
 
 **Canonical instructions:** [VERIFY_QUICKSTART.md](VERIFY_QUICKSTART.md)
 
-Download release `r3-cited-complete` (view with `gh release view r3-cited-complete`), extract, and run:
-
 ```
-cd repo
+gh repo clone VertRule/rh-debt-ledger-paper
+cd rh-debt-ledger-paper
+git checkout paper-v0.1
 VR_STRICT=1 ./VERIFY.sh
 ```
 
 Expected output: `=== VERIFICATION PASSED ===`
 
-**What this verifies:** R3 packet structure and integrity (17/17 tasks CITED with citation-only evidence). Does not verify mathematical claims — only governance compliance.
+**What this verifies:** Mechanical integrity only (file structure, digests, governance compliance). Does not reproduce proofs. Makes no claim regarding the Riemann Hypothesis.
 
 ---
 
