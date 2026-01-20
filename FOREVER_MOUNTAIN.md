@@ -15,7 +15,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 - Honesty ledger enforced (`CONTRIBUTION_LEDGER.md`)
 - Governance drill recorded (block-on-fail, unblock-on-revert)
 
-## Ladder (R0 → R5)
+## Ladder (R0 → R6)
 
 | Rung | Definition | Status |
 |------|------------|--------|
@@ -25,6 +25,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 | R3 | Unconditional analytic bound weaker than RH | Target |
 | R4 | Transfer derivation (ψ → π−Li) | Done (scaffold) |
 | R5 | Error-bound source contract (external obligation) | Done |
+| R6 | Instantiation record (bind R5 source into R4) | Done |
 
 ### R3 target: classical zero-free region bound
 
@@ -73,6 +74,26 @@ R5 is where the tail-bound source becomes an explicit external obligation.
 - Sources are cited, not derived
 
 **Verification:** R5 packet integrity is checked by `VERIFY_R5_ERROR_BOUND.sh`.
+
+### R6: Instantiation Record
+
+R6 binds a specific R5 source into the R4 transfer template.
+
+**Index:** [proof_artifacts/R6_INSTANTIATION/00_INDEX.md](proof_artifacts/R6_INSTANTIATION/00_INDEX.md)
+
+**Selected source:** U1 (R5.1) — Unconditional ZFR-based ψ bound
+
+**Purpose:**
+- Records which E(t) source is used
+- Threads the bound into R4's transfer template
+- Keeps constants/thresholds as explicit debt
+
+**Non-claims:**
+- No RH claim
+- No new analytic bounds
+- Binding is a ledger artifact, not a proof
+
+**Verification:** R6 packet integrity is checked by `VERIFY_R6_INSTANTIATION.sh`.
 
 ## We do not claim
 
