@@ -1,6 +1,6 @@
 # RH Debt Ledger
 
-**VERIFY: 24/24 PASS**
+**VERIFY: 25/25 PASS**
 
 ## What This Is
 
@@ -17,7 +17,7 @@ cd rh-debt-ledger-paper
 VR_STRICT=1 ./VERIFY.sh
 ```
 
-Expected output: `=== VERIFICATION PASSED ===` with 24/24 checks.
+Expected output: `=== VERIFICATION PASSED ===` with 25/25 checks.
 
 ## Read the Paper
 
@@ -25,7 +25,7 @@ Expected output: `=== VERIFICATION PASSED ===` with 24/24 checks.
 - **SHA256:** `a7286cdf77443c006e833f634c4ccc1e5ec447f280199a7648a8131eccf7e41e`
 - **Digest file:** [`paper/main.pdf.sha256`](paper/main.pdf.sha256)
 
-The digest is verified by `VERIFY.sh` step 24/24 (R25).
+The digest is verified by `VERIFY.sh` step 24/25 (R25).
 
 ## Cite
 

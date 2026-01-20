@@ -33,3 +33,6 @@ Thumbs.db
 # Claude context (keep .claude/settings.json but ignore logs)
 .claude/*.jsonl
 .claude/todos/
+
+# Operator private (endorsement tokens, outreach logs)
+operator_private/
