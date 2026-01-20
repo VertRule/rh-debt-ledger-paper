@@ -15,7 +15,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 - Honesty ledger enforced (`CONTRIBUTION_LEDGER.md`)
 - Governance drill recorded (block-on-fail, unblock-on-revert)
 
-## Ladder (R0 → R7)
+## Ladder (R0 → R8)
 
 | Rung | Definition | Status |
 |------|------------|--------|
@@ -27,6 +27,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 | R5 | Error-bound source contract (external obligation) | Done |
 | R6 | Instantiation record (bind R5 source into R4) | Done |
 | R7 | Instantiated bound statement (tamper-evident) | Done |
+| R8 | Comparison run (two-path consistency check) | Done |
 
 ### R3 target: classical zero-free region bound
 
@@ -113,6 +114,24 @@ R7 provides the fully instantiated bound for |π(x) − Li(x)| with all terms ex
 - Constants/thresholds remain explicit debt
 
 **Verification:** R7 packet integrity is checked by `VERIFY_R7_BOUND_STATEMENT.sh`.
+
+### R8: Comparison Run
+
+R8 provides a second construction path for the R7 bound statement and verifies byte-identical output.
+
+**Index:** [proof_artifacts/R8_COMPARISON_RUN/00_INDEX.md](proof_artifacts/R8_COMPARISON_RUN/00_INDEX.md)
+
+**Purpose:**
+- Generator script regenerates R7 equations from R4+R6 inputs
+- Comparison receipt proves byte-identical hash
+- Guards against hallucinated extensions
+
+**Non-claims:**
+- No RH claim
+- No new analytic bounds
+- This is a mechanical consistency check
+
+**Verification:** R8 packet integrity is checked by `VERIFY_R8_COMPARISON.sh`.
 
 ## We do not claim
 
