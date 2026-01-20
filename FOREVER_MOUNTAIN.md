@@ -15,7 +15,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 - Honesty ledger enforced (`CONTRIBUTION_LEDGER.md`)
 - Governance drill recorded (block-on-fail, unblock-on-revert)
 
-## Ladder (R0 → R4)
+## Ladder (R0 → R5)
 
 | Rung | Definition | Status |
 |------|------------|--------|
@@ -23,7 +23,8 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 | R1 | Reproducible debt measurements + envelope checks | Done |
 | R2 | Conditional tail bound under explicit assumptions | Done (see exhibits) |
 | R3 | Unconditional analytic bound weaker than RH | Target |
-| R4 | RH-level bound | Dragon |
+| R4 | Transfer derivation (ψ → π−Li) | Done (scaffold) |
+| R5 | Error-bound source contract (external obligation) | Done |
 
 ### R3 target: classical zero-free region bound
 
@@ -54,6 +55,24 @@ An in-repo reproduction of the ψ(x) → π(x)−Li(x) transfer step with explic
 - Debt (prime-power correction, thresholds) remains explicit
 
 **Verification:** R4 packet integrity is checked by `VERIFY_R4_TRANSFER.sh`.
+
+### R5: Error-Bound Source Contract
+
+R5 is where the tail-bound source becomes an explicit external obligation.
+
+**Index:** [proof_artifacts/R5_ERROR_BOUND_SOURCE/00_INDEX.md](proof_artifacts/R5_ERROR_BOUND_SOURCE/00_INDEX.md)
+
+**Purpose:**
+- Defines admissibility predicates A1–A4 for an E(t) source
+- Catalogs available sources (unconditional vs RH-conditional)
+- Declares Dragon obligation (RH-level bound) as EXTERNAL
+
+**Non-claims:**
+- No RH claim
+- No zero-free region reproduction
+- Sources are cited, not derived
+
+**Verification:** R5 packet integrity is checked by `VERIFY_R5_ERROR_BOUND.sh`.
 
 ## We do not claim
 
