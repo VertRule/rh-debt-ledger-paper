@@ -25,8 +25,19 @@ This ledger records citations supporting the E(t) sources in R5_MENU.md.
 
 **Task:** Add citations for RH-conditional ψ bound shape
 
-**Status:** TODO
+**Status:** CITED
 
-**Placeholder citations:**
-- von Koch, H. (1901). Sur la distribution des nombres premiers.
-- Schoenfeld, L. (1976). Sharper bounds for the Chebyshev functions θ(x) and ψ(x). II.
+**Citations:**
+
+1. **von Koch (1901)** — First proof that RH implies |ψ(x) − x| = O(√x log²x)
+   - von Koch, H. (1901). "Sur la distribution des nombres premiers." *Acta Mathematica* 24: 159–182.
+   - Establishes the conditional error term shape under RH.
+
+2. **Schoenfeld (1976)** — Explicit constants for RH-conditional bounds
+   - Schoenfeld, L. (1976). "Sharper bounds for the Chebyshev functions θ(x) and ψ(x). II." *Mathematics of Computation* 30(134): 337–360.
+   - Theorem 10: Under RH, |ψ(x) − x| < (1/8π)√x log²x for x ≥ 73.2.
+
+**What these citations support:**
+- Menu item C1 (RH-conditional source) shape: E_RH(t) = O(√t log²t)
+- The conditional nature (assumes RH)
+- Explicit constant form available (Schoenfeld)
