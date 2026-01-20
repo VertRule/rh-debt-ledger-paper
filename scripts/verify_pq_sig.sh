@@ -32,6 +32,7 @@ if [ ! -f "$PUBKEY_FILE" ]; then
 fi
 
 # Map scheme to algorithm names
+# Includes pure PQ algorithms and hybrid (classical+PQ) algorithms from oqsprovider
 case "$SCHEME" in
     mldsa)
         OQS_ALG="ML-DSA-65"
@@ -40,6 +41,23 @@ case "$SCHEME" in
     slhdsa)
         OQS_ALG="SLH-DSA-SHA2-128f"
         OPENSSL_ALG="slhdsa128f"
+        ;;
+    # Hybrid algorithms (classical + ML-DSA) from oqsprovider
+    p384_mldsa65)
+        OQS_ALG=""  # Not applicable for oqs-toolbox
+        OPENSSL_ALG="p384_mldsa65"
+        ;;
+    p521_mldsa87)
+        OQS_ALG=""
+        OPENSSL_ALG="p521_mldsa87"
+        ;;
+    p256_mldsa44)
+        OQS_ALG=""
+        OPENSSL_ALG="p256_mldsa44"
+        ;;
+    rsa3072_mldsa44)
+        OQS_ALG=""
+        OPENSSL_ALG="rsa3072_mldsa44"
         ;;
     *)
         echo "ERROR: Unknown scheme: $SCHEME" >&2
@@ -72,9 +90,11 @@ if command -v openssl >/dev/null 2>&1; then
     done
     if [ -n "$OQS_FOUND" ]; then
         echo "Using: openssl+oqsprovider"
-        if OPENSSL_MODULES="$OQS_FOUND" openssl pkeyutl -verify -pubin -inkey "$PUBKEY_FILE" \
-            -sigfile "$SIG_FILE" -in "$PAYLOAD_FILE" \
-            -provider oqsprovider 2>/dev/null; then
+        # Use both default and oqsprovider (required for hybrid algorithms on OpenSSL 3.6)
+        if OPENSSL_MODULES="$OQS_FOUND" openssl pkeyutl -verify \
+            -provider default -provider oqsprovider \
+            -pubin -inkey "$PUBKEY_FILE" \
+            -sigfile "$SIG_FILE" -in "$PAYLOAD_FILE" 2>/dev/null; then
             exit 0
         else
             exit 1
