@@ -6,7 +6,7 @@
 
 | ID | Description | Status |
 |----|-------------|--------|
-| R5.1 | Add citations for unconditional zero-free-region-based ψ bound | TODO |
+| R5.1 | Add citations for unconditional zero-free-region-based ψ bound | CITED |
 | R5.2 | Add citations for RH-conditional ψ bound shape | CITED |
 | R5.3 | Define admissibility checklist A1–A4 | DONE |
 | R5.4 | Define instantiation record format for choosing a menu item | DONE |

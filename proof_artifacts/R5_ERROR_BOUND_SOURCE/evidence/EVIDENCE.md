@@ -12,12 +12,32 @@ This ledger records citations supporting the E(t) sources in R5_MENU.md.
 
 **Task:** Add citations for unconditional zero-free-region-based ψ bound
 
-**Status:** TODO
+**Status:** CITED
 
-**Placeholder citations:**
-- de la Vallée Poussin, C.-J. (1896). Recherches analytiques sur la théorie des nombres premiers.
-- Korobov, N. M. (1958). Estimates of trigonometric sums and their applications.
-- Vinogradov, I. M. (1958). A new estimate of a certain sum containing primes.
+**Citations:**
+
+1. **de la Vallée Poussin (1896)** — Original zero-free region and PNT
+   - de la Vallée Poussin, C.-J. (1896). "Recherches analytiques sur la théorie des nombres premiers." *Annales de la Société scientifique de Bruxelles* 20: 183–256.
+   - Establishes ζ(s) ≠ 0 for Re(s) = 1, yielding |ψ(x) − x| = o(x).
+
+2. **Korobov (1958)** — Improved zero-free region
+   - Korobov, N. M. (1958). "Estimates of trigonometric sums and their applications." *Uspekhi Mat. Nauk* 13(4): 185–192.
+   - Zero-free region: σ > 1 − c/(log|t|)^{2/3}(log log|t|)^{1/3}.
+
+3. **Vinogradov (1958)** — Independent discovery of improved region
+   - Vinogradov, I. M. (1958). "A new estimate of the function ζ(1+it)." *Izv. Akad. Nauk SSSR Ser. Mat.* 22: 161–164.
+   - Same zero-free region as Korobov, independently derived.
+
+4. **Ivić (1985)** — Modern source stating ψ error term explicitly
+   - Ivić, A. (1985). *The Riemann Zeta-Function*. Wiley, New York. Chapter 12.
+   - Theorem 12.2: States the PNT error term derived from Korobov–Vinogradov region:
+     |ψ(x) − x| = O(x · exp(−c(log x)^{3/5}(log log x)^{−1/5})) for some c > 0.
+
+**What these citations support:**
+- Zero-free region: Korobov (1958), Vinogradov (1958)
+- Error term shape for ψ(x): Ivić (1985) Theorem 12.2 (explicitly stated)
+- Unconditional nature (no hypothesis assumed)
+- Constants c not reproduced; full derivation EXTERNAL-CITED
 
 ---
 
