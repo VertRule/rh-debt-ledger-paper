@@ -22,6 +22,20 @@ Using partial summation (01_PARTIAL_SUMMATION.md), we have:
 
 where Δ_pp(x) is the prime-power correction arising from ψ(x) − θ(x).
 
+### Prime-Power Correction (Explicit Definition)
+
+The prime-power correction term is defined explicitly in [04_DELTA_PP_DEFINITION.md](04_DELTA_PP_DEFINITION.md):
+
+```math
+R_{pp}(x) := \psi(x) - \theta(x) = \sum_{k \geq 2} \sum_{p^k \leq x} \log p
+```
+
+```math
+\Delta_{pp}(x) := \frac{R_{pp}(x)}{\log x}
+```
+
+**Note:** Δ_pp(x) is now explicit but remains unbounded in this packet. Bounding it requires estimating contributions from prime powers p², p³, ... (debt item below).
+
 ## Step 2: Comparison with Li(x)
 
 The logarithmic integral satisfies:
@@ -60,6 +74,7 @@ The specific form of the kernel is 1/(t (log t)²), inherited from partial summa
 
 | Item | Status |
 |------|--------|
+| Definition of Δ_pp(x) | **PAID** — see [04_DELTA_PP_DEFINITION.md](04_DELTA_PP_DEFINITION.md) |
 | Bound on Δ_pp(x) | **UNPAID** — magnitude depends on θ(x^{1/2}) + θ(x^{1/3}) + ... |
 | O(1) constant | **UNPAID** — boundary terms at t=2 not evaluated |
 | Threshold t_0 | **UNPAID** — input bound E(t) may only hold for t ≥ t_0 |
