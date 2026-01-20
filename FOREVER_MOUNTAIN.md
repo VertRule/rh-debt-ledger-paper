@@ -15,7 +15,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 - Honesty ledger enforced (`CONTRIBUTION_LEDGER.md`)
 - Governance drill recorded (block-on-fail, unblock-on-revert)
 
-## Ladder (R0 → R6)
+## Ladder (R0 → R7)
 
 | Rung | Definition | Status |
 |------|------------|--------|
@@ -26,6 +26,7 @@ This repo cannot pay this debt computationally. It requires an external proof ar
 | R4 | Transfer derivation (ψ → π−Li) | Done (scaffold) |
 | R5 | Error-bound source contract (external obligation) | Done |
 | R6 | Instantiation record (bind R5 source into R4) | Done |
+| R7 | Instantiated bound statement (tamper-evident) | Done |
 
 ### R3 target: classical zero-free region bound
 
@@ -94,6 +95,24 @@ R6 binds a specific R5 source into the R4 transfer template.
 - Binding is a ledger artifact, not a proof
 
 **Verification:** R6 packet integrity is checked by `VERIFY_R6_INSTANTIATION.sh`.
+
+### R7: Instantiated Bound Statement
+
+R7 provides the fully instantiated bound for |π(x) − Li(x)| with all terms explicit.
+
+**Index:** [proof_artifacts/R7_BOUND_STATEMENT/00_INDEX.md](proof_artifacts/R7_BOUND_STATEMENT/00_INDEX.md)
+
+**Structure:**
+- Main bound with E(t), Δ_pp(x), C_boundary, R_{t₀}(x) all explicit
+- Equation inventory (6 canonical equations)
+- Hash check for tamper detection
+
+**Non-claims:**
+- No RH claim
+- No new analytic bounds
+- Constants/thresholds remain explicit debt
+
+**Verification:** R7 packet integrity is checked by `VERIFY_R7_BOUND_STATEMENT.sh`.
 
 ## We do not claim
 
