@@ -27,14 +27,27 @@ fi
 BACKEND="none"
 BACKEND_VERSION="TBD"
 
+# Check for oqsprovider module in known locations
+OQS_MODULE_PATHS="${OPENSSL_MODULES:-} $HOME/.local/lib/ossl-modules /opt/homebrew/lib/ossl-modules /usr/local/lib/ossl-modules"
+
 # Check openssl with oqsprovider first
 if [ "$OPENSSL_STATUS" = "present" ]; then
-    if openssl list -providers 2>/dev/null | grep -q oqsprovider; then
+    OQS_FOUND=""
+    for modpath in $OQS_MODULE_PATHS; do
+        if [ -d "$modpath" ] && { [ -f "$modpath/oqsprovider.dylib" ] || [ -f "$modpath/oqsprovider.so" ]; }; then
+            # Try to load the provider using OPENSSL_MODULES env var
+            if OPENSSL_MODULES="$modpath" openssl list -providers -provider oqsprovider 2>/dev/null | grep -q oqsprovider; then
+                OQS_FOUND="$modpath"
+                break
+            fi
+        fi
+    done
+    if [ -n "$OQS_FOUND" ]; then
         BACKEND="openssl-oqsprovider"
         # Get openssl version
         OPENSSL_VER=$(openssl version 2>/dev/null | head -1 || echo "unknown")
-        # Try to get oqsprovider version from provider list
-        PROVIDER_VER=$(openssl list -providers 2>/dev/null | grep -A1 oqsprovider | grep version | sed 's/.*version: //' | tr -d ' ' || echo "unknown")
+        # Get oqsprovider version
+        PROVIDER_VER=$(OPENSSL_MODULES="$OQS_FOUND" openssl list -providers -provider oqsprovider 2>/dev/null | grep -A2 oqsprovider | grep version | sed 's/.*version: //' | tr -d ' ' || echo "unknown")
         if [ -n "$PROVIDER_VER" ] && [ "$PROVIDER_VER" != "unknown" ]; then
             BACKEND_VERSION="openssl:${OPENSSL_VER};oqsprovider:${PROVIDER_VER}"
         else
