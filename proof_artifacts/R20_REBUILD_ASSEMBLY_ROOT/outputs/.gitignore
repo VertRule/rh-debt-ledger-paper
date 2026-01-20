@@ -1,0 +1,3 @@
+# Ignore generated rebuild outputs (regenerated on each verification)
+R20_*.txt
+R20_*.sha256
