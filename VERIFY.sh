@@ -24,7 +24,7 @@ echo "=== RH Debt Ledger Paper Verification ==="
 echo ""
 
 # 1) Check git clean status
-echo "[1/16] Checking git status..."
+echo "[1/17] Checking git status..."
 if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
     warn "Working tree is dirty (uncommitted changes present)"
     DIRTY_TREE=1
@@ -40,7 +40,7 @@ else
 fi
 
 # 2) Reject Co-Authored-By trailers in commits after cutoff
-echo "[2/16] Checking for Co-Authored-By trailers..."
+echo "[2/17] Checking for Co-Authored-By trailers..."
 COAUTHOR_CUTOFF="92cfc2d"
 COAUTHOR_MATCHES=$(git log "${COAUTHOR_CUTOFF}..HEAD" --format=%B 2>/dev/null | grep -n "^Co-Authored-By:" || true)
 if [ -n "$COAUTHOR_MATCHES" ]; then
@@ -51,7 +51,7 @@ else
 fi
 
 # 3) Verify remote URL (accept SSH or HTTPS)
-echo "[3/16] Checking remote URL..."
+echo "[3/17] Checking remote URL..."
 ACTUAL_REMOTE=$(git remote get-url origin 2>/dev/null || echo "")
 if [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_SSH" ] || [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_HTTPS" ]; then
     echo "  OK: $ACTUAL_REMOTE"
@@ -60,7 +60,7 @@ else
 fi
 
 # 4) Verify local HEAD equals origin/main
-echo "[4/16] Fetching and comparing with origin/main..."
+echo "[4/17] Fetching and comparing with origin/main..."
 git fetch origin main --quiet 2>/dev/null || warn "Could not fetch origin/main"
 LOCAL_HEAD=$(git rev-parse HEAD 2>/dev/null || echo "")
 REMOTE_HEAD=$(git rev-parse origin/main 2>/dev/null || echo "")
@@ -73,7 +73,7 @@ else
 fi
 
 # 5) Verify required tracked files exist
-echo "[5/16] Checking required files..."
+echo "[5/17] Checking required files..."
 REQUIRED_FILES="README.md SUBMISSION.md EXHIBITS.md exhibits/canonical_run.json na0_rh_debt_ledger_draft.md .gitignore"
 for f in $REQUIRED_FILES; do
     if [ ! -f "$f" ]; then
@@ -83,7 +83,7 @@ done
 echo "  OK: All required files present"
 
 # 6) Verify forbidden artifacts are NOT tracked
-echo "[6/16] Checking forbidden artifacts are not tracked..."
+echo "[6/17] Checking forbidden artifacts are not tracked..."
 FORBIDDEN_PATTERNS="paper_runs/ runs/ analysis/ proofs/ series.csv zeros_used.csv"
 TRACKED_FILES=$(git ls-files 2>/dev/null)
 for pattern in $FORBIDDEN_PATTERNS; do
@@ -95,7 +95,7 @@ echo "  OK: No forbidden artifacts tracked"
 
 # 7) Paranoia grep for machine-specific paths
 # Note: patterns are split to avoid self-matching
-echo "[7/16] Running redaction scan..."
+echo "[7/17] Running redaction scan..."
 USERS_PATTERN="/Us""ers/"
 MACBOOK_PATTERN="Davids""-MacBook"
 MATCHES=$(git ls-files | xargs grep -l -i "$USERS_PATTERN" 2>/dev/null | grep -v 'VERIFY' || true)
@@ -111,7 +111,7 @@ fi
 echo "  OK: No machine-specific paths found"
 
 # 8) Run exhibit digest verification (soft dependency)
-echo "[8/16] Running exhibit digest verification..."
+echo "[8/17] Running exhibit digest verification..."
 if [ -x "./VERIFY_EXHIBIT.sh" ]; then
     set +e
     EXHIBIT_OUTPUT=$(./VERIFY_EXHIBIT.sh 2>&1)
@@ -130,7 +130,7 @@ else
 fi
 
 # 9) Run verify-all-exhibits (soft dependency)
-echo "[9/16] Running verify-all-exhibits..."
+echo "[9/17] Running verify-all-exhibits..."
 if [ -x "./VERIFY_ALL_EXHIBITS.sh" ]; then
     set +e
     ALL_EXHIBITS_OUTPUT=$(./VERIFY_ALL_EXHIBITS.sh 2>&1)
@@ -151,7 +151,7 @@ else
 fi
 
 # 10) Verify proof artifact integrity (soft dependency)
-echo "[10/16] Verifying proof artifacts..."
+echo "[10/17] Verifying proof artifacts..."
 if [ -x "./VERIFY_ALL_PROOF_ARTIFACTS.sh" ]; then
     set +e
     PROOF_ARTIFACTS_OUTPUT=$(./VERIFY_ALL_PROOF_ARTIFACTS.sh 2>&1)
@@ -168,7 +168,7 @@ else
 fi
 
 # 11) Verify contribution ledger integrity
-echo "[11/16] Checking contribution ledger..."
+echo "[11/17] Checking contribution ledger..."
 LEDGER_FILE=".github/CONTRIBUTION_LEDGER.md"
 LEDGER_ERRORS=0
 if [ ! -f "$LEDGER_FILE" ]; then
@@ -189,7 +189,7 @@ if [ "$LEDGER_ERRORS" -eq 0 ]; then
 fi
 
 # 12) Verify R4 transfer packet integrity (soft dependency)
-echo "[12/16] Verifying R4 transfer packet..."
+echo "[12/17] Verifying R4 transfer packet..."
 if [ -x "./VERIFY_R4_TRANSFER.sh" ]; then
     set +e
     R4_OUTPUT=$(./VERIFY_R4_TRANSFER.sh 2>&1)
@@ -206,7 +206,7 @@ else
 fi
 
 # 13) Verify R5 error-bound source integrity (soft dependency)
-echo "[13/16] Verifying R5 error-bound source..."
+echo "[13/17] Verifying R5 error-bound source..."
 if [ -x "./VERIFY_R5_ERROR_BOUND.sh" ]; then
     set +e
     R5_OUTPUT=$(./VERIFY_R5_ERROR_BOUND.sh 2>&1)
@@ -223,7 +223,7 @@ else
 fi
 
 # 14) Verify R6 instantiation record integrity (soft dependency)
-echo "[14/16] Verifying R6 instantiation record..."
+echo "[14/17] Verifying R6 instantiation record..."
 if [ -x "./VERIFY_R6_INSTANTIATION.sh" ]; then
     set +e
     R6_OUTPUT=$(./VERIFY_R6_INSTANTIATION.sh 2>&1)
@@ -240,7 +240,7 @@ else
 fi
 
 # 15) Verify R7 bound statement integrity (soft dependency)
-echo "[15/16] Verifying R7 bound statement..."
+echo "[15/17] Verifying R7 bound statement..."
 if [ -x "./VERIFY_R7_BOUND_STATEMENT.sh" ]; then
     set +e
     R7_OUTPUT=$(./VERIFY_R7_BOUND_STATEMENT.sh 2>&1)
@@ -257,7 +257,7 @@ else
 fi
 
 # 16) Verify R8 comparison run integrity (soft dependency)
-echo "[16/16] Verifying R8 comparison run..."
+echo "[16/17] Verifying R8 comparison run..."
 if [ -x "./VERIFY_R8_COMPARISON.sh" ]; then
     set +e
     R8_OUTPUT=$(./VERIFY_R8_COMPARISON.sh 2>&1)
@@ -271,6 +271,23 @@ if [ -x "./VERIFY_R8_COMPARISON.sh" ]; then
     fi
 else
     echo "  SKIP: VERIFY_R8_COMPARISON.sh not found or not executable"
+fi
+
+# 17) Verify R9 no-surprise assembly (soft dependency)
+echo "[17/17] Verifying R9 no-surprise assembly..."
+if [ -x "./VERIFY_R9_NO_SURPRISE.sh" ]; then
+    set +e
+    R9_OUTPUT=$(./VERIFY_R9_NO_SURPRISE.sh 2>&1)
+    R9_EXIT=$?
+    set -e
+    if [ "$R9_EXIT" -eq 0 ]; then
+        echo "  OK: R9 no-surprise assembly verified"
+    else
+        echo "$R9_OUTPUT"
+        error "R9 no-surprise assembly verification failed"
+    fi
+else
+    echo "  SKIP: VERIFY_R9_NO_SURPRISE.sh not found or not executable"
 fi
 
 echo ""
