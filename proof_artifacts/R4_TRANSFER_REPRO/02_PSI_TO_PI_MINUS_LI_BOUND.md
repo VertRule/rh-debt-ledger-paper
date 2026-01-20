@@ -44,7 +44,15 @@ The logarithmic integral satisfies:
 \text{Li}(x) = \frac{x}{\log x} + \int_2^x \frac{t}{t (\log t)^2} \, dt + O(1)
 ```
 
-(The O(1) absorbs boundary terms at t=2.)
+### Boundary Terms (t=2)
+
+The boundary terms at t=2 are made explicit in [05_BOUNDARY_TERMS_RECEIPT.md](05_BOUNDARY_TERMS_RECEIPT.md):
+
+```math
+C_{\text{boundary}} := -\frac{\psi(2)}{\log 2} + \frac{2}{\log 2} = -1 + \frac{2}{\log 2}
+```
+
+This replaces the "O(1)" with an explicit constant (kept symbolic).
 
 ## Step 3: Difference Bound
 
@@ -76,7 +84,7 @@ The specific form of the kernel is 1/(t (log t)²), inherited from partial summa
 |------|--------|
 | Definition of Δ_pp(x) | **PAID** — see [04_DELTA_PP_DEFINITION.md](04_DELTA_PP_DEFINITION.md) |
 | Bound on Δ_pp(x) | **UNPAID** — magnitude depends on θ(x^{1/2}) + θ(x^{1/3}) + ... |
-| O(1) constant | **UNPAID** — boundary terms at t=2 not evaluated |
+| O(1) constant (C_boundary) | **PAID** — see [05_BOUNDARY_TERMS_RECEIPT.md](05_BOUNDARY_TERMS_RECEIPT.md) |
 | Threshold t_0 | **UNPAID** — input bound E(t) may only hold for t ≥ t_0 |
 
 ## Non-Claims
