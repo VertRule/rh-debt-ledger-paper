@@ -35,11 +35,11 @@ Actual endorsement tokens are stored in `operator_private/` which is gitignored:
 
 ## Verification
 
-`VERIFY_R31_NO_TOKEN_LEAK.sh` scans the repository for:
-- arXiv endorsement URLs (`arxiv.org/auth/endorse`)
-- Endorsement code patterns (`endorse?x=`)
+`VERIFY_R31_NO_TOKEN_LEAK.sh` scans the entire repository for arXiv endorsement URLs and token patterns. If any are found in tracked files, verification fails.
 
 This verifier is wired into `VERIFY.sh` as step 25/25.
+
+**WARNING:** Do not copy endorsement links or codes into any tracked file; handle in `operator_private/` only.
 
 ## Related Rungs
 
