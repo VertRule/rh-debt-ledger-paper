@@ -22,6 +22,25 @@ Expected output: `=== VERIFICATION PASSED ===`
 **What this verifies:** Mechanical integrity only (file structure, digests, governance compliance). Does not reproduce proofs. Makes no claim regarding the Riemann Hypothesis.
 
 R4 packet integrity is checked by `VERIFY_R4_TRANSFER.sh`.
+R5 packet integrity is checked by `VERIFY_R5_ERROR_BOUND.sh`.
+
+## Verification checkpoints (ladder rungs)
+
+| Tag | Description |
+|-----|-------------|
+| `r4-transfer-complete` | R4 Transfer Packet: ψ→π−Li derivation scaffold with explicit debt |
+| `r5-error-bound-cited` | R5 Error-Bound Source: admissibility contract + source menu (2 CITED, 2 DONE) |
+
+To verify any checkpoint without raw URLs:
+
+```
+gh release download r5-error-bound-cited --repo VertRule/rh-debt-ledger-paper -p '*verify-surface.zip'
+unzip r5-error-bound-cited-verify-surface.zip
+cd r5-error-bound-cited/repo
+VR_STRICT=1 ./VERIFY.sh
+```
+
+Replace `r5-error-bound-cited` with any tag above to verify that checkpoint.
 
 ---
 
