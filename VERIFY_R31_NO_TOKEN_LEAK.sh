@@ -10,9 +10,9 @@ set -e
 
 ERRORS=0
 
-# Get list of tracked files (excluding verifier, gitignored, and endorsement documentation)
-# R27 and R31 documentation explain token format but contain no actual tokens (uses <CODE> placeholder)
-TRACKED_FILES=$(git ls-files 2>/dev/null | grep -v 'VERIFY_R31_NO_TOKEN_LEAK.sh' | grep -v 'operator_private/' | grep -v 'R27_ENDORSEMENT_PATH/' | grep -v 'R31_ENDORSEMENT_OUTREACH/' || true)
+# Get list of tracked files (excluding only this verifier and gitignored operator_private)
+# All other files are scanned - R27/R31 docs now use neutral placeholders
+TRACKED_FILES=$(git ls-files 2>/dev/null | grep -v 'VERIFY_R31_NO_TOKEN_LEAK.sh' | grep -v 'operator_private/' || true)
 
 if [ -z "$TRACKED_FILES" ]; then
     echo "No tracked files to scan"

@@ -32,11 +32,11 @@ This ensures tokens travel only via email, not in templates.
 
 ## Mechanical Enforcement
 
-`VERIFY_R31_NO_TOKEN_LEAK.sh` fails if it finds:
-- `arxiv.org/auth/endorse` — endorsement URLs
-- `endorse?x=` — token query parameters
+`VERIFY_R31_NO_TOKEN_LEAK.sh` scans the entire repository for arXiv endorsement URLs and token query parameters. If any are found in tracked files, verification fails.
 
 This check runs as VERIFY.sh step 25/25.
+
+**WARNING:** Do not copy endorsement links or codes into any tracked file; handle in `operator_private/` only.
 
 ## What Endorsement Is NOT
 

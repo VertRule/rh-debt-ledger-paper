@@ -18,9 +18,11 @@ Independent authors submitting to math categories typically need manual endorsem
 ## Step 2: Endorsement Request Email (Token Handling)
 
 arXiv sends an email containing:
-- A one-time endorsement URL: `https://arxiv.org/auth/endorse?x=<CODE>`
-- A fallback page: `http://arxiv.org/auth/endorse.php`
-- An endorsement code (5–8 characters)
+- A one-time endorsement URL: `<ARXIV_ENDORSEMENT_LINK_FROM_EMAIL>`
+- A fallback page (HTTP variant of the above)
+- A short alphanumeric code: `<ENDORSEMENT_CODE_FROM_EMAIL>`
+
+**WARNING:** Do not copy the endorsement link or code into public artifacts; handle in `operator_private/` only.
 
 ### Safety Rules
 
@@ -50,7 +52,7 @@ Endorsers must have:
 1. Open papers you cite in your bibliography
 2. Go to each paper's arXiv abstract page
 3. Use arXiv's endorser check:
-   - Visit: https://arxiv.org/auth/endorse-lookup
+   - Visit the arXiv endorser lookup page (search "arxiv endorser lookup")
    - Enter author names to check endorser status
 4. Prioritize authors whose work is closest to your topic
 
