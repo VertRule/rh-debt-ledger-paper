@@ -19,7 +19,7 @@ REQUIRED_FILES=(
     "$R4_DIR/evidence/EVIDENCE.md"
 )
 
-echo "[1/4] Checking required files..."
+echo "[1/5] Checking required files..."
 for f in "${REQUIRED_FILES[@]}"; do
     if [[ ! -f "$f" ]]; then
         echo "  FAIL: Missing $f"
@@ -31,7 +31,7 @@ if [[ $FAIL -eq 0 ]]; then
 fi
 
 # Check each file contains Concept-Tag
-echo "[2/4] Checking Concept-Tag markers..."
+echo "[2/5] Checking Concept-Tag markers..."
 for f in "${REQUIRED_FILES[@]}"; do
     if [[ -f "$f" ]]; then
         if ! grep -q "Concept-Tag:" "$f"; then
@@ -45,7 +45,7 @@ if [[ $FAIL -eq 0 ]]; then
 fi
 
 # Check 01 and 02 contain math blocks
-echo "[3/4] Checking math blocks in derivation files..."
+echo "[3/5] Checking math blocks in derivation files..."
 for f in "$R4_DIR/01_PARTIAL_SUMMATION.md" "$R4_DIR/02_PSI_TO_PI_MINUS_LI_BOUND.md"; do
     if [[ -f "$f" ]]; then
         if ! grep -qE '```math|^\$\$|\$[^$]+\$' "$f"; then
@@ -58,21 +58,40 @@ if [[ $FAIL -eq 0 ]]; then
     echo "  OK: Derivation files contain math blocks"
 fi
 
-# Check worklist has TODO items
-echo "[4/4] Checking worklist structure..."
+# Check worklist structure
+echo "[4/5] Checking worklist structure..."
 WORKLIST="$R4_DIR/R4_WORKLIST.md"
 if [[ -f "$WORKLIST" ]]; then
     if ! grep -q "| ID |" "$WORKLIST"; then
         echo "  FAIL: $WORKLIST missing table header"
         FAIL=1
     fi
-    if ! grep -q "TODO" "$WORKLIST"; then
-        echo "  FAIL: $WORKLIST has no TODO items"
+    if ! grep -qE "DONE|CITED|TODO" "$WORKLIST"; then
+        echo "  FAIL: $WORKLIST has no status entries"
         FAIL=1
     fi
 fi
 if [[ $FAIL -eq 0 ]]; then
     echo "  OK: Worklist has proper structure"
+fi
+
+# Check equation inventory hash
+echo "[5/5] Checking equation inventory hash..."
+INVENTORY="$R4_DIR/07_EQUATION_INVENTORY.md"
+EXPECTED_HASH="$R4_DIR/07_EQUATION_INVENTORY.sha256"
+if [[ -f "$INVENTORY" ]] && [[ -f "$EXPECTED_HASH" ]]; then
+    EXPECTED=$(cat "$EXPECTED_HASH" | tr -d ' \n')
+    ACTUAL=$(shasum -a 256 "$INVENTORY" | awk '{print $1}')
+    if [[ "$EXPECTED" != "$ACTUAL" ]]; then
+        echo "  FAIL: R4 equation inventory hash mismatch (math changed without updating inventory)"
+        echo "  Expected: $EXPECTED"
+        echo "  Actual:   $ACTUAL"
+        FAIL=1
+    else
+        echo "  OK: Equation inventory hash verified"
+    fi
+else
+    echo "  SKIP: Equation inventory or hash file not found"
 fi
 
 echo ""
