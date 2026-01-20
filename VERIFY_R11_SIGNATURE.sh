@@ -1,6 +1,7 @@
 #!/bin/sh
 # VERIFY_R11_SIGNATURE.sh - Verify R11 optional signature layer
 # Checks all signatures present; passes without any
+# R13: requires ledger entry for each signature
 set -e
 
 R11_DIR="proof_artifacts/R11_SIGNATURE"
@@ -8,6 +9,7 @@ R10_RECEIPT="proof_artifacts/R10_ASSEMBLY_RECEIPT/R10_RECEIPT.json"
 ASSEMBLY_ROOT_TXT="$R11_DIR/R10_ASSEMBLY_ROOT.txt"
 ASSEMBLY_ROOT_SIG="$R11_DIR/R10_ASSEMBLY_ROOT.sig"
 SIGS_DIR="$R11_DIR/sigs"
+SIGNERS_LEDGER="$R11_DIR/SIGNERS.md"
 ERRORS=0
 SIG_COUNT=0
 
@@ -36,6 +38,17 @@ if [ -d "$SIGS_DIR" ]; then
         # Check if glob matched any files
         [ -e "$sig" ] || continue
 
+        # R13: Extract signer_id from filename and check ledger
+        SIGNER_ID=$(basename "$sig" .asc)
+        if [ -f "$SIGNERS_LEDGER" ]; then
+            if ! grep -q "| *$SIGNER_ID *|" "$SIGNERS_LEDGER"; then
+                error "Signer '$SIGNER_ID' not found in SIGNERS.md ledger"
+            fi
+        else
+            error "SIGNERS.md ledger missing but signature exists: $sig"
+        fi
+
+        # Verify signature with GPG
         if command -v gpg >/dev/null 2>&1; then
             if gpg --verify "$sig" "$ASSEMBLY_ROOT_TXT" 2>/dev/null; then
                 SIG_COUNT=$((SIG_COUNT + 1))
