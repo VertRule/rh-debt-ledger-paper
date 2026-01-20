@@ -53,6 +53,13 @@ This script:
 
 **Note:** This is optional tooling, not part of `VERIFY.sh`. Requires latexmk or pdflatex.
 
+## Published PDF
+
+- `main.pdf` — Pre-built PDF produced by the deterministic build script (R24)
+- `main.pdf.sha256` — Authoritative SHA-256 digest
+
+The digest is verified by `VERIFY.sh` step 24/24 (R25). If you rebuild and get a different digest, compare toolchain versions in `proof_artifacts/R24_PAPER_BUILD/outputs/build.log`.
+
 ## Structure
 
 | File | Content |

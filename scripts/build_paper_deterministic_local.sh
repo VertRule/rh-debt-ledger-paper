@@ -79,42 +79,46 @@ if command -v kpsewhich >/dev/null 2>&1; then
 fi
 
 # Function to run build
+# Args: run_name
+# Output: prints output directory path
 run_build() {
-    local run_name="$1"
-    local out_dir="$WORKDIR/$run_name"
-    mkdir -p "$out_dir"
+    _run_name="$1"
+    _out_dir="$WORKDIR/$_run_name"
+    mkdir -p "$_out_dir"
 
-    echo "Running build ($run_name)..."
+    echo "Running build ($_run_name)..." >&2
 
     if [ "$HAS_LATEXMK" -eq 1 ]; then
         # latexmk handles multiple passes automatically
         (cd "$PAPER_DIR" && latexmk -pdf -interaction=nonstopmode -halt-on-error \
-            -output-directory="$out_dir" main.tex) > "$out_dir/build.log" 2>&1 || true
+            -output-directory="$_out_dir" main.tex) > "$_out_dir/build.log" 2>&1 || true
     else
         # Manual pdflatex: run twice for references
         (cd "$PAPER_DIR" && pdflatex -interaction=nonstopmode -halt-on-error \
-            -output-directory="$out_dir" main.tex) > "$out_dir/build.log" 2>&1 || true
+            -output-directory="$_out_dir" main.tex) > "$_out_dir/build.log" 2>&1 || true
         (cd "$PAPER_DIR" && pdflatex -interaction=nonstopmode -halt-on-error \
-            -output-directory="$out_dir" main.tex) >> "$out_dir/build.log" 2>&1 || true
+            -output-directory="$_out_dir" main.tex) >> "$_out_dir/build.log" 2>&1 || true
     fi
 
     # Check if PDF was created
-    if [ ! -f "$out_dir/main.pdf" ]; then
-        echo "ERROR: Build failed ($run_name). See log:" >&2
-        cat "$out_dir/build.log" >&2
+    if [ ! -f "$_out_dir/main.pdf" ]; then
+        echo "ERROR: Build failed ($_run_name). See log:" >&2
+        cat "$_out_dir/build.log" >&2
         exit 1
     fi
 
-    echo "$out_dir"
+    echo "$_out_dir"
 }
 
 # Compute SHA256
+# Args: file_path
+# Output: prints sha256 hash
 compute_sha256() {
-    local file="$1"
+    _file="$1"
     if command -v sha256sum >/dev/null 2>&1; then
-        sha256sum "$file" | awk '{print $1}'
+        sha256sum "$_file" | awk '{print $1}'
     elif command -v shasum >/dev/null 2>&1; then
-        shasum -a 256 "$file" | awk '{print $1}'
+        shasum -a 256 "$_file" | awk '{print $1}'
     else
         echo "ERROR: No sha256 tool found" >&2
         exit 1

@@ -24,7 +24,7 @@ echo "=== RH Debt Ledger Paper Verification ==="
 echo ""
 
 # 1) Check git clean status
-echo "[1/23] Checking git status..."
+echo "[1/24] Checking git status..."
 if ! git diff --quiet 2>/dev/null || ! git diff --cached --quiet 2>/dev/null; then
     warn "Working tree is dirty (uncommitted changes present)"
     DIRTY_TREE=1
@@ -40,7 +40,7 @@ else
 fi
 
 # 2) Reject Co-Authored-By trailers in commits after cutoff
-echo "[2/23] Checking for Co-Authored-By trailers..."
+echo "[2/24] Checking for Co-Authored-By trailers..."
 COAUTHOR_CUTOFF="92cfc2d"
 COAUTHOR_MATCHES=$(git log "${COAUTHOR_CUTOFF}..HEAD" --format=%B 2>/dev/null | grep -n "^Co-Authored-By:" || true)
 if [ -n "$COAUTHOR_MATCHES" ]; then
@@ -51,7 +51,7 @@ else
 fi
 
 # 3) Verify remote URL (accept SSH or HTTPS)
-echo "[3/23] Checking remote URL..."
+echo "[3/24] Checking remote URL..."
 ACTUAL_REMOTE=$(git remote get-url origin 2>/dev/null || echo "")
 if [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_SSH" ] || [ "$ACTUAL_REMOTE" = "$EXPECTED_REMOTE_HTTPS" ]; then
     echo "  OK: $ACTUAL_REMOTE"
@@ -60,7 +60,7 @@ else
 fi
 
 # 4) Verify local HEAD equals origin/main
-echo "[4/23] Fetching and comparing with origin/main..."
+echo "[4/24] Fetching and comparing with origin/main..."
 git fetch origin main --quiet 2>/dev/null || warn "Could not fetch origin/main"
 LOCAL_HEAD=$(git rev-parse HEAD 2>/dev/null || echo "")
 REMOTE_HEAD=$(git rev-parse origin/main 2>/dev/null || echo "")
@@ -73,7 +73,7 @@ else
 fi
 
 # 5) Verify required tracked files exist
-echo "[5/23] Checking required files..."
+echo "[5/24] Checking required files..."
 REQUIRED_FILES="README.md SUBMISSION.md EXHIBITS.md exhibits/canonical_run.json na0_rh_debt_ledger_draft.md .gitignore"
 for f in $REQUIRED_FILES; do
     if [ ! -f "$f" ]; then
@@ -83,7 +83,7 @@ done
 echo "  OK: All required files present"
 
 # 6) Verify forbidden artifacts are NOT tracked
-echo "[6/23] Checking forbidden artifacts are not tracked..."
+echo "[6/24] Checking forbidden artifacts are not tracked..."
 FORBIDDEN_PATTERNS="paper_runs/ runs/ analysis/ proofs/ series.csv zeros_used.csv"
 TRACKED_FILES=$(git ls-files 2>/dev/null)
 for pattern in $FORBIDDEN_PATTERNS; do
@@ -95,7 +95,7 @@ echo "  OK: No forbidden artifacts tracked"
 
 # 7) Paranoia grep for machine-specific paths
 # Note: patterns are split to avoid self-matching
-echo "[7/23] Running redaction scan..."
+echo "[7/24] Running redaction scan..."
 USERS_PATTERN="/Us""ers/"
 MACBOOK_PATTERN="Davids""-MacBook"
 MATCHES=$(git ls-files | xargs grep -l -i "$USERS_PATTERN" 2>/dev/null | grep -v 'VERIFY' || true)
@@ -111,7 +111,7 @@ fi
 echo "  OK: No machine-specific paths found"
 
 # 8) Run exhibit digest verification (soft dependency)
-echo "[8/23] Running exhibit digest verification..."
+echo "[8/24] Running exhibit digest verification..."
 if [ -x "./VERIFY_EXHIBIT.sh" ]; then
     set +e
     EXHIBIT_OUTPUT=$(./VERIFY_EXHIBIT.sh 2>&1)
@@ -130,7 +130,7 @@ else
 fi
 
 # 9) Run verify-all-exhibits (soft dependency)
-echo "[9/23] Running verify-all-exhibits..."
+echo "[9/24] Running verify-all-exhibits..."
 if [ -x "./VERIFY_ALL_EXHIBITS.sh" ]; then
     set +e
     ALL_EXHIBITS_OUTPUT=$(./VERIFY_ALL_EXHIBITS.sh 2>&1)
@@ -151,7 +151,7 @@ else
 fi
 
 # 10) Verify proof artifact integrity (soft dependency)
-echo "[10/23] Verifying proof artifacts..."
+echo "[10/24] Verifying proof artifacts..."
 if [ -x "./VERIFY_ALL_PROOF_ARTIFACTS.sh" ]; then
     set +e
     PROOF_ARTIFACTS_OUTPUT=$(./VERIFY_ALL_PROOF_ARTIFACTS.sh 2>&1)
@@ -168,7 +168,7 @@ else
 fi
 
 # 11) Verify contribution ledger integrity
-echo "[11/23] Checking contribution ledger..."
+echo "[11/24] Checking contribution ledger..."
 LEDGER_FILE=".github/CONTRIBUTION_LEDGER.md"
 LEDGER_ERRORS=0
 if [ ! -f "$LEDGER_FILE" ]; then
@@ -189,7 +189,7 @@ if [ "$LEDGER_ERRORS" -eq 0 ]; then
 fi
 
 # 12) Verify R4 transfer packet integrity (soft dependency)
-echo "[12/23] Verifying R4 transfer packet..."
+echo "[12/24] Verifying R4 transfer packet..."
 if [ -x "./VERIFY_R4_TRANSFER.sh" ]; then
     set +e
     R4_OUTPUT=$(./VERIFY_R4_TRANSFER.sh 2>&1)
@@ -206,7 +206,7 @@ else
 fi
 
 # 13) Verify R5 error-bound source integrity (soft dependency)
-echo "[13/23] Verifying R5 error-bound source..."
+echo "[13/24] Verifying R5 error-bound source..."
 if [ -x "./VERIFY_R5_ERROR_BOUND.sh" ]; then
     set +e
     R5_OUTPUT=$(./VERIFY_R5_ERROR_BOUND.sh 2>&1)
@@ -223,7 +223,7 @@ else
 fi
 
 # 14) Verify R6 instantiation record integrity (soft dependency)
-echo "[14/23] Verifying R6 instantiation record..."
+echo "[14/24] Verifying R6 instantiation record..."
 if [ -x "./VERIFY_R6_INSTANTIATION.sh" ]; then
     set +e
     R6_OUTPUT=$(./VERIFY_R6_INSTANTIATION.sh 2>&1)
@@ -240,7 +240,7 @@ else
 fi
 
 # 15) Verify R7 bound statement integrity (soft dependency)
-echo "[15/23] Verifying R7 bound statement..."
+echo "[15/24] Verifying R7 bound statement..."
 if [ -x "./VERIFY_R7_BOUND_STATEMENT.sh" ]; then
     set +e
     R7_OUTPUT=$(./VERIFY_R7_BOUND_STATEMENT.sh 2>&1)
@@ -257,7 +257,7 @@ else
 fi
 
 # 16) Verify R8 comparison run integrity (soft dependency)
-echo "[16/23] Verifying R8 comparison run..."
+echo "[16/24] Verifying R8 comparison run..."
 if [ -x "./VERIFY_R8_COMPARISON.sh" ]; then
     set +e
     R8_OUTPUT=$(./VERIFY_R8_COMPARISON.sh 2>&1)
@@ -274,7 +274,7 @@ else
 fi
 
 # 17) Verify R9 no-surprise assembly (soft dependency)
-echo "[17/23] Verifying R9 no-surprise assembly..."
+echo "[17/24] Verifying R9 no-surprise assembly..."
 if [ -x "./VERIFY_R9_NO_SURPRISE.sh" ]; then
     set +e
     R9_OUTPUT=$(./VERIFY_R9_NO_SURPRISE.sh 2>&1)
@@ -291,7 +291,7 @@ else
 fi
 
 # 18) Verify R10 assembly receipt (soft dependency)
-echo "[18/23] Verifying R10 assembly receipt..."
+echo "[18/24] Verifying R10 assembly receipt..."
 if [ -x "./VERIFY_R10_ASSEMBLY_RECEIPT.sh" ]; then
     set +e
     R10_OUTPUT=$(./VERIFY_R10_ASSEMBLY_RECEIPT.sh 2>&1)
@@ -308,7 +308,7 @@ else
 fi
 
 # 19) Verify R11 optional signature (soft dependency)
-echo "[19/23] Verifying R11 optional signature..."
+echo "[19/24] Verifying R11 optional signature..."
 if [ -x "./VERIFY_R11_SIGNATURE.sh" ]; then
     set +e
     R11_OUTPUT=$(./VERIFY_R11_SIGNATURE.sh 2>&1)
@@ -325,7 +325,7 @@ else
 fi
 
 # 20) Verify R14 key capture receipts (soft dependency)
-echo "[20/23] Verifying R14 key capture receipts..."
+echo "[20/24] Verifying R14 key capture receipts..."
 if [ -x "./VERIFY_R14_KEY_CAPTURE.sh" ]; then
     set +e
     R14_OUTPUT=$(./VERIFY_R14_KEY_CAPTURE.sh 2>&1)
@@ -342,7 +342,7 @@ else
 fi
 
 # 21) Verify R15 optional PQ signatures (soft dependency)
-echo "[21/23] Verifying R15 optional PQ signatures..."
+echo "[21/24] Verifying R15 optional PQ signatures..."
 if [ -x "./VERIFY_R15_PQ_SIGNATURE.sh" ]; then
     set +e
     R15_OUTPUT=$(./VERIFY_R15_PQ_SIGNATURE.sh 2>&1)
@@ -359,7 +359,7 @@ else
 fi
 
 # 22) Verify R16 PQ tooling receipt (soft dependency)
-echo "[22/23] Verifying R16 PQ tooling receipt..."
+echo "[22/24] Verifying R16 PQ tooling receipt..."
 if [ -x "./VERIFY_R16_PQ_TOOLING.sh" ]; then
     set +e
     R16_OUTPUT=$(./VERIFY_R16_PQ_TOOLING.sh 2>&1)
@@ -376,7 +376,7 @@ else
 fi
 
 # 23) Verify R20 assembly root rebuild (soft dependency)
-echo "[23/23] Verifying R20 assembly root rebuild..."
+echo "[23/24] Verifying R20 assembly root rebuild..."
 if [ -x "./VERIFY_R20_REBUILD_ASSEMBLY_ROOT.sh" ]; then
     set +e
     R20_OUTPUT=$(./VERIFY_R20_REBUILD_ASSEMBLY_ROOT.sh 2>&1)
@@ -390,6 +390,23 @@ if [ -x "./VERIFY_R20_REBUILD_ASSEMBLY_ROOT.sh" ]; then
     fi
 else
     echo "  SKIP: VERIFY_R20_REBUILD_ASSEMBLY_ROOT.sh not found or not executable"
+fi
+
+# 24) Verify R25 paper PDF digest
+echo "[24/24] Verifying R25 paper PDF digest..."
+if [ -x "./VERIFY_R25_PAPER_PDF_DIGEST.sh" ]; then
+    set +e
+    R25_OUTPUT=$(./VERIFY_R25_PAPER_PDF_DIGEST.sh 2>&1)
+    R25_EXIT=$?
+    set -e
+    if [ "$R25_EXIT" -eq 0 ]; then
+        echo "  OK: R25 paper PDF digest verified"
+    else
+        echo "$R25_OUTPUT"
+        error "R25 paper PDF digest verification failed"
+    fi
+else
+    echo "  SKIP: VERIFY_R25_PAPER_PDF_DIGEST.sh not found or not executable"
 fi
 
 echo ""
