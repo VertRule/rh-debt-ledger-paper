@@ -49,8 +49,22 @@ oqs-sign -a mldsa65 -k private.key -i R10_ASSEMBLY_ROOT.txt -o dave.mldsa.sig
 openssl pkeyutl -sign -inkey private.pem -in R10_ASSEMBLY_ROOT.txt -out dave.mldsa.sig
 ```
 
+## Public Key Placement
+
+Public keys for offline verification are stored in:
+
+```
+pubkeys/<signer_id>.<scheme>.pub
+```
+
+Examples:
+- `pubkeys/dave.mldsa.pub`
+- `pubkeys/dave.slhdsa.pub`
+
+Each PQ signature file MUST have a corresponding public key. Missing pubkey = verification failure.
+
 ## What Is NOT Stored
 
 - No private keys
-- No public keys
-- Only detached signatures
+
+Public keys may be stored under `pubkeys/` to enable offline verification.

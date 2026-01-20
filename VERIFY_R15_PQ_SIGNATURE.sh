@@ -67,12 +67,10 @@ for sig in "$SIGS_DIR"/*.sig; do
         fi
     fi
 
-    # Look for public key file
+    # Look for public key file (required for each sig)
     PUBKEY="$PUBKEYS_DIR/$signer_id.$scheme.pub"
     if [ ! -f "$PUBKEY" ]; then
-        # No public key available, skip verification
-        echo "  $signer_id ($scheme): skipped (no public key)"
-        SKIPPED=$((SKIPPED + 1))
+        error "Missing public key for PQ signature: $PUBKEY"
         continue
     fi
 
