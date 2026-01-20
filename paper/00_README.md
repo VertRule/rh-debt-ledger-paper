@@ -35,7 +35,23 @@ For reproducible PDF builds:
 
 - **Do not use `\today`** — it injects build-time dates and breaks determinism.
 - Use a fixed date string (e.g., `\date{January 2026}`).
-- Future: containerized builds will set `SOURCE_DATE_EPOCH` for PDF metadata.
+- Build uses `SOURCE_DATE_EPOCH` for PDF metadata timestamps.
+
+## Deterministic Local Build (Optional)
+
+```bash
+./scripts/build_paper_deterministic_local.sh
+```
+
+This script:
+- Sets `SOURCE_DATE_EPOCH`, `TZ=UTC`, `LC_ALL=C` for determinism
+- Builds the paper twice and verifies identical SHA-256
+- Outputs to `proof_artifacts/R24_PAPER_BUILD/outputs/`:
+  - `main.pdf` — Built PDF
+  - `main.pdf.sha256` — SHA-256 digest
+  - `build.log` — Toolchain versions + build output
+
+**Note:** This is optional tooling, not part of `VERIFY.sh`. Requires latexmk or pdflatex.
 
 ## Structure
 
