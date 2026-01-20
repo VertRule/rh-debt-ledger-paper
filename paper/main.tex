@@ -4,6 +4,14 @@
 \usepackage[T1]{fontenc}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{hyperref}
+
+% DETERMINISM: Suppress random PDF ID for reproducible builds
+% The PDF /ID is normally random; we suppress it entirely
+\ifx\pdfoutput\undefined\else
+  \ifnum\pdfoutput>0
+    \pdftrailerid{}
+  \fi
+\fi
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage{xcolor}
