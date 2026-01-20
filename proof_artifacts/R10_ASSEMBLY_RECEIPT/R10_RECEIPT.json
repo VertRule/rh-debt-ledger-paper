@@ -1,0 +1,23 @@
+{
+  "concept_tag": "RH-R10-ASSEMBLY-RECEIPT",
+  "assembly_root_sha256": "628ccb3e0ce096a694c3a63befe529debe70cb36985706ac27535115b3e09da9",
+  "r9_manifest_sha256": "747a8ab4ead7b0c8bc22ed2f644970b01e005707e5c48861d1396b7e85f5a514",
+  "r9_inputs": [
+    {"path": "proof_artifacts/R4_TRANSFER_REPRO/02_PSI_TO_PI_MINUS_LI_BOUND.md", "sha256": "fecd2932e6b3a86cf77bc5c4550b3d8e2126e1db3ec36e6f1774332b41011727"},
+    {"path": "proof_artifacts/R4_TRANSFER_REPRO/04_DELTA_PP_DEFINITION.md", "sha256": "d7e89f33647d1c2687309d63dad221904dc304b87a7526d18b1dbd7ad8c0d4fe"},
+    {"path": "proof_artifacts/R4_TRANSFER_REPRO/05_BOUNDARY_TERMS_RECEIPT.md", "sha256": "ceeac950bd95de5afeb96422f898f915090e39a04073cbbb3e7fd674fdccd1eb"},
+    {"path": "proof_artifacts/R4_TRANSFER_REPRO/06_THRESHOLD_REQUIREMENTS_RECEIPT.md", "sha256": "f7fc734c4b4db4faff8ce8160425db52092bd59463f72de38117794e9bf6eb26"},
+    {"path": "proof_artifacts/R4_TRANSFER_REPRO/07_EQUATION_INVENTORY.md", "sha256": "c15796d72147c6a5e6c1e5c224625a51168e41ff2da4ee98fff147acf59e1018"},
+    {"path": "proof_artifacts/R5_ERROR_BOUND_SOURCE/R5_MENU.md", "sha256": "d64066925bc9d5b07d40c87267dc3c3f24c64ab7aecc496fa178563605e27a8c"},
+    {"path": "proof_artifacts/R6_INSTANTIATION/R6_INSTANTIATION_RECORD.md", "sha256": "bf45a1b8fe7a07549173a47cc390aff13f00cdf32c5e4e259268f8ce7f53b649"},
+    {"path": "proof_artifacts/R7_BOUND_STATEMENT/R7_BOUND_STATEMENT.md", "sha256": "20b711ff99e21c41b6696d9aed608a098eda58efe0139b1689adb0d73cf3e9a0"},
+    {"path": "proof_artifacts/R7_BOUND_STATEMENT/R7_EQUATION_INVENTORY.md", "sha256": "9290d401bd2ad25f452e05808c5d939db1366f4a98fd7462fd77771c015fd9f0"},
+    {"path": "proof_artifacts/R8_COMPARISON_RUN/R8_GENERATOR.sh", "sha256": "d3377ab98a084ec1ccf541f04777f19129c4efc7ca15d6396d16e849ea6a0a17"}
+  ],
+  "outputs": [
+    {"path": "proof_artifacts/R7_BOUND_STATEMENT/R7_BOUND_STATEMENT.md", "sha256": "20b711ff99e21c41b6696d9aed608a098eda58efe0139b1689adb0d73cf3e9a0"},
+    {"path": "proof_artifacts/R7_BOUND_STATEMENT/R7_EQUATION_INVENTORY.md", "sha256": "9290d401bd2ad25f452e05808c5d939db1366f4a98fd7462fd77771c015fd9f0"},
+    {"path": "proof_artifacts/R7_BOUND_STATEMENT/R7_EQUATION_INVENTORY.sha256", "sha256": "21f33bce4e5b198e8759e85d4875e4cc90fff76f54366874e657ab384a6715cb"}
+  ],
+  "notes": "No proof reproduction. No RH claim."
+}
