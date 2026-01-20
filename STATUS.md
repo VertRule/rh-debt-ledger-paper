@@ -24,6 +24,13 @@ The paper skeleton documents the verification ladder and debt framing without cl
 | PQ tooling receipt | PAID | R16 | Backend + version captured |
 | Zenodo DOI | PAID | R28 | Concept DOI: 10.5281/zenodo.18318663 |
 
+## Distribution
+
+| Platform | Status | Notes |
+|----------|--------|-------|
+| Zenodo | LIVE | DOI: 10.5281/zenodo.18318663 |
+| arXiv | PENDING | Pending endorsement (tokens handled privately; no public links) |
+
 ## Remaining Obligations
 
 | Item | Status | Notes |
@@ -35,7 +42,7 @@ The paper skeleton documents the verification ladder and debt framing without cl
 
 ## Verification Commands
 
-**Baseline verification (24 steps):**
+**Baseline verification (25 steps):**
 ```bash
 VR_STRICT=1 ./VERIFY.sh
 ```
