@@ -1,0 +1,11 @@
+MANIFEST.txt
+bib.bib
+main.tex
+sections/01_introduction.tex
+sections/02_problem_statement.tex
+sections/03_ledger_model.tex
+sections/04_verification_ladder.tex
+sections/05_results_so_far.tex
+sections/06_limits_and_obligations.tex
+sections/07_reproducibility.tex
+sections/08_conclusion.tex
