@@ -24,16 +24,16 @@ Map of the verification ladder (R4–R28).
 | R21 | Release Zip Rebuild | Deterministic release zip from tag | — | `proof_artifacts/R21_RELEASE_ZIP_REBUILD/` | `VERIFY_R21_RELEASE_ZIP_REBUILD.sh` (local) | r21-release-zip-rebuild |
 | R22 | Rung Index | Canonical ladder map + status ledger | — | `RUNG_INDEX.md`, `STATUS.md` | — | r22-rung-index-status |
 | R23 | Paper Skeleton | LaTeX paper citing rungs | RH | `paper/` | — | r23-paper-skeleton |
-| R24 | Paper Build | Deterministic PDF build | — | `proof_artifacts/R24_PAPER_BUILD/` | — | r24-paper-build |
-| R25 | Paper Publish | Published PDF + sha256 digest | — | `paper/main.pdf` | VERIFY.sh step 24 | r25-publish-pdf |
+| R24 | Paper Build | Deterministic PDF build | — | `proof_artifacts/R24_PAPER_BUILD/` | — | r24-deterministic-paper-build-local |
+| R25 | Paper Publish | Published PDF + sha256 digest | — | `paper/main.pdf` | VERIFY.sh step 24 | r25-publish-paper-pdf |
 | R26 | arXiv Kit | Deterministic arXiv source bundle | — | `proof_artifacts/R26_ARXIV_SUBMISSION/` | — | r26-arxiv-submission-kit |
 | R27 | Endorsement Path | arXiv endorsement + alternate preprint docs | — | `proof_artifacts/R27_ENDORSEMENT_PATH/` | — | r27-endorsement-path |
-| R28 | Zenodo DOI | Citable DOI via Zenodo | Peer review | `proof_artifacts/R28_ZENODO_DOI/` | — | r28-zenodo-doi |
+| R28 | Zenodo DOI | Citable DOI via Zenodo | Peer review | `proof_artifacts/R28_ZENODO_DOI/` | — | r28-zenodo-doi, r28-zenodo-doi-record |
 
-## Verification Steps (23 total)
+## Verification Steps (24 total)
 
 Steps 1–11: Git status, remote, required files, forbidden artifacts, redaction, exhibits, proof artifacts, contribution ledger
-Steps 12–23: R4, R5, R6, R7, R8, R9, R10, R11, R14, R15, R16, R20
+Steps 12–24: R4, R5, R6, R7, R8, R9, R10, R11, R14, R15, R16, R20, R25
 
 ## Notes
 
