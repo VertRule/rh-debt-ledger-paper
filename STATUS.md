@@ -4,7 +4,7 @@
 
 ## Current Rung
 
-**R23** — Paper Skeleton
+**R28** — Zenodo DOI Record
 
 ## Paper Draft
 
@@ -22,6 +22,7 @@ The paper skeleton documents the verification ladder and debt framing without cl
 | Release reproducibility | PAID | R21 | Deterministic zip rebuild from git tag |
 | Key fingerprint capture | PAID | R14 | GPG fingerprint recorded |
 | PQ tooling receipt | PAID | R16 | Backend + version captured |
+| Zenodo DOI | PAID | R28 | Concept DOI: 10.5281/zenodo.18318663 |
 
 ## Remaining Obligations
 
