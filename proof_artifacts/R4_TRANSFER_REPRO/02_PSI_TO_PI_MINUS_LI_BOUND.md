@@ -54,6 +54,16 @@ C_{\text{boundary}} := -\frac{\psi(2)}{\log 2} + \frac{2}{\log 2} = -1 + \frac{2
 
 This replaces the "O(1)" with an explicit constant (kept symbolic).
 
+### Threshold Contract (t₀)
+
+The input bound E(t) may only hold for t ≥ t₀. The threshold requirements are made explicit in [06_THRESHOLD_REQUIREMENTS_RECEIPT.md](06_THRESHOLD_REQUIREMENTS_RECEIPT.md):
+
+```math
+R_{t_0}(x) := \int_2^{t_0} \frac{|\psi(t) - t|}{t (\log t)^2} \, dt + \frac{|\psi(t_0) - t_0|}{\log t_0}
+```
+
+This remainder absorbs below-threshold contributions and is carried symbolically until t₀ is fixed.
+
 ## Step 3: Difference Bound
 
 Subtracting:
@@ -72,9 +82,9 @@ Using |ψ(t) − t| ≤ E(t):
 
 ## Bound Form (No Constants)
 
-> **Transfer Result**: If |ψ(t) − t| ≤ E(t), then:
+> **Transfer Result**: If |ψ(t) − t| ≤ E(t) for t ≥ t₀, then:
 >
-> |π(x) − Li(x)| ≤ (boundary term in E) + (integral of E against kernel) + (prime-power correction) + (lower-order terms)
+> |π(x) − Li(x)| ≤ (boundary term in E) + (integral of E against kernel over [t₀,x]) + |Δ_pp(x)| + C_boundary + R_{t₀}(x)
 
 The specific form of the kernel is 1/(t (log t)²), inherited from partial summation with f(t) = 1/log(t).
 
@@ -85,7 +95,9 @@ The specific form of the kernel is 1/(t (log t)²), inherited from partial summa
 | Definition of Δ_pp(x) | **PAID** — see [04_DELTA_PP_DEFINITION.md](04_DELTA_PP_DEFINITION.md) |
 | Bound on Δ_pp(x) | **UNPAID** — magnitude depends on θ(x^{1/2}) + θ(x^{1/3}) + ... |
 | O(1) constant (C_boundary) | **PAID** — see [05_BOUNDARY_TERMS_RECEIPT.md](05_BOUNDARY_TERMS_RECEIPT.md) |
-| Threshold t_0 | **UNPAID** — input bound E(t) may only hold for t ≥ t_0 |
+| Threshold contract (structure) | **PAID** — see [06_THRESHOLD_REQUIREMENTS_RECEIPT.md](06_THRESHOLD_REQUIREMENTS_RECEIPT.md) |
+| Value of t₀ | **UNPAID** — depends on source of E(t) |
+| Evaluation of R_{t₀}(x) | **UNPAID** — requires fixing t₀ |
 
 ## Non-Claims
 
