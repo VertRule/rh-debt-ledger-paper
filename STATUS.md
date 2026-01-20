@@ -35,7 +35,7 @@ The paper skeleton documents the verification ladder and debt framing without cl
 
 ## Verification Commands
 
-**Baseline verification (23 steps):**
+**Baseline verification (24 steps):**
 ```bash
 VR_STRICT=1 ./VERIFY.sh
 ```
