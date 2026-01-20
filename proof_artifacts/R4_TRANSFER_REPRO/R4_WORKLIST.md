@@ -9,7 +9,7 @@
 | R4.1 | 02_PSI_TO_PI_MINUS_LI_BOUND | Make prime-power correction explicit: define Δ_pp(x) precisely | DONE | [04_DELTA_PP_DEFINITION.md](04_DELTA_PP_DEFINITION.md) |
 | R4.2 | R4_CONTRACT | Decide whether to go via θ or directly via ψ | DONE | [03_FORK_DECISION_RECEIPT.md](03_FORK_DECISION_RECEIPT.md) |
 | R4.3 | 01_PARTIAL_SUMMATION | Add citation anchors for Stieltjes / partial summation lemma | CITED | [evidence/EVIDENCE.md#id-r43](evidence/EVIDENCE.md#id-r43) |
-| R4.4 | 02_PSI_TO_PI_MINUS_LI_BOUND | Bound O(1) boundary terms explicitly | TODO | |
+| R4.4 | 02_PSI_TO_PI_MINUS_LI_BOUND | Bound O(1) boundary terms explicitly | DONE | [05_BOUNDARY_TERMS_RECEIPT.md](05_BOUNDARY_TERMS_RECEIPT.md) |
 | R4.5 | R4_CONTRACT | Document threshold requirements for input bound | TODO | |
 
 ## Legend
