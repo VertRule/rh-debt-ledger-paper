@@ -21,6 +21,8 @@ Expected output: `=== VERIFICATION PASSED ===`
 
 **What this verifies:** Mechanical integrity only (file structure, digests, governance compliance). Does not reproduce proofs. Makes no claim regarding the Riemann Hypothesis.
 
+R4 packet integrity is checked by `VERIFY_R4_TRANSFER.sh`.
+
 ---
 
 # Front Door: Submission & Verification

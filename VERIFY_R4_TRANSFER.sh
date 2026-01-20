@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+# VERIFY_R4_TRANSFER.sh — Mechanical integrity checks for R4 packet
+# Does NOT validate math. Only validates packet structure.
+
+set -euo pipefail
+
+R4_DIR="proof_artifacts/R4_TRANSFER_REPRO"
+FAIL=0
+
+echo "=== R4 Transfer Packet Integrity Check ==="
+
+# Check required files exist
+REQUIRED_FILES=(
+    "$R4_DIR/00_INDEX.md"
+    "$R4_DIR/R4_CONTRACT.md"
+    "$R4_DIR/01_PARTIAL_SUMMATION.md"
+    "$R4_DIR/02_PSI_TO_PI_MINUS_LI_BOUND.md"
+    "$R4_DIR/R4_WORKLIST.md"
+    "$R4_DIR/evidence/EVIDENCE.md"
+)
+
+echo "[1/4] Checking required files..."
+for f in "${REQUIRED_FILES[@]}"; do
+    if [[ ! -f "$f" ]]; then
+        echo "  FAIL: Missing $f"
+        FAIL=1
+    fi
+done
+if [[ $FAIL -eq 0 ]]; then
+    echo "  OK: All required files present"
+fi
+
+# Check each file contains Concept-Tag
+echo "[2/4] Checking Concept-Tag markers..."
+for f in "${REQUIRED_FILES[@]}"; do
+    if [[ -f "$f" ]]; then
+        if ! grep -q "Concept-Tag:" "$f"; then
+            echo "  FAIL: $f missing Concept-Tag"
+            FAIL=1
+        fi
+    fi
+done
+if [[ $FAIL -eq 0 ]]; then
+    echo "  OK: All files have Concept-Tag"
+fi
+
+# Check 01 and 02 contain math blocks
+echo "[3/4] Checking math blocks in derivation files..."
+for f in "$R4_DIR/01_PARTIAL_SUMMATION.md" "$R4_DIR/02_PSI_TO_PI_MINUS_LI_BOUND.md"; do
+    if [[ -f "$f" ]]; then
+        if ! grep -qE '```math|^\$\$|\$[^$]+\$' "$f"; then
+            echo "  FAIL: $f missing math block"
+            FAIL=1
+        fi
+    fi
+done
+if [[ $FAIL -eq 0 ]]; then
+    echo "  OK: Derivation files contain math blocks"
+fi
+
+# Check worklist has TODO items
+echo "[4/4] Checking worklist structure..."
+WORKLIST="$R4_DIR/R4_WORKLIST.md"
+if [[ -f "$WORKLIST" ]]; then
+    if ! grep -q "| ID |" "$WORKLIST"; then
+        echo "  FAIL: $WORKLIST missing table header"
+        FAIL=1
+    fi
+    if ! grep -q "TODO" "$WORKLIST"; then
+        echo "  FAIL: $WORKLIST has no TODO items"
+        FAIL=1
+    fi
+fi
+if [[ $FAIL -eq 0 ]]; then
+    echo "  OK: Worklist has proper structure"
+fi
+
+echo ""
+if [[ $FAIL -eq 0 ]]; then
+    echo "=== R4 INTEGRITY CHECK PASSED ==="
+    exit 0
+else
+    echo "=== R4 INTEGRITY CHECK FAILED ==="
+    exit 1
+fi
