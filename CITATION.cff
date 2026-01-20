@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+title: A Deterministic Debt-Ledger Framework for RH Verification
+message: >-
+  If you use this software, please cite it using the metadata from this file.
+type: software
+authors:
+  - given-names: David
+    family-names: Ingle
+repository-code: https://github.com/VertRule/rh-debt-ledger-paper
+abstract: >-
+  A deterministic debt-ledger framework and verification ladder for
+  Riemann Hypothesis computations. This repository documents a reproducible
+  verification pipeline, not a proof or verification of RH.
+keywords:
+  - Riemann Hypothesis
+  - verification
+  - reproducibility
+  - debt ledger
+  - deterministic builds
+license: MIT
+version: r28-zenodo-doi
+date-released: '2026-01-20'
+doi: 10.5281/zenodo.18318663
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.18318663
+    description: Concept DOI (always resolves to latest version)
+  - type: doi
+    value: 10.5281/zenodo.18318664
+    description: Version DOI for r28-zenodo-doi release

@@ -74,3 +74,30 @@ The digest is verified by `VERIFY.sh` step 24/24 (R25). If you rebuild and get a
 | sections/07_reproducibility.tex | Deterministic builds |
 | sections/08_conclusion.tex | Summary |
 | bib.bib | References |
+
+## How to Cite
+
+**Concept DOI** (recommended — always resolves to latest version):
+```
+Ingle, D. (2026). A Deterministic Debt-Ledger Framework for RH Verification. Zenodo. https://doi.org/10.5281/zenodo.18318663
+```
+
+**Version DOI** (for citing specific release r28-zenodo-doi):
+```
+Ingle, D. (2026). A Deterministic Debt-Ledger Framework for RH Verification (r28-zenodo-doi). Zenodo. https://doi.org/10.5281/zenodo.18318664
+```
+
+**BibTeX:**
+```bibtex
+@software{ingle_2026_18318663,
+  author       = {Ingle, David},
+  title        = {{A Deterministic Debt-Ledger Framework for RH Verification}},
+  month        = jan,
+  year         = 2026,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18318663},
+  url          = {https://doi.org/10.5281/zenodo.18318663}
+}
+```
+
+**Note:** This DOI does not indicate peer review or arXiv acceptance. It provides a citable, permanent identifier only.

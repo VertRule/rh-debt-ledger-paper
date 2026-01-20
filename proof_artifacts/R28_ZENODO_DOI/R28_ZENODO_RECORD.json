@@ -1,0 +1,26 @@
+{
+  "conceptdoi": "10.5281/zenodo.18318663",
+  "doi": "10.5281/zenodo.18318664",
+  "version": "r28-zenodo-doi",
+  "title": "VertRule/rh-debt-ledger-paper: R28: Zenodo DOI mint",
+  "publication_date": "2026-01-20",
+  "resource_type": {
+    "type": "software"
+  },
+  "creators": [
+    {
+      "name": "Ingle, David"
+    }
+  ],
+  "access_right": "open",
+  "license": {
+    "id": "other-open"
+  },
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/VertRule/rh-debt-ledger-paper",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

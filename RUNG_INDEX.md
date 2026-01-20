@@ -2,7 +2,7 @@
 
 **Concept-Tag:** RH-RUNG-INDEX
 
-Map of the verification ladder (R4–R23).
+Map of the verification ladder (R4–R28).
 
 | Rung | Name | Establishes | Does NOT Claim | Directory | Verifier | Release Tag |
 |------|------|-------------|----------------|-----------|----------|-------------|
@@ -23,7 +23,12 @@ Map of the verification ladder (R4–R23).
 | R20 | Rebuild Assembly | Deterministic R10 root rebuild | Proof | `proof_artifacts/R20_REBUILD_ASSEMBLY_ROOT/` | `VERIFY_R20_REBUILD_ASSEMBLY_ROOT.sh` | r20-rebuild-r10-assembly-root |
 | R21 | Release Zip Rebuild | Deterministic release zip from tag | — | `proof_artifacts/R21_RELEASE_ZIP_REBUILD/` | `VERIFY_R21_RELEASE_ZIP_REBUILD.sh` (local) | r21-release-zip-rebuild |
 | R22 | Rung Index | Canonical ladder map + status ledger | — | `RUNG_INDEX.md`, `STATUS.md` | — | r22-rung-index-status |
-| R23 | Paper Skeleton | LaTeX paper citing rungs | RH | `paper/` | — | TBD |
+| R23 | Paper Skeleton | LaTeX paper citing rungs | RH | `paper/` | — | r23-paper-skeleton |
+| R24 | Paper Build | Deterministic PDF build | — | `proof_artifacts/R24_PAPER_BUILD/` | — | r24-paper-build |
+| R25 | Paper Publish | Published PDF + sha256 digest | — | `paper/main.pdf` | VERIFY.sh step 24 | r25-publish-pdf |
+| R26 | arXiv Kit | Deterministic arXiv source bundle | — | `proof_artifacts/R26_ARXIV_SUBMISSION/` | — | r26-arxiv-submission-kit |
+| R27 | Endorsement Path | arXiv endorsement + alternate preprint docs | — | `proof_artifacts/R27_ENDORSEMENT_PATH/` | — | r27-endorsement-path |
+| R28 | Zenodo DOI | Citable DOI via Zenodo | Peer review | `proof_artifacts/R28_ZENODO_DOI/` | — | r28-zenodo-doi |
 
 ## Verification Steps (23 total)
 
