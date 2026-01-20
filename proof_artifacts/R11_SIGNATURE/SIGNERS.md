@@ -10,7 +10,7 @@ This ledger maps signature file identifiers to human-auditable identity informat
 
 | signer_id | display_name | role | key_fingerprint | key_provenance | notes |
 |-----------|--------------|------|-----------------|----------------|-------|
-| dave | David Ingle | maintainer | TBD | TBD | optional signature |
+| dave | David Ingle | maintainer | 4AD8DC2E333085334398EDD81872DFF540882A6B | GitHub verified | optional signature |
 
 ## Adding a Signer
 

@@ -1,0 +1,6 @@
+Concept-Tag: RH-R14-GPG-FINGERPRINT-CAPTURE
+signer_id=dave
+method=gpg --list-keys --fingerprint
+fingerprints:
+  - 4AD8DC2E333085334398EDD81872DFF540882A6B
+end
