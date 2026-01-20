@@ -2,7 +2,7 @@
 
 **Concept-Tag:** RH-RUNG-INDEX
 
-Map of the verification ladder (R4–R21).
+Map of the verification ladder (R4–R23).
 
 | Rung | Name | Establishes | Does NOT Claim | Directory | Verifier | Release Tag |
 |------|------|-------------|----------------|-----------|----------|-------------|
@@ -22,6 +22,8 @@ Map of the verification ladder (R4–R21).
 | R19 | Front Door | Quickstart documentation | — | `VERIFY_QUICKSTART.md` | — | r19-front-door-quickstart |
 | R20 | Rebuild Assembly | Deterministic R10 root rebuild | Proof | `proof_artifacts/R20_REBUILD_ASSEMBLY_ROOT/` | `VERIFY_R20_REBUILD_ASSEMBLY_ROOT.sh` | r20-rebuild-r10-assembly-root |
 | R21 | Release Zip Rebuild | Deterministic release zip from tag | — | `proof_artifacts/R21_RELEASE_ZIP_REBUILD/` | `VERIFY_R21_RELEASE_ZIP_REBUILD.sh` (local) | r21-release-zip-rebuild |
+| R22 | Rung Index | Canonical ladder map + status ledger | — | `RUNG_INDEX.md`, `STATUS.md` | — | r22-rung-index-status |
+| R23 | Paper Skeleton | LaTeX paper citing rungs | RH | `paper/` | — | TBD |
 
 ## Verification Steps (23 total)
 

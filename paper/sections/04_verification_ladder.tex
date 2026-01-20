@@ -1,0 +1,68 @@
+\section{The Verification Ladder}
+\label{sec:ladder}
+
+The verification ladder consists of rungs R4--R22. Each rung has a contract,
+artifacts, and a verifier script. We summarize the key rungs below.
+
+\subsection{Foundation Rungs (R4--R6)}
+
+\textbf{R4: Transfer Repro.} Records the equation inventory for partial summation
+transfer. Does not claim proof correctness.
+See \texttt{proof\_artifacts/R4\_TRANSFER\_REPRO/07\_EQUATION\_INVENTORY.md}.
+
+\textbf{R5: Error Bound Source.} Provides a menu of error bound components.
+Does not claim the bounds are valid or optimal.
+See \texttt{proof\_artifacts/R5\_ERROR\_BOUND\_SOURCE/R5\_MENU.md}.
+
+\textbf{R6: Instantiation.} Records specific parameter choices.
+Does not claim optimality.
+See \texttt{proof\_artifacts/R6\_INSTANTIATION/R6\_INSTANTIATION\_RECORD.md}.
+
+\subsection{Bound Statement (R7)}
+
+\textbf{R7: Bound Statement.} Provides an explicit statement of the bound,
+citing R4--R6 for its components. Does NOT claim RH.
+See \texttt{proof\_artifacts/R7\_BOUND\_STATEMENT/R7\_BOUND\_STATEMENT.md}.
+
+The bound statement explicitly records which terms are paid (verified)
+and which carry unpaid debt (the tail contribution).
+
+\subsection{Integrity Rungs (R8--R10)}
+
+\textbf{R8: Comparison Run.} Regenerates the equation inventory and compares
+to the frozen version. Detects any drift.
+See \texttt{proof\_artifacts/R8\_COMPARISON\_RUN/R8\_COMPARISON\_RECEIPT.md}.
+
+\textbf{R9: No-Surprise Assembly.} Freezes the input manifest with SHA-256
+digests. Ensures no hidden inputs.
+See \texttt{proof\_artifacts/R9\_NO\_SURPRISE\_ASSEMBLY/R9\_INPUT\_MANIFEST.txt}.
+
+\textbf{R10: Assembly Receipt.} Computes a canonical root hash over all
+proof artifacts. Forms the signing payload.
+See \texttt{proof\_artifacts/R10\_ASSEMBLY\_RECEIPT/R10\_RECEIPT.json}.
+
+\subsection{Signature Rungs (R11, R14--R18)}
+
+\textbf{R11: GPG Signature.} Optional detached GPG signature over R10 assembly root.
+See \texttt{proof\_artifacts/R11\_SIGNATURE/sigs/dave.asc}.
+
+\textbf{R14: Key Capture.} Records GPG fingerprints for attribution.
+See \texttt{proof\_artifacts/R14\_KEY\_CAPTURE/captures/dave.fingerprint.txt}.
+
+\textbf{R15--R17: Post-Quantum Signatures.} Provides hybrid PQ signatures
+(P-384 + ML-DSA-65) for quantum-resistant attestation.
+See \texttt{proof\_artifacts/R15\_PQ\_SIGNATURE/sigs\_pq/dave.p384\_mldsa65.sig}.
+
+\subsection{Reproducibility Rungs (R20--R22)}
+
+\textbf{R20: Assembly Root Rebuild.} Deterministically rebuilds R10 from the
+verify surface. Proves the root hash is reproducible.
+See \texttt{proof\_artifacts/R20\_REBUILD\_ASSEMBLY\_ROOT/R20\_CONTRACT.md}.
+
+\textbf{R21: Release Zip Rebuild.} Deterministically rebuilds the release zip
+from a git tag. Ensures byte-identical releases.
+See \texttt{proof\_artifacts/R21\_RELEASE\_ZIP\_REBUILD/R21\_CONTRACT.md}.
+
+\textbf{R22: Rung Index.} Provides the canonical map of all rungs and
+current ledger status.
+See \texttt{RUNG\_INDEX.md} and \texttt{STATUS.md}.

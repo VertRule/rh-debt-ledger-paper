@@ -1,0 +1,59 @@
+\section{The Debt Ledger Model}
+\label{sec:ledger}
+
+\subsection{Core Concepts}
+
+The debt ledger model organizes proof obligations into three categories:
+
+\begin{definition}[Paid Obligation]
+An obligation is \emph{paid} if it can be mechanically verified from artifacts
+in the repository without assuming any unproven conjecture.
+\end{definition}
+
+\begin{definition}[Unpaid Obligation]
+An obligation is \emph{unpaid} if its satisfaction requires proving a statement
+equivalent in difficulty to RH (or another open problem).
+\end{definition}
+
+\begin{definition}[Rung]
+A \emph{rung} is a discrete step in the verification ladder, consisting of:
+\begin{itemize}
+  \item A contract specifying what the rung establishes and what it does NOT claim.
+  \item Artifacts providing evidence (equations, digests, signatures).
+  \item A verifier script that checks the rung's integrity.
+  \item A release tag for reproducibility.
+\end{itemize}
+\end{definition}
+
+\subsection{The NA0 Debt Framing}
+
+The key insight is that any bound of the form
+\[
+  |\pi(x) - \operatorname{li}(x)| < f(x)
+\]
+for all $x > x_0$ requires controlling the contribution of zeta zeros.
+The ``tail'' contribution from zeros with large imaginary part cannot be bounded
+without RH or an equivalent statement.
+
+We call this the \textbf{NA0 debt}: the obligation to bound the tail contribution
+from infinitely many zeros. This debt remains unpaid.
+
+See \texttt{proof\_artifacts/R7\_BOUND\_STATEMENT/R7\_BOUND\_STATEMENT.md} for
+the explicit statement of the bound and its dependencies.
+
+\subsection{Artifact Chain}
+
+Each rung produces artifacts that feed into subsequent rungs:
+\begin{enumerate}
+  \item R4--R6: Equation inventory, error bound components, parameter choices.
+  \item R7: Explicit bound statement citing R4--R6.
+  \item R8: Regeneration of equation inventory for comparison.
+  \item R9: Input manifest with frozen digests.
+  \item R10: Assembly receipt (root hash over all inputs).
+  \item R11--R18: Signature layers (GPG, post-quantum hybrid).
+  \item R20: Deterministic rebuild of assembly root.
+  \item R21: Deterministic rebuild of release zip.
+  \item R22: Rung index and status ledger.
+\end{enumerate}
+
+See \texttt{RUNG\_INDEX.md} for the complete map.
