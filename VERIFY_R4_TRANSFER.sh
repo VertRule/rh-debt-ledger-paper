@@ -19,7 +19,7 @@ REQUIRED_FILES=(
     "$R4_DIR/evidence/EVIDENCE.md"
 )
 
-echo "[1/5] Checking required files..."
+echo "[1/6] Checking required files..."
 for f in "${REQUIRED_FILES[@]}"; do
     if [[ ! -f "$f" ]]; then
         echo "  FAIL: Missing $f"
@@ -31,7 +31,7 @@ if [[ $FAIL -eq 0 ]]; then
 fi
 
 # Check each file contains Concept-Tag
-echo "[2/5] Checking Concept-Tag markers..."
+echo "[2/6] Checking Concept-Tag markers..."
 for f in "${REQUIRED_FILES[@]}"; do
     if [[ -f "$f" ]]; then
         if ! grep -q "Concept-Tag:" "$f"; then
@@ -45,7 +45,7 @@ if [[ $FAIL -eq 0 ]]; then
 fi
 
 # Check 01 and 02 contain math blocks
-echo "[3/5] Checking math blocks in derivation files..."
+echo "[3/6] Checking math blocks in derivation files..."
 for f in "$R4_DIR/01_PARTIAL_SUMMATION.md" "$R4_DIR/02_PSI_TO_PI_MINUS_LI_BOUND.md"; do
     if [[ -f "$f" ]]; then
         if ! grep -qE '```math|^\$\$|\$[^$]+\$' "$f"; then
@@ -59,7 +59,7 @@ if [[ $FAIL -eq 0 ]]; then
 fi
 
 # Check worklist structure
-echo "[4/5] Checking worklist structure..."
+echo "[4/6] Checking worklist structure..."
 WORKLIST="$R4_DIR/R4_WORKLIST.md"
 if [[ -f "$WORKLIST" ]]; then
     if ! grep -q "| ID |" "$WORKLIST"; then
@@ -76,7 +76,7 @@ if [[ $FAIL -eq 0 ]]; then
 fi
 
 # Check equation inventory hash
-echo "[5/5] Checking equation inventory hash..."
+echo "[5/6] Checking equation inventory hash..."
 INVENTORY="$R4_DIR/07_EQUATION_INVENTORY.md"
 EXPECTED_HASH="$R4_DIR/07_EQUATION_INVENTORY.sha256"
 if [[ -f "$INVENTORY" ]] && [[ -f "$EXPECTED_HASH" ]]; then
@@ -92,6 +92,34 @@ if [[ -f "$INVENTORY" ]] && [[ -f "$EXPECTED_HASH" ]]; then
     fi
 else
     echo "  SKIP: Equation inventory or hash file not found"
+fi
+
+# Check derivation step references
+echo "[6/6] Checking derivation step references..."
+DERIVATION="$R4_DIR/02_PSI_TO_PI_MINUS_LI_BOUND.md"
+if [[ -f "$DERIVATION" ]]; then
+    # Extract declared anchors (STEP-R4-XX and DEF-R4-XX from HTML comments)
+    DECLARED_STEPS=$(grep -oE '<!-- (STEP-R4-[0-9]+|DEF-R4-[0-9]+) -->' "$DERIVATION" | grep -oE 'STEP-R4-[0-9]+|DEF-R4-[0-9]+' | sort -u)
+
+    # Extract referenced items from Step Chain and Definitions Used lines
+    STEP_CHAIN=$(grep "Step Chain:" "$DERIVATION" | grep -oE 'STEP-R4-[0-9]+' | sort -u)
+    DEFS_USED=$(grep "Definitions Used:" "$DERIVATION" | grep -oE 'DEF-R4-[0-9]+' | sort -u)
+    REFERENCED=$(printf "%s\n%s" "$STEP_CHAIN" "$DEFS_USED" | sort -u)
+
+    # Check each declared anchor is referenced
+    STEP_FAIL=0
+    for anchor in $DECLARED_STEPS; do
+        if ! echo "$REFERENCED" | grep -q "^${anchor}$"; then
+            echo "  FAIL: $anchor declared but not in Step Chain or Definitions Used"
+            STEP_FAIL=1
+            FAIL=1
+        fi
+    done
+    if [[ $STEP_FAIL -eq 0 ]]; then
+        echo "  OK: All derivation steps referenced in final bound"
+    fi
+else
+    echo "  SKIP: Derivation file not found"
 fi
 
 echo ""
