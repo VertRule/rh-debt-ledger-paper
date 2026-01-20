@@ -4,11 +4,11 @@
 
 ## Citation Entries
 
-### ID R4.C1
+### ID R4.3
 
 **Worklist ID:** R4.3
 
-**Task:** Citation anchor for partial summation / Stieltjes integration
+**Task:** Add citation anchors for Stieltjes / partial summation lemma
 
 **What is being cited:** The partial summation formula (Abel's summation formula) and its Stieltjes integral formulation, used to transfer bounds between arithmetic functions and their integral representations.
 
