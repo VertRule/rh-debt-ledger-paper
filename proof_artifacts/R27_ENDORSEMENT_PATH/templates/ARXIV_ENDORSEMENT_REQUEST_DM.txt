@@ -1,0 +1,18 @@
+arXiv Endorsement Request — DM Template
+
+Use this for initial contact via Twitter/X, Mastodon, or other messaging.
+Follow up with email containing the actual endorsement link.
+
+---
+
+Hi [Name],
+
+I'm an independent researcher submitting a paper on deterministic verification frameworks for RH computations to arXiv (math.NT). I noticed your work on [relevant topic] and wondered if you might be willing to provide an endorsement.
+
+This is NOT a proof claim — it's a reproducibility/audit framework with a verification ladder.
+
+Repo: [REPO_LINK]
+
+If you're open to it, I can send the arXiv endorsement link via email. No pressure either way.
+
+Thanks for your time.
