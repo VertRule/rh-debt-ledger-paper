@@ -29,6 +29,14 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
+## Determinism Rules
+
+For reproducible PDF builds:
+
+- **Do not use `\today`** — it injects build-time dates and breaks determinism.
+- Use a fixed date string (e.g., `\date{January 2026}`).
+- Future: containerized builds will set `SOURCE_DATE_EPOCH` for PDF metadata.
+
 ## Structure
 
 | File | Content |
