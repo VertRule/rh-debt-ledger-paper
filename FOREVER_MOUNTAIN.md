@@ -41,6 +41,20 @@ Goal: prove an unconditional error term bound via classical zero-free region met
 - Korobov-Vinogradov zero-free region
 - Standard analytic number theory references
 
+### R4: Transfer Reproduction Slice
+
+An in-repo reproduction of the ψ(x) → π(x)−Li(x) transfer step with explicit assumptions and explicit debt.
+
+**Index:** [proof_artifacts/R4_TRANSFER_REPRO/00_INDEX.md](proof_artifacts/R4_TRANSFER_REPRO/00_INDEX.md)
+
+**Non-claims:**
+- No RH claim
+- No zero-free region claim
+- No numeric constants asserted
+- Debt (prime-power correction, thresholds) remains explicit
+
+**Verification:** R4 packet integrity is checked by `VERIFY_R4_TRANSFER.sh`.
+
 ## We do not claim
 
 - Unknowns remain debt
