@@ -4,7 +4,7 @@
 
 ## Current Rung
 
-**R32** — Tighten no-token-leak verifier
+**R34** — Endorsement packet + follow-up templates
 
 ## Paper Draft
 
