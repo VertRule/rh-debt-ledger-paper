@@ -2,7 +2,7 @@
 
 **Concept-Tag:** RH-RUNG-INDEX
 
-Map of the verification ladder (R4–R32).
+Map of the verification ladder (R4–R34).
 
 | Rung | Name | Establishes | Does NOT Claim | Directory | Verifier | Release Tag |
 |------|------|-------------|----------------|-----------|----------|-------------|
@@ -33,6 +33,8 @@ Map of the verification ladder (R4–R32).
 | R30 | README Front Door | Canonical landing page | — | `README.md` | — | r30-readme-front-door |
 | R31 | Endorsement Outreach | Token-safe outreach templates + leak verifier | Token safety | `proof_artifacts/R31_ENDORSEMENT_OUTREACH/` | VERIFY.sh step 25 | r31-endorsement-log |
 | R32 | Tighten Token Verifier | Remove verifier exclusions; neutral placeholders | — | (updates R27, R31 docs) | VERIFY.sh step 25 | r32-tighten-token-verifier |
+| R33 | Index R32 | Record R32 in ladder map | — | `RUNG_INDEX.md`, `STATUS.md` | — | r33-index-r32 |
+| R34 | Endorsement Packet | Public endorsement packet + follow-up templates | — | `proof_artifacts/R31_ENDORSEMENT_OUTREACH/` | — | r34-endorsement-packet |
 
 ## Verification Steps (25 total)
 
